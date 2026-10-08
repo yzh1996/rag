@@ -1,0 +1,33 @@
+# Web框架
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.12
+streamlit==1.39.0
+
+# LangChain核心
+langchain==0.3.7
+langchain-community==0.3.5
+langchain-huggingface==0.1.0
+langchain-openai==0.2.4
+
+# 向量数据库
+chromadb==0.5.17
+faiss-cpu==1.9.0
+
+# 文档处理
+pymupdf==1.24.13
+docx2txt==0.8
+unstructured==0.16.1
+pandas==2.2.3
+openpyxl==3.1.5
+markdown==3.7
+
+# 嵌入模型
+sentence-transformers==3.1.1
+
+# 配置管理
+pydantic-settings==2.5.2
+python-dotenv==1.0.1
+
+# 工具
+tqdm==4.66.5
