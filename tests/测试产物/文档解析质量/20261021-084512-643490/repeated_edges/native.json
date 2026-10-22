@@ -1,0 +1,168 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 0,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 2,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 0,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\repeated_edges\\重复页眉页脚.pdf",
+        "page": 2,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "重复页眉页脚",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.002,
+  "text": "测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n",
+  "checks": [
+    {
+      "name": "正文第一部分",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "正文第一部分",
+      "actual": "已找到"
+    },
+    {
+      "name": "正文第二部分",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "正文第二部分",
+      "actual": "已找到"
+    },
+    {
+      "name": "正文第三部分",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "正文第三部分",
+      "actual": "已找到"
+    },
+    {
+      "name": "删除重复页眉",
+      "kind": "absent",
+      "status": "fail",
+      "expected": "不应包含：测试企业机密页眉",
+      "actual": "测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n"
+    },
+    {
+      "name": "删除重复页脚",
+      "kind": "absent",
+      "status": "fail",
+      "expected": "不应包含：测试企业机密页脚",
+      "actual": "测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n"
+    }
+  ],
+  "quality": "fail"
+}

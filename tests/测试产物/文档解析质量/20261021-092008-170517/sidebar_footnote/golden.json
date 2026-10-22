@@ -1,0 +1,19 @@
+{
+  "id": "sidebar_footnote",
+  "category": "03_阅读顺序",
+  "file": "侧栏脚注.pdf",
+  "description": "正文先连续阅读，补充说明和脚注放在正文之后。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "order",
+      "name": "正文不被侧栏打断",
+      "values": [
+        "MAIN-A",
+        "MAIN-B",
+        "SIDE",
+        "FOOT"
+      ]
+    }
+  ]
+}

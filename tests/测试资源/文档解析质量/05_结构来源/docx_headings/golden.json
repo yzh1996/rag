@@ -1,0 +1,39 @@
+{
+  "id": "docx_headings",
+  "category": "05_结构来源",
+  "file": "标题层级.docx",
+  "description": "不仅要保留标题文字，还要能区分一级与二级标题。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "费用管理手册",
+      "value": "费用管理手册",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "一、报销",
+      "value": "一、报销",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "1.1 差旅",
+      "value": "1.1 差旅",
+      "requires_ocr": false
+    },
+    {
+      "kind": "heading",
+      "name": "一级标题层级",
+      "text": "一、报销",
+      "level": 1
+    },
+    {
+      "kind": "heading",
+      "name": "二级标题层级",
+      "text": "1.1 差旅",
+      "level": 2
+    }
+  ]
+}

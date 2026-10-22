@@ -1,0 +1,31 @@
+{
+  "文件": "复杂排版测试.pdf",
+  "页数或文档段数": 1,
+  "清洗前字符数": 262,
+  "清洗后字符数": 261,
+  "使用的加载器": "PyMuPDFLoader",
+  "文档元数据": [
+    {
+      "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档清洗测试资料\\复杂排版测试.pdf",
+      "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档清洗测试资料\\复杂排版测试.pdf",
+      "page": 1,
+      "total_pages": 1,
+      "format": "PDF 1.4",
+      "title": "untitled",
+      "author": "anonymous",
+      "subject": "unspecified",
+      "keywords": "",
+      "creator": "anonymous",
+      "producer": "ReportLab PDF Library - (opensource)",
+      "creationDate": "D:20261014050411+08'00'",
+      "modDate": "D:20261014050411+08'00'",
+      "trapped": "",
+      "ocr_required": false,
+      "ocr_used": false,
+      "loader": "PyMuPDFLoader",
+      "file_name": "复杂排版测试.pdf",
+      "file_type": "pdf",
+      "cleaned": true
+    }
+  ]
+}

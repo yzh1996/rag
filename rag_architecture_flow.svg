@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1900" height="1370" viewBox="0 0 1900 1370" role="img"
+     aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">企业级 RAG 知识生产与问答闭环</title>
+  <desc id="diagram-description">展示离线知识生产、在线问答、用户反馈评测优化和可观测性之间关系的流程图。</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b536d"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#70869b"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#203244" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .canvas { fill: #f7fafc; }
+      .title { fill: #172b3f; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 30px; font-weight: 700; letter-spacing: 0; }
+      .subtitle { fill: #617489; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 15px; letter-spacing: 0; }
+      .band { stroke-width: 1.5; }
+      .offline-band { fill: #eef6ff; stroke: #b8d4ee; }
+      .online-band { fill: #f2f8f4; stroke: #b9d8c1; }
+      .feedback-band { fill: #fff8ed; stroke: #e4cca1; }
+      .band-title { fill: #25425e; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: 0; }
+      .band-note { fill: #6d8193; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 13px; letter-spacing: 0; }
+      .node { stroke-width: 1.5; filter: url(#shadow); }
+      .offline-node { fill: #ffffff; stroke: #76a6d1; }
+      .online-node { fill: #ffffff; stroke: #77ad8a; }
+      .feedback-node { fill: #ffffff; stroke: #d2a45c; }
+      .decision { fill: #fffdf7; stroke: #c79a4d; stroke-width: 1.8; filter: url(#shadow); }
+      .node-title { fill: #1d354b; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 16px; font-weight: 700; text-anchor: middle; letter-spacing: 0; }
+      .node-subtitle { fill: #6b7e90; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 12px; text-anchor: middle; letter-spacing: 0; }
+      .edge { fill: none; stroke: #3b536d; stroke-width: 2.2; marker-end: url(#arrow); }
+      .edge-muted { fill: none; stroke: #70869b; stroke-width: 2; marker-end: url(#arrow-muted); }
+      .edge-dashed { fill: none; stroke: #8a7b68; stroke-width: 2; stroke-dasharray: 7 6; marker-end: url(#arrow-muted); }
+      .edge-label { fill: #5e7184; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 12px; letter-spacing: 0; }
+      .edge-label-strong { fill: #826b42; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0; }
+      .legend { fill: #637588; font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 12px; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect class="canvas" x="0" y="0" width="1900" height="1370"/>
+  <text class="title" x="80" y="52">企业级 RAG 知识生产与问答闭环</text>
+  <text class="subtitle" x="80" y="78">从数据采集、知识发布到在线回答、反馈评测和持续优化</text>
+
+  <!-- Offline knowledge production and publishing -->
+  <g id="offline-knowledge-production" aria-label="离线：知识生产与发布闭环">
+    <rect class="band offline-band" x="55" y="105" width="1790" height="385" rx="18"/>
+    <text class="band-title" x="85" y="145">离线：知识生产与发布闭环</text>
+    <text class="band-note" x="85" y="169">将业务数据加工成经过审核、可回滚的线上知识</text>
+
+    <g id="offline-edges">
+      <path class="edge" d="M260 270 H278"/>
+      <path class="edge" d="M438 270 H456"/>
+      <path class="edge" d="M616 270 H634"/>
+      <path class="edge" d="M794 270 H812"/>
+      <path class="edge" d="M972 270 H990"/>
+      <path class="edge" d="M1150 270 H1168"/>
+      <path class="edge" d="M1328 270 H1346"/>
+      <path class="edge" d="M1506 270 H1524"/>
+    </g>
+
+    <g id="offline-nodes">
+      <g id="source-data">
+        <rect class="node offline-node" x="100" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="180" y="263">业务数据源</text>
+        <text class="node-subtitle" x="180" y="286">文档 / 系统 / 文件</text>
+      </g>
+      <g id="collect-upload">
+        <rect class="node offline-node" x="278" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="358" y="263">采集与上传</text>
+        <text class="node-subtitle" x="358" y="286">接入与批量导入</text>
+      </g>
+      <g id="validation-dedup">
+        <rect class="node offline-node" x="456" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="536" y="258">安全校验 / 去重</text>
+        <text class="node-subtitle" x="536" y="283">权限与格式检查</text>
+      </g>
+      <g id="parse-clean">
+        <rect class="node offline-node" x="634" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="714" y="263">解析 / OCR / 清洗</text>
+        <text class="node-subtitle" x="714" y="286">提取可用文本</text>
+      </g>
+      <g id="chunk-metadata">
+        <rect class="node offline-node" x="812" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="892" y="258">分块 / 元数据</text>
+        <text class="node-subtitle" x="892" y="283">版本与来源管理</text>
+      </g>
+      <g id="embedding">
+        <rect class="node offline-node" x="990" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1070" y="263">Embedding 向量化</text>
+        <text class="node-subtitle" x="1070" y="286">统一模型版本</text>
+      </g>
+      <g id="indexing">
+        <rect class="node offline-node" x="1168" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1248" y="258">建索引</text>
+        <text class="node-subtitle" x="1248" y="283">维度与版本校验</text>
+      </g>
+      <g id="release">
+        <rect class="node offline-node" x="1346" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1426" y="258">审核 / 发布 / 灰度</text>
+        <text class="node-subtitle" x="1426" y="283">支持回滚</text>
+      </g>
+      <g id="online-kb">
+        <rect class="node offline-node" x="1524" y="230" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1604" y="263">线上可用知识库</text>
+        <text class="node-subtitle" x="1604" y="286">可检索版本</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Online question answering loop -->
+  <g id="online-question-answering" aria-label="在线：问答服务闭环">
+    <rect class="band online-band" x="55" y="540" width="1790" height="420" rx="18"/>
+    <text class="band-title" x="85" y="580">在线：问答服务闭环</text>
+    <text class="band-note" x="85" y="604">先判断问题和权限，再检索证据，最后生成可核验的答案</text>
+
+    <g id="online-edges">
+      <path class="edge" d="M260 725 H300"/>
+      <path class="edge" d="M460 725 H500"/>
+      <path class="edge" d="M660 725 H700"/>
+      <path class="edge" d="M860 725 H900"/>
+      <path class="edge" d="M1060 725 H1100"/>
+      <path class="edge" d="M1180 725 C1230 725 1260 665 1320 665"/>
+      <path class="edge" d="M1180 725 C1230 725 1260 825 1320 825"/>
+      <path class="edge" d="M1480 825 H1530"/>
+      <path class="edge" d="M1690 825 H1730"/>
+      <path class="edge-muted" d="M1604 310 V500 H780 V685"/>
+    </g>
+
+    <text class="edge-label" x="1245" y="683">否：证据不足</text>
+    <text class="edge-label-strong" x="1239" y="787">是：证据足够</text>
+
+    <g id="online-nodes">
+      <g id="user-question">
+        <rect class="node online-node" x="100" y="685" width="160" height="80" rx="12"/>
+        <text class="node-title" x="180" y="718">用户提问</text>
+        <text class="node-subtitle" x="180" y="741">文本 / 多轮上下文</text>
+      </g>
+      <g id="auth-isolation">
+        <rect class="node online-node" x="300" y="685" width="160" height="80" rx="12"/>
+        <text class="node-title" x="380" y="713">认证 / 租户隔离</text>
+        <text class="node-subtitle" x="380" y="741">权限过滤</text>
+      </g>
+      <g id="question-analysis">
+        <rect class="node online-node" x="500" y="685" width="160" height="80" rx="12"/>
+        <text class="node-title" x="580" y="713">问题分析</text>
+        <text class="node-subtitle" x="580" y="741">改写 / 意图识别</text>
+      </g>
+      <g id="hybrid-retrieval">
+        <rect class="node online-node" x="700" y="685" width="160" height="80" rx="12"/>
+        <text class="node-title" x="780" y="713">混合检索</text>
+        <text class="node-subtitle" x="780" y="741">关键词 + 向量</text>
+      </g>
+      <g id="rerank-filter">
+        <rect class="node online-node" x="900" y="685" width="160" height="80" rx="12"/>
+        <text class="node-title" x="980" y="713">重排 / 去重</text>
+        <text class="node-subtitle" x="980" y="741">阈值过滤</text>
+      </g>
+      <g id="evidence-decision">
+        <polygon class="decision" points="1140,665 1180,725 1140,785 1100,725"/>
+        <text class="node-title" x="1140" y="721">证据足够？</text>
+      </g>
+      <g id="clarify-human">
+        <rect class="node online-node" x="1320" y="625" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1400" y="653">追问 / 拒答</text>
+        <text class="node-subtitle" x="1400" y="681">转人工处理</text>
+      </g>
+      <g id="constrained-generation">
+        <rect class="node online-node" x="1320" y="785" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1400" y="813">受约束生成</text>
+        <text class="node-subtitle" x="1400" y="841">带引用生成</text>
+      </g>
+      <g id="answer-checks">
+        <rect class="node online-node" x="1530" y="785" width="160" height="80" rx="12"/>
+        <text class="node-title" x="1610" y="813">引用 / 事实校验</text>
+        <text class="node-subtitle" x="1610" y="841">安全合规校验</text>
+      </g>
+      <g id="answer-output">
+        <rect class="node online-node" x="1730" y="785" width="100" height="80" rx="12"/>
+        <text class="node-title" x="1780" y="813">输出答案</text>
+        <text class="node-subtitle" x="1780" y="841">来源 / 置信度</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Feedback, evaluation and optimization loop -->
+  <g id="feedback-evaluation-optimization" aria-label="反馈、评测与优化闭环">
+    <rect class="band feedback-band" x="55" y="1010" width="1790" height="285" rx="18"/>
+    <text class="band-title" x="85" y="1050">反馈、评测与优化闭环</text>
+    <text class="band-note" x="85" y="1074">把线上反馈沉淀为评测数据，持续优化知识和检索链路</text>
+
+    <g id="feedback-edges">
+      <path class="edge" d="M340 1175 H400"/>
+      <path class="edge" d="M640 1175 H700"/>
+      <path class="edge" d="M940 1175 H1000"/>
+      <path class="edge" d="M1240 1175 H1300"/>
+      <path class="edge" d="M1410 1135 V1010 H1426 V310"/>
+      <path class="edge-dashed" d="M1780 865 V1000 H1690 V1135"/>
+      <path class="edge-dashed" d="M1690 1215 H940"/>
+      <path class="edge-muted" d="M1400 705 V990 H210 V1135"/>
+      <path class="edge-muted" d="M1780 865 V990 H210 V1135"/>
+    </g>
+
+    <text class="edge-label" x="1485" y="1000">日志 / 延迟 / Token / 成本 / 错误 / 告警</text>
+    <text class="edge-label" x="1110" y="1238">质量指标反馈</text>
+
+    <g id="feedback-nodes">
+      <g id="user-feedback">
+        <rect class="node feedback-node" x="100" y="1135" width="240" height="80" rx="12"/>
+        <text class="node-title" x="220" y="1163">用户反馈</text>
+        <text class="node-subtitle" x="220" y="1191">点赞 / 点踩 / 纠错 / 追问</text>
+      </g>
+      <g id="evaluation-dataset">
+        <rect class="node feedback-node" x="400" y="1135" width="240" height="80" rx="12"/>
+        <text class="node-title" x="520" y="1163">标注数据与评测集</text>
+        <text class="node-subtitle" x="520" y="1191">人工采纳结果</text>
+      </g>
+      <g id="evaluation-metrics">
+        <rect class="node feedback-node" x="700" y="1135" width="240" height="80" rx="12"/>
+        <text class="node-title" x="820" y="1163">离线评测 / 线上指标</text>
+        <text class="node-subtitle" x="820" y="1191">回归测试</text>
+      </g>
+      <g id="optimization">
+        <rect class="node feedback-node" x="1000" y="1135" width="240" height="80" rx="12"/>
+        <text class="node-title" x="1120" y="1163">链路调优</text>
+        <text class="node-subtitle" x="1120" y="1191">分块 / Embedding / 重排 / Prompt</text>
+      </g>
+      <g id="rebuild-release">
+        <rect class="node feedback-node" x="1300" y="1135" width="220" height="80" rx="12"/>
+        <text class="node-title" x="1410" y="1163">重建索引 / 灰度发布</text>
+        <text class="node-subtitle" x="1410" y="1191">支持回滚</text>
+      </g>
+      <g id="observability">
+        <rect class="node feedback-node" x="1570" y="1135" width="240" height="80" rx="12"/>
+        <text class="node-title" x="1690" y="1163">可观测性平台</text>
+        <text class="node-subtitle" x="1690" y="1191">链路 / 指标 / 日志 / 告警</text>
+      </g>
+    </g>
+  </g>
+
+  <g id="legend" transform="translate(85 1330)">
+    <path class="edge" d="M0 0 H55"/>
+    <text class="legend" x="70" y="5">业务处理链路</text>
+    <path class="edge-dashed" d="M220 0 H275"/>
+    <text class="legend" x="290" y="5">观测与质量反馈链路</text>
+  </g>
+</svg>

@@ -1,0 +1,81 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\05_结构来源\\docx_headings\\标题层级.docx",
+        "file_name": "标题层级.docx",
+        "file_type": "docx",
+        "loader": "Docx2txtLoader",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\05_结构来源\\docx_headings\\标题层级.docx",
+        "file_name": "标题层级.docx",
+        "file_type": "docx",
+        "loader": "Docx2txtLoader"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.001,
+  "text": "费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。",
+  "checks": [
+    {
+      "name": "费用管理手册",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "费用管理手册",
+      "actual": "已找到"
+    },
+    {
+      "name": "一、报销",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "一、报销",
+      "actual": "已找到"
+    },
+    {
+      "name": "1.1 差旅",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "1.1 差旅",
+      "actual": "已找到"
+    },
+    {
+      "name": "一级标题层级",
+      "kind": "heading",
+      "status": "fail",
+      "expected": "# 一、报销（本测试约定用 Markdown 表达层级）",
+      "actual": "费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。"
+    },
+    {
+      "name": "二级标题层级",
+      "kind": "heading",
+      "status": "fail",
+      "expected": "## 1.1 差旅（本测试约定用 Markdown 表达层级）",
+      "actual": "费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。"
+    }
+  ],
+  "quality": "fail"
+}

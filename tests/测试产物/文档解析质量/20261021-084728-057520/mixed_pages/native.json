@@ -1,0 +1,199 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "数字页开始：保留采购政策的适用范围和责任部门。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 0,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "数字页结束：提交财务审核。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 2,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "数字页开始：保留采购政策的适用范围和责任部门。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 0,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    },
+    {
+      "text": "数字页结束：提交财务审核。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\02_完整性\\mixed_pages\\文字页与扫描页混合.pdf",
+        "page": 2,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "文字页与扫描页混合",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.002,
+  "text": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n",
+  "ocr_note": "原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。",
+  "checks": [
+    {
+      "name": "数字页开始",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "数字页开始：保留采购政策的适用范围和责任部门。",
+      "actual": "已找到"
+    },
+    {
+      "name": "数字页结束",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "数字页结束：提交财务审核。",
+      "actual": "已找到"
+    },
+    {
+      "name": "仅第二页需要 OCR",
+      "kind": "ocr_detection",
+      "status": "not_applicable",
+      "expected": [
+        2
+      ],
+      "actual": "原生加载器无扫描页检测步骤"
+    },
+    {
+      "name": "订单编号",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "订单编号：PO-2026-000108",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    },
+    {
+      "name": "核销金额",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "核销金额：-1000.05",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    },
+    {
+      "name": "日期",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "日期：2026-10-21",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    },
+    {
+      "name": "姓名",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "姓名：欧阳明",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    },
+    {
+      "name": "字母标记",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "字母标记：OOO",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    },
+    {
+      "name": "处理结论",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "处理结论：不予报销",
+      "actual": "数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n"
+    }
+  ],
+  "quality": "fail"
+}

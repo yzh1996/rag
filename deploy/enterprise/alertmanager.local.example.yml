@@ -1,0 +1,48 @@
+# 本地模式：RAG API 在宿主机，Alertmanager 在 Docker。
+# 授权码和告警接收令牌使用占位符；此文件用于查看配置结构。
+
+route:
+  receiver: rag
+  group_by: [alertname]       # 同名告警放在一组
+  group_wait: 30s            # 首次触发后等待 30 秒发送
+  group_interval: 5m         # 同一组发生变化，按 5 分钟间隔通知
+  repeat_interval: 4h        # 持续未恢复，每 4 小时重复提醒
+
+receivers:
+  - name: rag
+    # 将告警交给业务接口保存，与邮件通知并行执行。
+    webhook_configs:
+      - url: http://host.docker.internal:8001/api/v1/operations/alerts
+        send_resolved: true
+        http_config:
+          authorization:
+            credentials: REPLACE_WITH_ALERT_RECEIVER_TOKEN
+
+    # Alertmanager 原生发送邮件。
+    email_configs:
+      - to: "402474180@qq.com"
+        from: "402474180@qq.com"
+        smarthost: "smtp.qq.com:465"
+        auth_username: "402474180@qq.com"
+        auth_password: "REPLACE_WITH_QQ_SMTP_AUTHORIZATION_CODE"
+
+        # 465 端口连接时即使用 TLS 加密；false 表示不再次执行 STARTTLS。
+        # 如果改用 587 端口，这一项应改为 true。
+        require_tls: false
+        send_resolved: true
+
+        headers:
+          Subject: '[RAG 告警] {{ if eq .Status "firing" }}异常{{ else }}恢复{{ end }} {{ .CommonLabels.alertname }}'
+
+        html: ""
+        text: |
+          {{ range .Alerts }}状态：{{ if eq .Status "firing" }}告警触发{{ else }}告警恢复{{ end }}
+          名称：{{ .Labels.alertname }}
+          级别：{{ .Labels.severity }}
+          目标：{{ .Labels.instance }}
+          开始时间：{{ .StartsAt }}
+          {{ if eq .Status "resolved" }}恢复时间：{{ .EndsAt }}
+          {{ end }}原因：{{ .Annotations.summary }}
+          说明：{{ .Annotations.description }}
+
+          {{ end }}

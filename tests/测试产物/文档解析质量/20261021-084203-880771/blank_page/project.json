@@ -1,0 +1,185 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "第一页有正文。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "中间空白页",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "中间空白页.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    },
+    {
+      "text": "第三页有正文。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "page": 3,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "中间空白页",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "中间空白页.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "第一页有正文。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "page": 1,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "中间空白页",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "中间空白页.pdf",
+        "file_type": "pdf"
+      }
+    },
+    {
+      "text": "",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "page": 2,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "中间空白页",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "中间空白页.pdf",
+        "file_type": "pdf"
+      }
+    },
+    {
+      "text": "第三页有正文。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\blank_page\\中间空白页.pdf",
+        "page": 3,
+        "total_pages": 3,
+        "format": "PDF 1.3",
+        "title": "中间空白页",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "中间空白页.pdf",
+        "file_type": "pdf"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.003,
+  "text": "第一页有正文。\n\n第三页有正文。",
+  "checks": [
+    {
+      "name": "第一页有正文。",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "第一页有正文。",
+      "actual": "已找到"
+    },
+    {
+      "name": "第三页有正文。",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "第三页有正文。",
+      "actual": "已找到"
+    },
+    {
+      "name": "清洗后没有空内容单元",
+      "kind": "nonempty",
+      "status": "pass",
+      "expected": "每个输出单元均非空",
+      "actual": [
+        7,
+        7
+      ]
+    },
+    {
+      "name": "空白页后仍保留真实页码",
+      "kind": "pages",
+      "status": "pass",
+      "expected": [
+        1,
+        3
+      ],
+      "actual": [
+        1,
+        3
+      ]
+    }
+  ],
+  "quality": "pass"
+}

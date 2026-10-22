@@ -1,0 +1,70 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\excel_basic\\基础表格.xlsx"
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\excel_basic\\基础表格.xlsx"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "UnstructuredExcelLoader",
+  "elapsed_seconds": 4.583,
+  "text": "编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5",
+  "checks": [
+    {
+      "name": "000108",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "000108",
+      "actual": "已找到"
+    },
+    {
+      "name": "000109",
+      "kind": "contains",
+      "status": "fail",
+      "expected": "000109",
+      "actual": "编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5"
+    },
+    {
+      "name": "Excel 行列对应",
+      "kind": "table",
+      "status": "fail",
+      "expected": [
+        [
+          "编号",
+          "商品",
+          "数量",
+          "金额"
+        ],
+        [
+          "000108",
+          "商品甲",
+          "10",
+          "1000.05"
+        ],
+        [
+          "000109",
+          "商品乙",
+          "2",
+          "-20.5"
+        ]
+      ],
+      "actual": []
+    }
+  ],
+  "quality": "fail"
+}

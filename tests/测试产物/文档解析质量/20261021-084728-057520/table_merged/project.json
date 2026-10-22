@@ -1,0 +1,113 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "| 部门 | 商品 | 金额 |\n| --- | --- | --- |\n| 华东 | 商品甲 | 1000.05 |\n| | 商品乙 | -20.50 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "page": 1,
+        "total_pages": 1,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "合并单元格",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "合并单元格.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "| 部门 | 商品 | 金额 |\n| --- | --- | --- |\n| 华东 | 商品甲 | 1000.05 |\n|  | 商品乙 | -20.50 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "page": 1,
+        "total_pages": 1,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "合并单元格",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "合并单元格.pdf",
+        "file_type": "pdf"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.012,
+  "text": "| 部门 | 商品 | 金额 |\n| --- | --- | --- |\n| 华东 | 商品甲 | 1000.05 |\n| | 商品乙 | -20.50 |",
+  "checks": [
+    {
+      "name": "合并单元格归属",
+      "kind": "table",
+      "status": "fail",
+      "expected": [
+        [
+          "部门",
+          "商品",
+          "金额"
+        ],
+        [
+          "华东",
+          "商品甲",
+          "1000.05"
+        ],
+        [
+          "华东",
+          "商品乙",
+          "-20.50"
+        ]
+      ],
+      "actual": [
+        [
+          "部门",
+          "商品",
+          "金额"
+        ],
+        [
+          "华东",
+          "商品甲",
+          "1000.05"
+        ],
+        [
+          "",
+          "商品乙",
+          "-20.50"
+        ]
+      ]
+    }
+  ],
+  "quality": "fail"
+}

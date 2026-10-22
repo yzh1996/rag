@@ -1,0 +1,16 @@
+{
+  "文件": "文本规范化测试.docx",
+  "页数或文档段数": 1,
+  "清洗前字符数": 56,
+  "清洗后字符数": 47,
+  "使用的加载器": "Docx2txtLoader",
+  "文档元数据": [
+    {
+      "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档清洗测试资料\\文本规范化测试.docx",
+      "file_name": "文本规范化测试.docx",
+      "file_type": "docx",
+      "loader": "Docx2txtLoader",
+      "cleaned": true
+    }
+  ]
+}

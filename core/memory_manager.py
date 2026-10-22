@@ -3,10 +3,20 @@
 """
 import uuid
 import logging
+import hashlib
+import json
 from datetime import datetime, timedelta
 from langchain.memory import ConversationBufferWindowMemory
 
 logger = logging.getLogger(__name__)
+
+def session_key(session_id, user=None):
+    """同名会话也按租户和用户隔离，客户端不能指定其他人的内部键。"""
+    # 用户看到的 session_id 可以很简单（例如 default），内部再加上租户和用户名，
+    # 避免不同用户使用同名会话时互相读到对方的历史。
+    from core.auth import ANONYMOUS_USER
+    actor = user or ANONYMOUS_USER
+    return hashlib.sha256(json.dumps([actor.tenant_id, actor.username, session_id], ensure_ascii=True).encode()).hexdigest()
 
 class ConversationSession:
     """ 单个会话的记忆管理 """
@@ -14,6 +24,7 @@ class ConversationSession:
         self.session_id = session_id
         self.create_at = datetime.now()
         self.last_active = datetime.now()
+        # 窗口记忆只保留最近几轮对话，避免历史无限增长导致请求过大。
         self.memory = ConversationBufferWindowMemory(
             k=window_size,  # k参数是指窗口大小 即最多保留多少条对话记录
             memory_key="chat_history",  # memory_key是指对话历史的键名
@@ -58,7 +69,7 @@ class ConversationSession:
         }
     
 class MemoryManager:
-    """ 多会话记忆管理 """
+    """多会话记忆管理：按 session_id 保存多个 ConversationSession。"""
     def __init__(self, window_size: int = 5, session_ttl_minutes: int = 60):
         self.sessions: dict = {}
         self.window_size = window_size
@@ -148,6 +159,7 @@ _memory_manager_instance = None
 def get_memory_manager():
     """ 获取以及管理器单例 """
     global _memory_manager_instance
+    # 问答链和其他接口共用同一个管理器，才能看到同一批会话。
     if _memory_manager_instance is None:
         _memory_manager_instance = MemoryManager()
     return _memory_manager_instance

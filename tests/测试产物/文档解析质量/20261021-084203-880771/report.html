@@ -1,0 +1,806 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>文档解析质量报告</title><style>body{font:16px/1.65 system-ui;margin:32px auto;max-width:1400px;padding:0 24px;color:#172b4d;background:#f5f7fb}h1{font-size:28px}article,header{background:white;padding:24px;margin:20px 0;border-radius:10px}.routes{display:grid;grid-template-columns:1fr 1fr;gap:20px}.route{min-width:0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:12px;max-height:360px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #dce3ed;padding:8px;text-align:left;vertical-align:top}.pass{color:#18754b}.fail{color:#b91c1c}.not_executed,.not_applicable{color:#875500}small{color:#526580}@media(max-width:900px){.routes{grid-template-columns:1fr}}</style><header><h1>文档解析质量对照报告</h1><p>生成时间：2026-10-21T08:42:03；本次已运行 25 份资料。未运行的样例不计入结果。</p><p>原生：直接调用 LangChain 加载器。增强：项目校验 → 解析 → 按需 OCR → 清洗，未做分块。<br>通过仅代表本次样例的已定义检查通过，不能代替真实业务抽样。未执行 OCR 不能视为准确率合格。</p><p><b>原生解析</b>：通过 5；不通过 18；未执行 0；不适用 2</p><p><b>项目增强</b>：通过 11；不通过 9；未执行 5；不适用 0</p></header><article><h2>text_fields · 数字与易混字符.pdf</h2><p>01_文字准确性：真实文字层：0/O、负号、小数点、日期、姓名和否定词。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/text_fields/%E6%95%B0%E5%AD%97%E4%B8%8E%E6%98%93%E6%B7%B7%E5%AD%97%E7%AC%A6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/text_fields/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="pass">质量：通过；耗时 0.108 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>订单编号</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>姓名</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>关键字段字符错误率</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字符错误率 &lt;= 0.0%（仅忽略空白）&quot;
+
+0.0</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>订单编号：PO-2026-000108
+核销金额：-1000.05
+日期：2026-10-21
+姓名：欧阳明
+字母标记：OOO
+处理结论：不予报销
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.022 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>订单编号</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>姓名</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>关键字段字符错误率</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字符错误率 &lt;= 0.0%（仅忽略空白）&quot;
+
+0.0</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>订单编号：PO-2026-000108
+核销金额：-1000.05
+日期：2026-10-21
+姓名：欧阳明
+字母标记：OOO
+处理结论：不予报销</pre></details></section></div></article><article><h2>scan_clear · 清晰扫描件.pdf</h2><p>01_文字准确性：清晰图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_clear/%E6%B8%85%E6%99%B0%E6%89%AB%E6%8F%8F%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_clear/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.003 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section></div></article><article><h2>scan_low_resolution · 低分辨率扫描件.pdf</h2><p>01_文字准确性：低分辨率图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_low_resolution/%E4%BD%8E%E5%88%86%E8%BE%A8%E7%8E%87%E6%89%AB%E6%8F%8F%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_low_resolution/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.003 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section></div></article><article><h2>scan_tilted · 倾斜扫描件.pdf</h2><p>01_文字准确性：倾斜图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_tilted/%E5%80%BE%E6%96%9C%E6%89%AB%E6%8F%8F%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_tilted/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.005 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section></div></article><article><h2>scan_stamp · 模拟盖章扫描件.pdf</h2><p>01_文字准确性：模拟盖章图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_stamp/%E6%A8%A1%E6%8B%9F%E7%9B%96%E7%AB%A0%E6%89%AB%E6%8F%8F%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_stamp/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.006 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>（空内容）</pre></details></section></div></article><article><h2>mixed_pages · 文字页与扫描页混合.pdf</h2><p>02_完整性：第一、三页有文字，第二页只有图片；数字页也要保留。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/02_%E5%AE%8C%E6%95%B4%E6%80%A7/mixed_pages/%E6%96%87%E5%AD%97%E9%A1%B5%E4%B8%8E%E6%89%AB%E6%8F%8F%E9%A1%B5%E6%B7%B7%E5%90%88.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/02_%E5%AE%8C%E6%95%B4%E6%80%A7/mixed_pages/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>数字页开始</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;数字页开始：保留采购政策的适用范围和责任部门。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>数字页结束</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;数字页结束：提交财务审核。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>仅第二页需要 OCR</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[2]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;数字页开始：保留采购政策的适用范围和责任部门。\n\n\n\n\n数字页结束：提交财务审核。\n&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>数字页开始：保留采购政策的适用范围和责任部门。
+
+
+
+
+数字页结束：提交财务审核。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.004 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>数字页开始</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;数字页开始：保留采购政策的适用范围和责任部门。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>数字页结束</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;数字页结束：提交财务审核。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>仅第二页需要 OCR</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[2]
+
+[2]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>数字页开始：保留采购政策的适用范围和责任部门。
+
+数字页结束：提交财务审核。</pre></details></section></div></article><article><h2>mixed_same_page · 同一页文字加图片.pdf</h2><p>02_完整性：已有足够长的正文，但关键金额只在图片里；检查是否漏掉局部图片。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/02_%E5%AE%8C%E6%95%B4%E6%80%A7/mixed_same_page/%E5%90%8C%E4%B8%80%E9%A1%B5%E6%96%87%E5%AD%97%E5%8A%A0%E5%9B%BE%E7%89%87.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/02_%E5%AE%8C%E6%95%B4%E6%80%A7/mixed_same_page/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>同页图片不能漏检</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。\n&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>同页图片不能漏检</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>本页正文已超过扫描检测阈值，仍需要识别下面图片中的金额和编号。</pre></details></section></div></article><article><h2>columns · 双栏交错存储.pdf</h2><p>03_阅读顺序：人眼应先读完左栏再读右栏；PDF 内部故意按横向交错写入。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/columns/%E5%8F%8C%E6%A0%8F%E4%BA%A4%E9%94%99%E5%AD%98%E5%82%A8.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/columns/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>先左栏再右栏</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;LEFT-A&quot;, &quot;LEFT-B&quot;, &quot;RIGHT-A&quot;, &quot;RIGHT-B&quot;]
+
+{&quot;LEFT-A&quot;: 12, &quot;LEFT-B&quot;: 39, &quot;RIGHT-A&quot;: 25, &quot;RIGHT-B&quot;: 52}</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>双栏阅读测试：先左后右
+LEFT-A 左栏第一段
+RIGHT-A 右栏第一段
+LEFT-B 左栏第二段
+RIGHT-B 右栏第二段
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.004 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>先左栏再右栏</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;LEFT-A&quot;, &quot;LEFT-B&quot;, &quot;RIGHT-A&quot;, &quot;RIGHT-B&quot;]
+
+{&quot;LEFT-A&quot;: 12, &quot;LEFT-B&quot;: 39, &quot;RIGHT-A&quot;: 25, &quot;RIGHT-B&quot;: 52}</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>双栏阅读测试：先左后右
+LEFT-A 左栏第一段
+RIGHT-A 右栏第一段
+LEFT-B 左栏第二段
+RIGHT-B 右栏第二段</pre></details></section></div></article><article><h2>sidebar_footnote · 侧栏脚注.pdf</h2><p>03_阅读顺序：正文先连续阅读，补充说明和脚注放在正文之后。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/sidebar_footnote/%E4%BE%A7%E6%A0%8F%E8%84%9A%E6%B3%A8.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/sidebar_footnote/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>正文不被侧栏打断</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;MAIN-A&quot;, &quot;MAIN-B&quot;, &quot;SIDE&quot;, &quot;FOOT&quot;]
+
+{&quot;MAIN-A&quot;: 0, &quot;MAIN-B&quot;: 23, &quot;SIDE&quot;: 13, &quot;FOOT&quot;: 36}</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>MAIN-A 正文第一段
+SIDE 补充说明
+MAIN-B 正文第二段
+FOOT 脚注：金额单位为元。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>正文不被侧栏打断</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;MAIN-A&quot;, &quot;MAIN-B&quot;, &quot;SIDE&quot;, &quot;FOOT&quot;]
+
+{&quot;MAIN-A&quot;: 0, &quot;MAIN-B&quot;: 23, &quot;SIDE&quot;: 13, &quot;FOOT&quot;: 36}</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>MAIN-A 正文第一段
+SIDE 补充说明
+MAIN-B 正文第二段
+FOOT 脚注：金额单位为元。</pre></details></section></div></article><article><h2>cross_page_text · 跨页段落.pdf</h2><p>03_阅读顺序：段落在页尾中断，下一页继续；页码需能追溯。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/cross_page_text/%E8%B7%A8%E9%A1%B5%E6%AE%B5%E8%90%BD.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/03_%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F/cross_page_text/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="pass">质量：通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>跨页连续</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;START&quot;, &quot;CONTINUE&quot;, &quot;END&quot;]
+
+{&quot;START&quot;: 0, &quot;CONTINUE&quot;: 19, &quot;END&quot;: 37}</pre></details></td></tr><tr><td>来源页码</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 2]
+
+[1, 2]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>START 本条款在下一页继续。
+
+
+CONTINUE 审批完成后归档。
+END 条款结束。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.004 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>跨页连续</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[&quot;START&quot;, &quot;CONTINUE&quot;, &quot;END&quot;]
+
+{&quot;START&quot;: 0, &quot;CONTINUE&quot;: 18, &quot;END&quot;: 36}</pre></details></td></tr><tr><td>来源页码</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 2]
+
+[1, 2]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>START 本条款在下一页继续。
+
+CONTINUE 审批完成后归档。
+END 条款结束。</pre></details></section></div></article><article><h2>table_bordered · 有边框表格.pdf</h2><p>04_表格关系：必须保留表头、行和数值的对应关系，不能只判断所有词是否出现。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_bordered/%E6%9C%89%E8%BE%B9%E6%A1%86%E8%A1%A8%E6%A0%BC.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_bordered/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.065 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>商品、销量、金额对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>商品 销量 金额
+商品甲 10 1000.05
+商品乙 2 -20.50
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.013 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>商品、销量、金额对应</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>| 商品 | 销量 | 金额 |
+| --- | --- | --- |
+| 商品甲 | 10 | 1000.05 |
+| 商品乙 | 2 | -20.50 |</pre></details></section></div></article><article><h2>table_borderless · 无边框表格.pdf</h2><p>04_表格关系：必须保留表头、行和数值的对应关系，不能只判断所有词是否出现。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_borderless/%E6%97%A0%E8%BE%B9%E6%A1%86%E8%A1%A8%E6%A0%BC.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_borderless/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.005 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>商品、销量、金额对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>商品 销量 金额
+商品甲 10 1000.05
+商品乙 2 -20.50
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.01 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>商品、销量、金额对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>商品 销量 金额
+商品甲 10 1000.05
+商品乙 2 -20.50</pre></details></section></div></article><article><h2>table_merged · 合并单元格.pdf</h2><p>04_表格关系：华东是商品甲和商品乙共同的部门；提取空白单元格不能丢失归属。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_merged/%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_merged/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.007 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>合并单元格归属</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;部门&quot;, &quot;商品&quot;, &quot;金额&quot;], [&quot;华东&quot;, &quot;商品甲&quot;, &quot;1000.05&quot;], [&quot;华东&quot;, &quot;商品乙&quot;, &quot;-20.50&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>部门 商品 金额
+华东 商品甲 1000.05
+商品乙 -20.50
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.012 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>合并单元格归属</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;部门&quot;, &quot;商品&quot;, &quot;金额&quot;], [&quot;华东&quot;, &quot;商品甲&quot;, &quot;1000.05&quot;], [&quot;华东&quot;, &quot;商品乙&quot;, &quot;-20.50&quot;]]
+
+[[&quot;部门&quot;, &quot;商品&quot;, &quot;金额&quot;], [&quot;华东&quot;, &quot;商品甲&quot;, &quot;1000.05&quot;], [&quot;&quot;, &quot;商品乙&quot;, &quot;-20.50&quot;]]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>| 部门 | 商品 | 金额 |
+| --- | --- | --- |
+| 华东 | 商品甲 | 1000.05 |
+| | 商品乙 | -20.50 |</pre></details></section></div></article><article><h2>table_cross_page · 跨页重复表头.pdf</h2><p>04_表格关系：两页是同一张表，需要保留两条记录以及各自页码。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_cross_page/%E8%B7%A8%E9%A1%B5%E9%87%8D%E5%A4%8D%E8%A1%A8%E5%A4%B4.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/table_cross_page/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.007 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>跨页记录对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[]</pre></details></td></tr><tr><td>表格来源页</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 2]
+
+[1, 2]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>商品 销量 金额
+商品甲 10 1000.05
+
+
+商品 销量 金额
+商品乙 2 -20.50
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.014 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>跨页记录对应</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]
+
+[[&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;商品&quot;, &quot;销量&quot;, &quot;金额&quot;], [&quot;商品乙&quot;, &quot;2&quot;, &quot;-20.50&quot;]]</pre></details></td></tr><tr><td>表格来源页</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 2]
+
+[1, 2]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>| 商品 | 销量 | 金额 |
+| --- | --- | --- |
+| 商品甲 | 10 | 1000.05 |
+
+| 商品 | 销量 | 金额 |
+| --- | --- | --- |
+| 商品乙 | 2 | -20.50 |</pre></details></section></div></article><article><h2>excel_basic · 基础表格.xlsx</h2><p>04_表格关系：保留编号前导零；复杂版另含两张工作表、合并单元格和空白行。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/excel_basic/%E5%9F%BA%E7%A1%80%E8%A1%A8%E6%A0%BC.xlsx">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/excel_basic/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 4.118 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>000108</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>000109</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000109&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>Excel 行列对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;编号&quot;, &quot;商品&quot;, &quot;数量&quot;, &quot;金额&quot;], [&quot;000108&quot;, &quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;000109&quot;, &quot;商品乙&quot;, &quot;2&quot;, &quot;-20.5&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.007 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>000108</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>000109</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000109&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>Excel 行列对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;编号&quot;, &quot;商品&quot;, &quot;数量&quot;, &quot;金额&quot;], [&quot;000108&quot;, &quot;商品甲&quot;, &quot;10&quot;, &quot;1000.05&quot;], [&quot;000109&quot;, &quot;商品乙&quot;, &quot;2&quot;, &quot;-20.5&quot;]]
+
+[]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>编号 商品 数量 金额 000108 商品甲 10 1000.05 000109 商品乙 2 -20.5</pre></details></section></div></article><article><h2>excel_complex · 多表合并空行.xlsx</h2><p>04_表格关系：保留编号前导零；复杂版另含两张工作表、合并单元格和空白行。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/excel_complex/%E5%A4%9A%E8%A1%A8%E5%90%88%E5%B9%B6%E7%A9%BA%E8%A1%8C.xlsx">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/04_%E8%A1%A8%E6%A0%BC%E5%85%B3%E7%B3%BB/excel_complex/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.014 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>000108</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>000109</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000109&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>Excel 行列对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;部门&quot;, &quot;编号&quot;, &quot;商品&quot;, &quot;金额&quot;], [&quot;华东&quot;, &quot;000108&quot;, &quot;商品甲&quot;, &quot;1000.05&quot;], [&quot;华东&quot;, &quot;000109&quot;, &quot;商品乙&quot;, &quot;-20.5&quot;]]
+
+[]</pre></details></td></tr><tr><td>工作表来源</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>{&quot;page_name&quot;: [&quot;一月&quot;, &quot;二月&quot;]}
+
+[null]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>部门 编号 商品 金额 华东 000108 商品甲 1000.05 000109 商品乙 -20.5
+
+华西 000110 商品丙 300
+
+部门 编号 商品 金额 华东 000108 商品甲 1001.05 000109 商品乙 -20.5
+
+华西 000110 商品丙 300</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.011 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>000108</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>000109</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;000109&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>Excel 行列对应</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[[&quot;部门&quot;, &quot;编号&quot;, &quot;商品&quot;, &quot;金额&quot;], [&quot;华东&quot;, &quot;000108&quot;, &quot;商品甲&quot;, &quot;1000.05&quot;], [&quot;华东&quot;, &quot;000109&quot;, &quot;商品乙&quot;, &quot;-20.5&quot;]]
+
+[]</pre></details></td></tr><tr><td>工作表来源</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>{&quot;page_name&quot;: [&quot;一月&quot;, &quot;二月&quot;]}
+
+[null]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>部门 编号 商品 金额 华东 000108 商品甲 1000.05 000109 商品乙 -20.5
+
+华西 000110 商品丙 300
+
+部门 编号 商品 金额 华东 000108 商品甲 1001.05 000109 商品乙 -20.5
+
+华西 000110 商品丙 300</pre></details></section></div></article><article><h2>policy_metadata · 制度版本与来源.pdf</h2><p>05_结构来源：版本和生效日期取自正文；部门、密级由上传人提供，不能当成解析器自动识别。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/05_%E7%BB%93%E6%9E%84%E6%9D%A5%E6%BA%90/policy_metadata/%E5%88%B6%E5%BA%A6%E7%89%88%E6%9C%AC%E4%B8%8E%E6%9D%A5%E6%BA%90.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/05_%E7%BB%93%E6%9E%84%E6%9D%A5%E6%BA%90/policy_metadata/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="pass">质量：通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>采购管理办法</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;采购管理办法&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>版本</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;版本：V2.1&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>生效日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;生效日期：2026-10-01&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>责任部门</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;责任部门：采购部&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>第一章 适用范围</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第一章 适用范围&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>本办法适用于正式采购申请。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;本办法适用于正式采购申请。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>来源页</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>来源文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;制度版本与来源.pdf&quot;
+
+[&quot;E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\05_结构来源\\policy_metadata\\制度版本与来源.pdf&quot;]</pre></details></td></tr><tr><td>用户提供的部门</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[&quot;采购部&quot;]
+
+&quot;由上传人提供，不属于原生解析器职责&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>采购管理办法
+版本：V2.1
+生效日期：2026-10-01
+责任部门：采购部
+第一章 适用范围
+本办法适用于正式采购申请。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>采购管理办法</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;采购管理办法&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>版本</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;版本：V2.1&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>生效日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;生效日期：2026-10-01&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>责任部门</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;责任部门：采购部&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>第一章 适用范围</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第一章 适用范围&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>本办法适用于正式采购申请。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;本办法适用于正式采购申请。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>来源页</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>来源文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;制度版本与来源.pdf&quot;
+
+[&quot;E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\05_结构来源\\policy_metadata\\制度版本与来源.pdf&quot;]</pre></details></td></tr><tr><td>用户提供的部门</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>{&quot;department&quot;: [&quot;采购部&quot;]}
+
+[&quot;采购部&quot;]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>采购管理办法
+版本：V2.1
+生效日期：2026-10-01
+责任部门：采购部
+第一章 适用范围
+本办法适用于正式采购申请。</pre></details></section></div></article><article><h2>docx_headings · 标题层级.docx</h2><p>05_结构来源：不仅要保留标题文字，还要能区分一级与二级标题。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/05_%E7%BB%93%E6%9E%84%E6%9D%A5%E6%BA%90/docx_headings/%E6%A0%87%E9%A2%98%E5%B1%82%E7%BA%A7.docx">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/05_%E7%BB%93%E6%9E%84%E6%9D%A5%E6%BA%90/docx_headings/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>费用管理手册</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;费用管理手册&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>一、报销</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;一、报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>1.1 差旅</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;1.1 差旅&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>一级标题层级</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;# 一、报销（或等价结构标记）&quot;
+
+&quot;费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。&quot;</pre></details></td></tr><tr><td>二级标题层级</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;## 1.1 差旅（或等价结构标记）&quot;
+
+&quot;费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>费用管理手册
+
+一、报销
+
+1.1 差旅
+
+应保留发票与审批编号。</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>费用管理手册</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;费用管理手册&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>一、报销</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;一、报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>1.1 差旅</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;1.1 差旅&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>一级标题层级</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;# 一、报销（或等价结构标记）&quot;
+
+&quot;费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。&quot;</pre></details></td></tr><tr><td>二级标题层级</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;## 1.1 差旅（或等价结构标记）&quot;
+
+&quot;费用管理手册\n\n一、报销\n\n1.1 差旅\n\n应保留发票与审批编号。&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>费用管理手册
+
+一、报销
+
+1.1 差旅
+
+应保留发票与审批编号。</pre></details></section></div></article><article><h2>docx_noise · 页眉空行免责声明.docx</h2><p>06_清洗与异常：只删除本样例已知噪声，同时保留编号、金额、否定词。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/docx_noise/%E9%A1%B5%E7%9C%89%E7%A9%BA%E8%A1%8C%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E.docx">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/docx_noise/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.001 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>订单编号</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>姓名</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>删除页眉</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业内部页眉&quot;
+
+&quot;测试企业内部页眉\n\n免责声明：本文件仅供测试。\n\n订单编号：PO-2026-000108\n\n核销金额：-1000.05\n\n日期：2026-10-21\n\n姓名：欧阳明\n\n字母标记：OOO\n\n处理结论：不予报销\n\n审批    责任人\t财务部\n\n\n\n\n\n\n\n\n\n结束。&quot;</pre></details></td></tr><tr><td>删除样例免责声明</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：免责声明：本文件仅供测试。&quot;
+
+&quot;测试企业内部页眉\n\n免责声明：本文件仅供测试。\n\n订单编号：PO-2026-000108\n\n核销金额：-1000.05\n\n日期：2026-10-21\n\n姓名：欧阳明\n\n字母标记：OOO\n\n处理结论：不予报销\n\n审批    责任人\t财务部\n\n\n\n\n\n\n\n\n\n结束。&quot;</pre></details></td></tr><tr><td>连续空白规范化</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;无连续多余空格、空行和控制字符&quot;
+
+&quot;测试企业内部页眉\n\n免责声明：本文件仅供测试。\n\n订单编号：PO-2026-000108\n\n核销金额：-1000.05\n\n日期：2026-10-21\n\n姓名：欧阳明\n\n字母标记：OOO\n\n处理结论：不予报销\n\n审批    责任人\t财务部\n\n\n\n\n\n\n\n\n\n结束。&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>测试企业内部页眉
+
+免责声明：本文件仅供测试。
+
+订单编号：PO-2026-000108
+
+核销金额：-1000.05
+
+日期：2026-10-21
+
+姓名：欧阳明
+
+字母标记：OOO
+
+处理结论：不予报销
+
+审批    责任人	财务部
+
+
+
+
+
+
+
+
+
+结束。</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>订单编号</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>日期</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>姓名</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>删除页眉</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业内部页眉&quot;
+
+&quot;已去除&quot;</pre></details></td></tr><tr><td>删除样例免责声明</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：免责声明：本文件仅供测试。&quot;
+
+&quot;已去除&quot;</pre></details></td></tr><tr><td>连续空白规范化</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;无连续多余空格、空行和控制字符&quot;
+
+&quot;已规范化&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>订单编号：PO-2026-000108
+
+核销金额：-1000.05
+
+日期：2026-10-21
+
+姓名：欧阳明
+
+字母标记：OOO
+
+处理结论：不予报销
+
+审批 责任人 财务部
+
+结束。</pre></details></section></div></article><article><h2>repeated_edges · 重复页眉页脚.pdf</h2><p>06_清洗与异常：三页相同的页眉页脚；报告会记录当前是否启用了重复边缘清洗。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/repeated_edges/%E9%87%8D%E5%A4%8D%E9%A1%B5%E7%9C%89%E9%A1%B5%E8%84%9A.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/repeated_edges/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.002 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>正文第一部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第一部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>正文第二部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第二部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>正文第三部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第三部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>删除重复页眉</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业机密页眉&quot;
+
+&quot;测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n&quot;</pre></details></td></tr><tr><td>删除重复页脚</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业机密页脚&quot;
+
+&quot;测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚\n&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>测试企业机密页眉
+正文第一部分
+测试企业机密页脚
+
+
+测试企业机密页眉
+正文第二部分
+测试企业机密页脚
+
+
+测试企业机密页眉
+正文第三部分
+测试企业机密页脚
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="fail">质量：不通过；耗时 0.004 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>正文第一部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第一部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>正文第二部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第二部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>正文第三部分</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;正文第三部分&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>删除重复页眉</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业机密页眉&quot;
+
+&quot;测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚&quot;</pre></details></td></tr><tr><td>删除重复页脚</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;不应包含：测试企业机密页脚&quot;
+
+&quot;测试企业机密页眉\n正文第一部分\n测试企业机密页脚\n\n测试企业机密页眉\n正文第二部分\n测试企业机密页脚\n\n测试企业机密页眉\n正文第三部分\n测试企业机密页脚&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>测试企业机密页眉
+正文第一部分
+测试企业机密页脚
+
+测试企业机密页眉
+正文第二部分
+测试企业机密页脚
+
+测试企业机密页眉
+正文第三部分
+测试企业机密页脚</pre></details></section></div></article><article><h2>blank_page · 中间空白页.pdf</h2><p>06_清洗与异常：允许丢弃空白内容，但第三页不能被误标成第二页。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/blank_page/%E4%B8%AD%E9%97%B4%E7%A9%BA%E7%99%BD%E9%A1%B5.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/blank_page/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>第一页有正文。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第一页有正文。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>第三页有正文。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第三页有正文。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>清洗后没有空内容单元</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;每个输出单元均非空&quot;
+
+[7, 0, 7]</pre></details></td></tr><tr><td>空白页后仍保留真实页码</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 3]
+
+[1, 2, 3]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>第一页有正文。
+
+
+
+
+第三页有正文。
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.003 秒</p><p>解析过程：正常返回</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>第一页有正文。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第一页有正文。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>第三页有正文。</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;第三页有正文。&quot;
+
+&quot;已找到&quot;</pre></details></td></tr><tr><td>清洗后没有空内容单元</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;每个输出单元均非空&quot;
+
+[7, 7]</pre></details></td></tr><tr><td>空白页后仍保留真实页码</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1, 3]
+
+[1, 3]</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>第一页有正文。
+
+第三页有正文。</pre></details></section></div></article><article><h2>corrupt_pdf · 损坏文件.pdf</h2><p>06_清洗与异常：伪装成 PDF 的损坏文件，应该拒绝且不能产出可用内容。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/corrupt_pdf/%E6%8D%9F%E5%9D%8F%E6%96%87%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/corrupt_pdf/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="pass">质量：通过；耗时 0.001 秒</p><p>解析过程：抛出异常</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;拒绝文件&quot;
+
+&quot;FileDataError: Failed to open file &#x27;E:\\\\yzh\\\\workspace\\\\RAGProject\\\\rag_qa_system\\\\tests\\\\测试资源\\\\文档解析质量\\\\06_清洗与异常\\\\corrupt_pdf\\\\损坏文件.pdf&#x27;.&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>FileDataError: Failed to open file &#x27;E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\corrupt_pdf\\损坏文件.pdf&#x27;.</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.001 秒</p><p>解析过程：抛出异常</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;拒绝文件&quot;
+
+&quot;FileDataError: Failed to open file &#x27;E:\\\\yzh\\\\workspace\\\\RAGProject\\\\rag_qa_system\\\\tests\\\\测试资源\\\\文档解析质量\\\\06_清洗与异常\\\\corrupt_pdf\\\\损坏文件.pdf&#x27;.&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>FileDataError: Failed to open file &#x27;E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\06_清洗与异常\\corrupt_pdf\\损坏文件.pdf&#x27;.</pre></details></section></div></article><article><h2>encrypted_pdf · 加密文件.pdf</h2><p>06_清洗与异常：已加密文件应提示先解密。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/encrypted_pdf/%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/encrypted_pdf/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="pass">质量：通过；耗时 0.015 秒</p><p>解析过程：抛出异常</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;加密PDF&quot;
+
+&quot;ValueError: document closed or encrypted&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>ValueError: document closed or encrypted</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.015 秒</p><p>解析过程：抛出异常</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;加密PDF&quot;
+
+&quot;ValueError: 加密PDF请先解密再上传&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>ValueError: 加密PDF请先解密再上传</pre></details></section></div></article><article><h2>page_limit · 四页超限样例.pdf</h2><p>06_清洗与异常：测试时暂把页数限制设为 3，用 4 个小页面验证拒绝，不创建大文件。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/page_limit/%E5%9B%9B%E9%A1%B5%E8%B6%85%E9%99%90%E6%A0%B7%E4%BE%8B.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/page_limit/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="not_applicable">质量：不适用；耗时 0.002 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>项目资源保护策略</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>&quot;项目自定义限制&quot;
+
+&quot;原生加载器不负责项目配置的页数/解压限制&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>LIMIT-0 小文件资源限制测试
+
+
+LIMIT-1 小文件资源限制测试
+
+
+LIMIT-2 小文件资源限制测试
+
+
+LIMIT-3 小文件资源限制测试
+</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.001 秒</p><p>解析过程：抛出异常</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 3,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;页上限&quot;
+
+&quot;ValueError: PDF超过3页上限&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>ValueError: PDF超过3页上限</pre></details></section></div></article><article><h2>office_limit · Office解压限制.docx</h2><p>06_清洗与异常：普通小型 Word；测试时限制 ZIP 条目数为 1，验证解压前保护。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/office_limit/Office%E8%A7%A3%E5%8E%8B%E9%99%90%E5%88%B6.docx">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/06_%E6%B8%85%E6%B4%97%E4%B8%8E%E5%BC%82%E5%B8%B8/office_limit/golden.json">标准答案</a></p><div class="routes"><section class="route"><h3>LangChain 原生</h3><p class="not_applicable">质量：不适用；耗时 0.001 秒</p><p>解析过程：正常返回</p><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>项目资源保护策略</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>&quot;项目自定义限制&quot;
+
+&quot;原生加载器不负责项目配置的页数/解压限制&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>普通的小型 Word 文件，不包含危险压缩数据。</pre></details></section><section class="route"><h3>项目增强</h3><p class="pass">质量：通过；耗时 0.001 秒</p><p>解析过程：抛出异常</p><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 1
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>拒绝异常文件</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;解压后过大&quot;
+
+&quot;ValueError: Office文件解压后过大，拒绝处理&quot;</pre></details></td></tr></table><details><summary>实际提取全文</summary><pre>ValueError: Office文件解压后过大，拒绝处理</pre></details></section></div></article></html>

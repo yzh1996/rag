@@ -1,0 +1,26 @@
+{
+  "id": "cross_page_text",
+  "category": "03_阅读顺序",
+  "file": "跨页段落.pdf",
+  "description": "段落在页尾中断，下一页继续；页码需能追溯。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "order",
+      "name": "跨页连续",
+      "values": [
+        "START",
+        "CONTINUE",
+        "END"
+      ]
+    },
+    {
+      "kind": "pages",
+      "name": "来源页码",
+      "values": [
+        1,
+        2
+      ]
+    }
+  ]
+}

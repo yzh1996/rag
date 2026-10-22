@@ -1,0 +1,54 @@
+{
+  "id": "excel_complex",
+  "category": "04_表格关系",
+  "file": "多表合并空行.xlsx",
+  "description": "保留编号前导零；复杂版另含两张工作表、合并单元格和空白行。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "000108",
+      "value": "000108",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "000109",
+      "value": "000109",
+      "requires_ocr": false
+    },
+    {
+      "kind": "table",
+      "name": "Excel 行列对应",
+      "rows": [
+        [
+          "部门",
+          "编号",
+          "商品",
+          "金额"
+        ],
+        [
+          "华东",
+          "000108",
+          "商品甲",
+          "1000.05"
+        ],
+        [
+          "华东",
+          "000109",
+          "商品乙",
+          "-20.5"
+        ]
+      ]
+    },
+    {
+      "kind": "metadata_values",
+      "name": "工作表来源",
+      "key": "page_name",
+      "values": [
+        "一月",
+        "二月"
+      ]
+    }
+  ]
+}

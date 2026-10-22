@@ -1,0 +1,16 @@
+{
+  "id": "office_limit",
+  "category": "06_清洗与异常",
+  "file": "Office解压限制.docx",
+  "description": "普通小型 Word；测试时限制 ZIP 条目数为 1，验证解压前保护。",
+  "loader": "pymupdf",
+  "checks": [],
+  "expected_rejection": true,
+  "error_contains": "解压后过大",
+  "rejection_types": [
+    "ValueError"
+  ],
+  "settings": {
+    "MAX_ARCHIVE_ENTRIES": 1
+  }
+}

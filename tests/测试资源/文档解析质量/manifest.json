@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "note": "全部为虚构测试数据；golden.json 是独立设定的标准答案。",
+  "cases": [
+    "01_文字准确性/text_fields/golden.json",
+    "01_文字准确性/scan_clear/golden.json",
+    "01_文字准确性/scan_low_resolution/golden.json",
+    "01_文字准确性/scan_tilted/golden.json",
+    "01_文字准确性/scan_stamp/golden.json",
+    "02_完整性/mixed_pages/golden.json",
+    "02_完整性/mixed_same_page/golden.json",
+    "03_阅读顺序/columns/golden.json",
+    "03_阅读顺序/sidebar_footnote/golden.json",
+    "03_阅读顺序/cross_page_text/golden.json",
+    "04_表格关系/table_bordered/golden.json",
+    "04_表格关系/table_borderless/golden.json",
+    "04_表格关系/table_merged/golden.json",
+    "04_表格关系/table_cross_page/golden.json",
+    "04_表格关系/excel_basic/golden.json",
+    "04_表格关系/excel_complex/golden.json",
+    "05_结构来源/policy_metadata/golden.json",
+    "05_结构来源/docx_headings/golden.json",
+    "06_清洗与异常/docx_noise/golden.json",
+    "06_清洗与异常/repeated_edges/golden.json",
+    "06_清洗与异常/blank_page/golden.json",
+    "06_清洗与异常/corrupt_pdf/golden.json",
+    "06_清洗与异常/encrypted_pdf/golden.json",
+    "06_清洗与异常/page_limit/golden.json",
+    "06_清洗与异常/office_limit/golden.json"
+  ]
+}

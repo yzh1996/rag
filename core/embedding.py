@@ -25,6 +25,8 @@ class EmbeddingModel:
 
     def _initialize(self):
         """初始化嵌入模型"""
+        # 嵌入模型负责把文字转换成一串数字。文字问题和文档片段都转换后，
+        # 向量库才能用“数字距离”判断它们是否相似。
         # 尝试从本地先加载，本地没有再从HuggingFace上面下载
         model_name = settings.EMBEDDING_MODEL_NAME
         # .replace("/", "_") 是因为 Qwen/Qwen2.5-7B-Instruct 这个模型名中包含了 / ，会导致路径错误
@@ -58,5 +60,6 @@ class EmbeddingModel:
 
 def get_embedding_model():
     """ 获取嵌入模型实例 """
+    # 统一入口保证所有模块共用同一个嵌入模型，避免重复加载。
     return EmbeddingModel().get_model()
 

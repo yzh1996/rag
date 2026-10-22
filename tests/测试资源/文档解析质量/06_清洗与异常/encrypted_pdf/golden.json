@@ -1,0 +1,14 @@
+{
+  "id": "encrypted_pdf",
+  "category": "06_清洗与异常",
+  "file": "加密文件.pdf",
+  "description": "已加密文件应提示先解密。",
+  "loader": "pymupdf",
+  "checks": [],
+  "expected_rejection": true,
+  "error_contains": "加密PDF",
+  "rejection_types": [
+    "ValueError",
+    "PDFPasswordIncorrect"
+  ]
+}

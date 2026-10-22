@@ -1,0 +1,177 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品甲 | 10 | 1000.05 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "page": 1,
+        "total_pages": 2,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "跨页重复表头",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "跨页重复表头.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    },
+    {
+      "text": "| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品乙 | 2 | -20.50 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "page": 2,
+        "total_pages": 2,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "跨页重复表头",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "跨页重复表头.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品甲 | 10 | 1000.05 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "page": 1,
+        "total_pages": 2,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "跨页重复表头",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "跨页重复表头.pdf",
+        "file_type": "pdf"
+      }
+    },
+    {
+      "text": "| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品乙 | 2 | -20.50 |",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_cross_page\\跨页重复表头.pdf",
+        "page": 2,
+        "total_pages": 2,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "跨页重复表头",
+        "Trapped": "False",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PDFPlumberLoader",
+        "file_name": "跨页重复表头.pdf",
+        "file_type": "pdf"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.015,
+  "text": "| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品甲 | 10 | 1000.05 |\n\n| 商品 | 销量 | 金额 |\n| --- | --- | --- |\n| 商品乙 | 2 | -20.50 |",
+  "checks": [
+    {
+      "name": "跨页记录对应",
+      "kind": "table",
+      "status": "pass",
+      "expected": [
+        [
+          "商品",
+          "销量",
+          "金额"
+        ],
+        [
+          "商品甲",
+          "10",
+          "1000.05"
+        ],
+        [
+          "商品乙",
+          "2",
+          "-20.50"
+        ]
+      ],
+      "actual": [
+        [
+          "商品",
+          "销量",
+          "金额"
+        ],
+        [
+          "商品甲",
+          "10",
+          "1000.05"
+        ],
+        [
+          "商品",
+          "销量",
+          "金额"
+        ],
+        [
+          "商品乙",
+          "2",
+          "-20.50"
+        ]
+      ]
+    },
+    {
+      "name": "表格来源页",
+      "kind": "pages",
+      "status": "pass",
+      "expected": [
+        1,
+        2
+      ],
+      "actual": [
+        1,
+        2
+      ]
+    }
+  ],
+  "quality": "pass"
+}

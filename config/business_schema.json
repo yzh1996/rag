@@ -1,0 +1,5615 @@
+{
+  "source": "六个维度大数据平台数据表与字段字典.docx",
+  "source_xml_sha256": "db0094e35c908fe4a94d041bbb47b7efd1a29126906dc2a8fa5a3291dceb0046",
+  "tables": [
+    {
+      "name": "anchor_video_item",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "publish_date_time",
+          "description": "发布日期时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "duration",
+          "description": "视频时长",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "like_cnt",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "video_text",
+          "description": "视频文本",
+          "source_type": "varchar(1000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "coment_cnt",
+          "description": "评论数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_graphic",
+          "description": "是否图文",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cart_video",
+          "description": "购物车视频",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品ID",
+          "source_type": "varchar(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "picture",
+          "description": "商品图片",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "share_cnt",
+          "description": "分享数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_ids",
+          "description": "商品ID列表",
+          "source_type": "varchar(65533)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_delete",
+          "description": "是否删除",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_ids_array",
+          "description": "商品ID数组",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "fans_profile_age",
+          "description": "粉丝画像-年龄",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "fans_profile_city",
+          "description": "粉丝画像-城市",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "fans_profile_gender",
+          "description": "粉丝画像-性别",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "fans_profile_province",
+          "description": "粉丝画像-省份",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "更新时间",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "anchor_video_item_comment",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "评论ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "comment_time",
+          "description": "评论时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "avatar",
+          "description": "用户头像",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "item_id",
+          "description": "商品ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "like_count",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "nickname",
+          "description": "用户昵称",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "reply_comment_total",
+          "description": "回复总数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "text",
+          "description": "评论内容",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_id",
+          "description": "用户ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "更新时间",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "date_product_video_incr",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "video_id",
+          "description": "视频ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "publish_date",
+          "description": "发布日期",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_count",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "last_digg",
+          "description": "昨日点赞数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "today_digg",
+          "description": "今日点赞数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "incr_digg",
+          "description": "点赞增量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "last_collect",
+          "description": "昨日收藏数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "today_collect",
+          "description": "今日收藏数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "incr_collect",
+          "description": "收藏增量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "last_share",
+          "description": "昨日分享数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "today_share",
+          "description": "今日分享数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "incr_share",
+          "description": "分享增量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "last_comment",
+          "description": "昨日评论数",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "today_comment",
+          "description": "今日评论数",
+          "source_type": "decimal(28,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "incr_comment",
+          "description": "评论增量",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "create_time",
+          "description": "创建时间",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_volume",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "date_video_data",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "date_flag",
+          "description": "日期标志",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "video_id",
+          "description": "视频ID",
+          "source_type": "varchar(20)",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_low",
+          "description": "最低销售额",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_high",
+          "description": "最高销售额",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品ID",
+          "source_type": "varchar(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "publish_date",
+          "description": "发布日期",
+          "source_type": "date",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "digg",
+          "description": "点赞数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "comment",
+          "description": "评论数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "share",
+          "description": "分享数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "collect",
+          "description": "收藏数",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_delete",
+          "description": "是否删除",
+          "source_type": "tinyint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_top",
+          "description": "是否置顶",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "create_time",
+          "description": "创建时间",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "jl_user",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID（主键）",
+          "source_type": "bigint(20)",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_name",
+          "description": "用户名",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_tag_name",
+          "description": "一级标签名称",
+          "source_type": "varchar(100)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_tag_name",
+          "description": "二级标签名称",
+          "source_type": "varchar(100)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow_count",
+          "description": "粉丝总数",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow_incr",
+          "description": "粉丝增长量",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "province",
+          "description": "所在省份",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "birth_year",
+          "description": "出生年份",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_gov_media_vip",
+          "description": "是否政府/媒体认证",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_gender",
+          "description": "用户性别",
+          "source_type": "varchar(10)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "enterprise_verify",
+          "description": "企业认证信息",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "custom_verify",
+          "description": "自定义认证信息",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "with_fusion_shop_entry",
+          "description": "是否有融合店铺入口",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "aweme_id",
+          "description": "抖音ID",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "hava_contact",
+          "description": "是否有联系方式",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sec_uid",
+          "description": "安全用户ID",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "star_atlas",
+          "description": "是否星图达人",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "shop_types_array",
+          "description": "店铺类型数组",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_delete",
+          "description": "是否删除",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "最后更新时间（时间戳）",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_base",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "直播ID",
+          "source_type": "bigint(20)",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "live_create_time",
+          "description": "直播创建时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cover_url",
+          "description": "封面图URL",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "finish_time",
+          "description": "直播结束时间（时间戳）",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_show",
+          "description": "是否开播",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "top_user",
+          "description": "当前在线观众峰值",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "total_user",
+          "description": "累计观众数",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "contain_cart",
+          "description": "是否包含购物车功能",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow_count",
+          "description": "关注数",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "like_count",
+          "description": "点赞数",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "windmill_title",
+          "description": "风车活动标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "windmill_type",
+          "description": "风车活动类型",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "windmill_url",
+          "description": "风车活动链接",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "windmill_create_time",
+          "description": "风车活动创建时间",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "最后更新时间（时间戳）",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "exposed_num",
+          "description": "曝光量",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_info_traffic",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "_id",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "源文档未提供",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "city_wide",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "home_page",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "live_plaza",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "other",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "recommend_freed",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "search",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "short_video_diversion",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_product",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "直播间ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "promotion_id",
+          "description": "推广活动ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "编号",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_product_sale",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "直播间ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price",
+          "description": "最低价格",
+          "source_type": "decimal(14,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_promotion_product_id",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "promotion_id",
+          "description": "促销编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "live_sales_info",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "直播间ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_low",
+          "description": "最低销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_high",
+          "description": "最高销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "商品促销ID",
+          "source_type": "VARCHAR(20)",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "shop_id",
+          "description": "店铺ID",
+          "source_type": "BIGINT",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "promotion_id",
+          "description": "促销活动ID",
+          "source_type": "VARCHAR(20)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "title",
+          "description": "商品标题",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "brand_name",
+          "description": "品牌名称",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price",
+          "description": "最低售价",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "max_price",
+          "description": "最高售价",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "promotion_source",
+          "description": "促销来源",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_cid",
+          "description": "二级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "third_cid",
+          "description": "三级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "销量",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "comment",
+          "description": "评价数量",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "good_rate",
+          "description": "好评率",
+          "source_type": "DECIMAL(5,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "coupon_labels",
+          "description": "优惠券标签数组",
+          "source_type": "ARRAY<VARCHAR(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "privileges",
+          "description": "权益说明",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "post_free",
+          "description": "包邮信息",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "send_from",
+          "description": "发货地",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "status",
+          "description": "上下架状态",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "create_time",
+          "description": "创建时间",
+          "source_type": "DATETIME",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "更新时间",
+          "source_type": "DATETIME",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "visitor_count",
+          "description": "访客数",
+          "source_type": "VARCHAR(100)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "product_brand",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "ID",
+          "source_type": "varchar(255)",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "brand_id",
+          "description": "品牌ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "name",
+          "description": "名称",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "logo",
+          "description": "Logo",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "main_cate",
+          "description": "主营类目",
+          "source_type": "array<int>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_cate",
+          "description": "一级类目",
+          "source_type": "array<int>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_cate",
+          "description": "二级类目",
+          "source_type": "array<int>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "create_time",
+          "description": "创建时间",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "更新时间",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "shop",
+      "layer": "源业务表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "shop_id",
+          "description": "店铺ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "create_time",
+          "description": "创建时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "name",
+          "description": "店铺名称",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "logo",
+          "description": "店铺Logo",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "shop_type",
+          "description": "店铺类型",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "brand_story_auth",
+          "description": "品牌故事认证",
+          "source_type": "tinyint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "score",
+          "description": "综合评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "score_percentage",
+          "description": "评分百分比",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "goods_score",
+          "description": "商品评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "goods_score_percentage",
+          "description": "商品评分百分比",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "service_score",
+          "description": "服务评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "service_score_percentage",
+          "description": "服务评分百分比",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "logisic_score",
+          "description": "物流评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "logisic_score_percentage",
+          "description": "物流评分百分比",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "tm_sec_shop_id",
+          "description": "天猫/淘宝二级店铺ID",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "shop_author_id",
+          "description": "店铺所有者ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "main_cate",
+          "description": "主营类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_cate",
+          "description": "一级类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_cate",
+          "description": "二级类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "operate_date",
+          "description": "运营日期",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "update_time",
+          "description": "更新时间",
+          "source_type": "datetime",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "main_cate_text",
+          "description": "主营类目文本",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_cate_text",
+          "description": "一级类目文本",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_cate_text",
+          "description": "二级类目文本",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "ods_anchor_video_item",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_date_product_sales_incr",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_date_video_data",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_jl_user_fans_portrait",
+      "layer": "ODS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city_label",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_brand",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "category",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "gender",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "province",
+          "description": "所在省份",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "secondtag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "firsttag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "avt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "consumer_group",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ods_live_base",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_live_info_traffic",
+      "layer": "ODS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "直播间ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city_wide",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "home_page",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_plaza",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "other",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "recommend_freed",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "search",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "short_video_diversion",
+          "description": "源文档未提供",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ods_live_product_sale",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_product",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_product_brand",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "ods_shop",
+      "layer": "ODS",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_jl_user_detail",
+      "layer": "DWD",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_name",
+          "description": "用户名",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_tag_name",
+          "description": "一级标签名称",
+          "source_type": "varchar(100)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "second_tag_name",
+          "description": "二级标签名称",
+          "source_type": "varchar(100)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "province",
+          "description": "所在省份",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "birth_year",
+          "description": "出生年份",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "is_gov_media_vip",
+          "description": "是否政府/媒体认证",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_gender",
+          "description": "用户性别",
+          "source_type": "varchar(10)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_verify",
+          "description": "企业认证信息",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "custom_verify",
+          "description": "自定义认证信息",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "with_fusion_shop_entry",
+          "description": "是否有融合店铺入口",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "aweme_id",
+          "description": "抖音ID",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "hava_contact",
+          "description": "是否有联系方式",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sec_uid",
+          "description": "安全用户ID",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "star_atlas",
+          "description": "是否星图达人",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "shop_types_array",
+          "description": "店铺类型数组",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "is_delete",
+          "description": "是否删除",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "update_time",
+          "description": "最后更新时间（时间戳）",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city_label",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_brand",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "category",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "gender",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "firsttag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "avt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "consumer_group",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dwd_live_detail_3d",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_live_product",
+      "layer": "DWD",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "房间号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "promotion_id",
+          "description": "促销编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播id",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dwd_live_product_sale",
+      "layer": "DWD",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "房间号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播id",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price",
+          "description": "最低价",
+          "source_type": "decimal(14,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dwd_live_product_sale_agg",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_live_promotion_product_id",
+      "layer": "DWD",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "promotion_id",
+          "description": "促销编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dwd_live_sale_detail",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_live_sales_info",
+      "layer": "DWD",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "房间号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_low",
+          "description": "最低价",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_high",
+          "description": "最高价",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "均值",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播id",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dwd_product_detail",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_sale_video_base_info",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_video_detail_3d",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dwd_video_sale_detail",
+      "layer": "DWD",
+      "status": "missing_columns",
+      "columns": []
+    },
+    {
+      "name": "dws_anchor_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "aweme_id",
+          "description": "抖音ID",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_first_tag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_city",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "hava_contact",
+          "description": "是否有联系方式",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "star_atlas",
+          "description": "是否星图达人",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dws_brand_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "brand_id",
+          "description": "品牌ID",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "name",
+          "description": "店铺名称",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "logo",
+          "description": "店铺Logo",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "main_cate",
+          "description": "主营类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city_label",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_brand",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "device_price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "category",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "fans_gender",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "fans_city",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "fans_province",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "avt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "consumer_group",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dws_live_product_info",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "房间号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "promotion_id",
+          "description": "促销编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播id",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number_refix",
+          "description": "订正销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "商品id",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price",
+          "description": "最低价格",
+          "source_type": "decimal(14,2)",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price_refix",
+          "description": "订正价格",
+          "source_type": "decimal(14,2)",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_low",
+          "description": "销售低价",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_low_refix",
+          "description": "订正价格",
+          "source_type": "bigint",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_high",
+          "description": "销售高价",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_high_refix",
+          "description": "订正价格",
+          "source_type": "bigint",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "销售均价",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales_refix",
+          "description": "订正价格",
+          "source_type": "bigint",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num_refix",
+          "description": "订正销量",
+          "source_type": "int",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dws_live_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "直播间ID",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "aweme_id",
+          "description": "抖音ID",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_tag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "hava_contact",
+          "description": "是否有联系方式",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "star_atlas",
+          "description": "是否星图达人",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_gender",
+          "description": "用户性别",
+          "source_type": "varchar(10)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "with_fusion_shop_entry",
+          "description": "是否有融合店铺入口",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_create_time",
+          "description": "直播创建时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover_url",
+          "description": "封面图URL",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "finish_time",
+          "description": "直播结束时间（时间戳）",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "is_show",
+          "description": "是否开播",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "top_user",
+          "description": "当前在线观众峰值",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "total_user",
+          "description": "累计观众数",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_follow_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "like_cnt",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dws_livebigtable",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "id",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cover_url",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "finish_time",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "is_show",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "title",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "live_create_time",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "top_user",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "total_user",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "Like_count",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_name",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "first_tag_name",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "follow_count",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "second_tag_name",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "ifnull(product_num, 0)",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "follow_count",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "sales",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "city",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "saleroom",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_id",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "number",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "min_price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "max_price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "other",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "status",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "dws_product_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_incr",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sale_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sale_num_cal",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_sale_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_sale_num_cal",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "card_sale_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dws_shop_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "name",
+          "description": "店铺名称",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "logo",
+          "description": "店铺Logo",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "main_cate",
+          "description": "主营类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sales",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_sale_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales_low",
+          "description": "最低销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_low",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales_high",
+          "description": "最高销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_high",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "province",
+          "description": "所在省份",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "send_from",
+          "description": "发货地",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "has_top_anchor",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dws_video_summary_detail",
+      "layer": "DWS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "video_id",
+          "description": "视频ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "publish_date_time",
+          "description": "发布日期时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "aweme_id",
+          "description": "抖音ID",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_tag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "age",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "hava_contact",
+          "description": "是否有联系方式",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "star_atlas",
+          "description": "是否星图达人",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_gender",
+          "description": "用户性别",
+          "source_type": "varchar(10)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "with_fusion_shop_entry",
+          "description": "是否有融合店铺入口",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "duration",
+          "description": "视频时长",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "picture",
+          "description": "商品图片",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_follow_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "like_cnt",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_text",
+          "description": "视频文本",
+          "source_type": "varchar(1000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "coment_cnt",
+          "description": "评论数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "share_cnt",
+          "description": "分享数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_fans_rank1d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_incr",
+          "description": "粉丝增长量",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_fans_rank30d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_incr",
+          "description": "粉丝增长量",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_fans_rank7d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_incr",
+          "description": "粉丝增长量",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "city",
+          "description": "所在城市",
+          "source_type": "varchar(50)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_sale_rank1d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "catagory",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_sale_rank30d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "catagory",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_anchor_sale_rank7d",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "username",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_head_logo",
+          "description": "用户头像URL",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "enterprise_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "catagory",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "live_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_live_product_sale_info",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "room_id",
+          "description": "房间号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播id",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sales",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        },
+        {
+          "name": "product_num",
+          "description": "销量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "源文档未提供",
+          "source": "Word设计文档"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_90_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_90d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_his_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_his",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_live_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_30d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales_yestoday",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_potential_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_30d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales_yestoday",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_his",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_push_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_30d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_sales_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_30d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_product_video_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cover",
+          "description": "商品封面图URL",
+          "source_type": "VARCHAR(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "title",
+          "description": "直播标题",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "price",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num_90d",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_shop_sale_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "name",
+          "description": "店铺名称",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "logo",
+          "description": "店铺Logo",
+          "source_type": "varchar(1024)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_anchor_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_live_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "rela_video_num",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_num",
+          "description": "商品数量",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "main_cate",
+          "description": "主营类目",
+          "source_type": "array<varchar(255)>",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_video_hot_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "video_id",
+          "description": "视频ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "publish_date_time",
+          "description": "发布日期时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_name",
+          "description": "用户名",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_logo",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_tag",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "picture",
+          "description": "商品图片",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_follow_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "like_cnt",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_text",
+          "description": "视频文本",
+          "source_type": "varchar(1000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "coment_cnt",
+          "description": "评论数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "share_cnt",
+          "description": "分享数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "is_graphic",
+          "description": "是否图文",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_cover",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_title",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "catagory",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "ads_video_sale_rank",
+      "layer": "ADS",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "video_id",
+          "description": "视频ID",
+          "source_type": "int",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "publish_date_time",
+          "description": "发布日期时间",
+          "source_type": "datetime",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_name",
+          "description": "用户名",
+          "source_type": "varchar(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "user_logo",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follow_cnt",
+          "description": "关注数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "level",
+          "description": "带货等级",
+          "source_type": "int(11)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "picture",
+          "description": "商品图片",
+          "source_type": "varchar(2000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_follow_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "like_cnt",
+          "description": "点赞数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "video_text",
+          "description": "视频文本",
+          "source_type": "varchar(1000)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "coment_cnt",
+          "description": "评论数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "share_cnt",
+          "description": "分享数",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "is_graphic",
+          "description": "是否图文",
+          "source_type": "boolean",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_cover",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_title",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "cos_ratio",
+          "description": "佣金比例",
+          "source_type": "DECIMAL(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "catagory",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sales",
+          "description": "销售额",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "sale_num",
+          "description": "源文档未提供",
+          "source_type": "bigint",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dim_brand_anchor_rela_detail",
+      "layer": "维表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follown_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dim_product_anchor_detail",
+      "layer": "维表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "sale_type",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "good_rate(商品)",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "send_from",
+          "description": "发货地",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "privileges",
+          "description": "权益说明",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "post_free",
+          "description": "包邮信息",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "score",
+          "description": "评分",
+          "source_type": "decimal(10,2)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "coupon_labels",
+          "description": "优惠券标签数组",
+          "source_type": "ARRAY<VARCHAR(255)>",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "first_cid",
+          "description": "一级类目ID",
+          "source_type": "INT",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "product_id",
+          "description": "商品编号",
+          "source_type": "bigint",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "brand_name",
+          "description": "品牌名称",
+          "source_type": "VARCHAR(255)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follown_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    },
+    {
+      "name": "dim_shop_anchor_rela_detail",
+      "layer": "维表",
+      "status": "defined",
+      "columns": [
+        {
+          "name": "shop_id",
+          "description": "所属店铺ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "anchor_id",
+          "description": "主播ID",
+          "source_type": "bigint(20)",
+          "nullable": "YES",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "follown_cnt",
+          "description": "源文档未提供",
+          "source_type": "源文档未提供",
+          "nullable": "源文档未提供",
+          "notes": "PDF图中仅提供字段名，其他定义未提供",
+          "source": "PDF设计图"
+        },
+        {
+          "name": "date_flag",
+          "description": "日期标记",
+          "source_type": "date",
+          "nullable": "NO",
+          "notes": "PDF图示字段；字段定义参考 Word 设计文档",
+          "source": "PDF设计图"
+        }
+      ]
+    }
+  ]
+}

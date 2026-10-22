@@ -1,0 +1,22 @@
+{
+  "route": "native",
+  "execution": "error",
+  "error": "FileDataError: Failed to open file 'E:\\\\yzh\\\\workspace\\\\RAGProject\\\\rag_qa_system\\\\tests\\\\测试资源\\\\文档解析质量\\\\06_清洗与异常\\\\corrupt_pdf\\\\损坏文件.pdf'.",
+  "documents": [],
+  "raw_documents": [],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.004,
+  "text": "",
+  "checks": [
+    {
+      "name": "拒绝异常文件",
+      "status": "pass",
+      "expected": "拒绝文件",
+      "actual": "FileDataError: Failed to open file 'E:\\\\yzh\\\\workspace\\\\RAGProject\\\\rag_qa_system\\\\tests\\\\测试资源\\\\文档解析质量\\\\06_清洗与异常\\\\corrupt_pdf\\\\损坏文件.pdf'."
+    }
+  ],
+  "quality": "pass"
+}

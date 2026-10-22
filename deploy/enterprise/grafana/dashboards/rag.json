@@ -1,0 +1,15 @@
+{
+  "uid": "rag-operations", "title": "RAG Operations", "schemaVersion": 39,
+  "refresh": "15s", "time": {"from": "now-1h", "to": "now"},
+  "panels": [
+    {"id":1,"type":"timeseries","title":"Answer Requests / Second","gridPos":{"x":0,"y":0,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"rate(rag_qa_requests_total[5m])","refId":"A"}]},
+    {"id":2,"type":"timeseries","title":"P95 Answer Latency (seconds)","gridPos":{"x":12,"y":0,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"histogram_quantile(0.95, sum(rate(rag_qa_seconds_bucket[5m])) by (le))","refId":"A"}]},
+    {"id":3,"type":"timeseries","title":"Answer Errors / Second","gridPos":{"x":0,"y":8,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"rate(rag_qa_errors_total[5m])","refId":"A"}]},
+    {"id":4,"type":"timeseries","title":"Refusals and Negative Feedback","gridPos":{"x":12,"y":8,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"increase(rag_qa_refusals_total[1h])","refId":"A"},{"expr":"increase(rag_feedback_negative_total[1h])","refId":"B"}]},
+    {"id":5,"type":"timeseries","title":"Hourly LLM Cost (USD)","gridPos":{"x":0,"y":16,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"increase(rag_llm_cost_usd_total[1h])","refId":"A"}]},
+    {"id":6,"type":"timeseries","title":"Ingestion Failures","gridPos":{"x":12,"y":16,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"increase(rag_ingestion_failed_total[1h])","refId":"A"}]},
+    {"id":7,"type":"timeseries","title":"P95 Retrieval Latency (seconds)","gridPos":{"x":0,"y":24,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"histogram_quantile(0.95, sum(rate(rag_retrieval_seconds_bucket[5m])) by (le))","refId":"A"}]},
+    {"id":8,"type":"timeseries","title":"LLM Token Usage","gridPos":{"x":12,"y":24,"w":12,"h":8},"datasource":{"uid":"prometheus"},"targets":[{"expr":"increase(rag_llm_input_tokens_total[1h])","refId":"A"},{"expr":"increase(rag_llm_output_tokens_total[1h])","refId":"B"}]},
+    {"id":9,"type":"timeseries","title":"首字耗时 / Time to First Token","description":"后台接收流式问答请求至首段可见正文，包含改写、检索及开启时的整段审核；错误且无正文的请求不计入。","gridPos":{"x":0,"y":32,"w":24,"h":8},"datasource":{"uid":"prometheus"},"fieldConfig":{"defaults":{"unit":"s"}},"targets":[{"expr":"histogram_quantile(0.95, sum(rate(rag_qa_first_token_seconds_bucket[5m])) by (le))","legendFormat":"P95","refId":"A"},{"expr":"sum(rate(rag_qa_first_token_seconds_sum[5m])) / sum(rate(rag_qa_first_token_seconds_count[5m]))","legendFormat":"平均","refId":"B"}]}
+  ]
+}

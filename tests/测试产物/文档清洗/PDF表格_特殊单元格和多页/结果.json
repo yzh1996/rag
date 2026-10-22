@@ -1,0 +1,33 @@
+{
+  "文件": "table_cells.pdf",
+  "页数或文档段数": 2,
+  "清洗前字符数": 224,
+  "清洗后字符数": 222,
+  "使用的加载器": "PDFPlumberLoader",
+  "文档元数据": [
+    {
+      "source": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\pytest-of-Administrator\\pytest-485\\test_pdf表格_特殊单元格和多页0\\table_cells.pdf",
+      "file_path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\pytest-of-Administrator\\pytest-485\\test_pdf表格_特殊单元格和多页0\\table_cells.pdf",
+      "page": 1,
+      "total_pages": 2,
+      "ocr_required": false,
+      "ocr_used": false,
+      "loader": "PDFPlumberLoader",
+      "file_name": "table_cells.pdf",
+      "file_type": "pdf",
+      "cleaned": true
+    },
+    {
+      "source": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\pytest-of-Administrator\\pytest-485\\test_pdf表格_特殊单元格和多页0\\table_cells.pdf",
+      "file_path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\pytest-of-Administrator\\pytest-485\\test_pdf表格_特殊单元格和多页0\\table_cells.pdf",
+      "page": 2,
+      "total_pages": 2,
+      "ocr_required": false,
+      "ocr_used": false,
+      "loader": "PDFPlumberLoader",
+      "file_name": "table_cells.pdf",
+      "file_type": "pdf",
+      "cleaned": true
+    }
+  ]
+}

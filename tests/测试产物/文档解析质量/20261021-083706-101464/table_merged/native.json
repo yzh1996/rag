@@ -1,0 +1,77 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "部门 商品 金额\n华东 商品甲 1000.05\n商品乙 -20.50\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "合并单元格",
+        "Trapped": "False"
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "部门 商品 金额\n华东 商品甲 1000.05\n商品乙 -20.50\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\table_merged\\合并单元格.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "Author": "anonymous",
+        "CreationDate": "D:20000101000000+00'00'",
+        "Creator": "anonymous",
+        "Keywords": "",
+        "ModDate": "D:20000101000000+00'00'",
+        "Producer": "ReportLab PDF Library - (opensource)",
+        "Subject": "unspecified",
+        "Title": "合并单元格",
+        "Trapped": "False"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PDFPlumberLoader",
+  "elapsed_seconds": 0.005,
+  "text": "部门 商品 金额\n华东 商品甲 1000.05\n商品乙 -20.50\n",
+  "checks": [
+    {
+      "name": "合并单元格归属",
+      "kind": "table",
+      "status": "fail",
+      "expected": [
+        [
+          "部门",
+          "商品",
+          "金额"
+        ],
+        [
+          "华东",
+          "商品甲",
+          "1000.05"
+        ],
+        [
+          "华东",
+          "商品乙",
+          "-20.50"
+        ]
+      ],
+      "actual": []
+    }
+  ],
+  "quality": "fail"
+}

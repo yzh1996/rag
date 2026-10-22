@@ -1,0 +1,73 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "MAIN-A 正文第一段\nSIDE 补充说明\nMAIN-B 正文第二段\nFOOT 脚注：金额单位为元。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\sidebar_footnote\\侧栏脚注.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\sidebar_footnote\\侧栏脚注.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "侧栏脚注",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "MAIN-A 正文第一段\nSIDE 补充说明\nMAIN-B 正文第二段\nFOOT 脚注：金额单位为元。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\sidebar_footnote\\侧栏脚注.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\sidebar_footnote\\侧栏脚注.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "侧栏脚注",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.002,
+  "text": "MAIN-A 正文第一段\nSIDE 补充说明\nMAIN-B 正文第二段\nFOOT 脚注：金额单位为元。\n",
+  "checks": [
+    {
+      "name": "正文不被侧栏打断",
+      "kind": "order",
+      "status": "fail",
+      "expected": [
+        "MAIN-A",
+        "MAIN-B",
+        "SIDE",
+        "FOOT"
+      ],
+      "actual": {
+        "MAIN-A": 0,
+        "MAIN-B": 23,
+        "SIDE": 13,
+        "FOOT": 36
+      }
+    }
+  ],
+  "quality": "fail"
+}

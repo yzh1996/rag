@@ -1,0 +1,31 @@
+{
+  "route": "project",
+  "execution": "error",
+  "error": "ValueError: Office文件解压后过大，拒绝处理",
+  "error_type": "ValueError",
+  "documents": [],
+  "raw_documents": [],
+  "ocr_opt_in": true,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": true,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 1
+  },
+  "elapsed_seconds": 0.001,
+  "text": "",
+  "checks": [
+    {
+      "name": "拒绝异常文件",
+      "status": "pass",
+      "expected": "解压后过大",
+      "actual": "ValueError: Office文件解压后过大，拒绝处理"
+    }
+  ],
+  "quality": "pass"
+}

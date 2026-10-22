@@ -1,0 +1,50 @@
+{
+  "tables": [
+    {
+      "name": "live_sales",
+      "title": "直播销量汇总表",
+      "aliases": ["直播", "房间", "live_sales", "开播"],
+      "description": "查询直播带货销量、房间销量、主播直播销量和直播排行。",
+      "grain": "一行表示一个房间中的一位主播在同一30天快照内的汇总。同一主播可以有多个房间。",
+      "primary_key": ["room_id", "anchor_id"],
+      "columns": {
+        "room_id": {"type": "VARCHAR(64)", "description": "房间ID，完整字符串"},
+        "anchor_id": {"type": "VARCHAR(64)", "description": "主播ID，完整字符串；没有主播姓名"},
+        "sales_quantity": {"type": "INTEGER", "description": "直播销量，非负整数，单位为件"},
+        "period_start": {"type": "DATE", "description": "统计开始日期，包含当天"},
+        "period_end": {"type": "DATE", "description": "统计结束日期，包含当天"},
+        "updated_at": {"type": "DATETIME", "description": "数据更新时间，UTC"}
+      },
+      "required_rules": ["rule.snapshot", "rule.aggregation"]
+    },
+    {
+      "name": "video_sales",
+      "title": "视频销量汇总表",
+      "aliases": ["视频", "作品", "video_sales"],
+      "description": "查询短视频带货销量、作品销量、主播视频销量和视频排行。",
+      "grain": "一行表示一个视频在同一30天快照内的汇总。同一主播可以有多个视频。",
+      "primary_key": ["video_id"],
+      "columns": {
+        "video_id": {"type": "VARCHAR(64)", "description": "视频ID，完整字符串"},
+        "anchor_id": {"type": "VARCHAR(64)", "description": "主播ID，完整字符串；没有主播姓名"},
+        "sales_quantity": {"type": "INTEGER", "description": "视频销量，非负整数，单位为件"},
+        "period_start": {"type": "DATE", "description": "统计开始日期，包含当天"},
+        "period_end": {"type": "DATE", "description": "统计结束日期，包含当天"},
+        "updated_at": {"type": "DATETIME", "description": "数据更新时间，UTC"}
+      },
+      "required_rules": ["rule.snapshot", "rule.aggregation"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule.snapshot",
+      "title": "30天快照与指标范围",
+      "content": "所有用户均可查看获准的销量表。只有一个固定30天汇总快照，首尾日期均计入，共30天；不是每日明细。必须使用实际快照区间，不能假设是今天向前30天。销量单位为件。没有金额、退款、订单、流量、主播姓名或历史快照。不能将总量除以30冒充每日实际销量。其他周期、趋势、净销量、未知姓名或不明确的条件应返回 clarification。"
+    },
+    {
+      "id": "rule.aggregation",
+      "title": "主播汇总与跨渠道比较",
+      "content": "按主播统计时应对该主播所有记录的 sales_quantity 求 SUM，不能用 DISTINCT 销量去重。跨渠道统计禁止直接 JOIN 明细：用 UNION ALL 合并、对应渠道数量补0，再按 anchor_id 汇总后比较或合计，保留只存在于一个渠道的主播。渠道合计只是记录销量之和，不代表去重订单。销量为0与没有匹配记录不同。排序并列时按完整ID升序稳定排序；只能查询本次提供的表。"
+    }
+  ]
+}

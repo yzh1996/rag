@@ -1,0 +1,100 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "部门 编号 商品 金额 华东 000108 商品甲 1000.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300\n\n部门 编号 商品 金额 华东 000108 商品甲 1001.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\excel_complex\\多表合并空行.xlsx",
+        "file_name": "多表合并空行.xlsx",
+        "file_type": "xlsx",
+        "loader": "UnstructuredExcelLoader",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "部门 编号 商品 金额 华东 000108 商品甲 1000.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300\n\n部门 编号 商品 金额 华东 000108 商品甲 1001.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\04_表格关系\\excel_complex\\多表合并空行.xlsx",
+        "file_name": "多表合并空行.xlsx",
+        "file_type": "xlsx",
+        "loader": "UnstructuredExcelLoader"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.011,
+  "text": "部门 编号 商品 金额 华东 000108 商品甲 1000.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300\n\n部门 编号 商品 金额 华东 000108 商品甲 1001.05 000109 商品乙 -20.5\n\n华西 000110 商品丙 300",
+  "checks": [
+    {
+      "name": "000108",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "000108",
+      "actual": "已找到"
+    },
+    {
+      "name": "000109",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "000109",
+      "actual": "已找到"
+    },
+    {
+      "name": "Excel 行列对应",
+      "kind": "table",
+      "status": "fail",
+      "expected": [
+        [
+          "部门",
+          "编号",
+          "商品",
+          "金额"
+        ],
+        [
+          "华东",
+          "000108",
+          "商品甲",
+          "1000.05"
+        ],
+        [
+          "华东",
+          "000109",
+          "商品乙",
+          "-20.5"
+        ]
+      ],
+      "actual": []
+    },
+    {
+      "name": "工作表来源",
+      "kind": "metadata_values",
+      "status": "fail",
+      "expected": {
+        "page_name": [
+          "一月",
+          "二月"
+        ]
+      },
+      "actual": [
+        null
+      ]
+    }
+  ],
+  "quality": "fail"
+}

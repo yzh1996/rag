@@ -1,0 +1,37 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>文档解析质量报告</title><style>body{font:16px/1.65 system-ui;margin:32px auto;max-width:1900px;padding:0 24px;color:#172b4d;background:#f5f7fb}h1{font-size:28px}article,header{background:white;padding:24px;margin:20px 0;border-radius:10px}.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.route{min-width:0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:12px;max-height:500px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #dce3ed;padding:8px;text-align:left;vertical-align:top}.pass{color:#18754b}.fail{color:#b91c1c}.not_executed,.not_applicable{color:#875500}small{color:#526580}.source-preview{margin-top:16px;background:#fafbfd;border:1px solid #dce3ed;padding:12px;max-height:850px;overflow:auto}figure{margin:0 0 18px}figcaption,.preview-note{font-size:13px;color:#526580}.source-preview img{width:100%;height:auto;display:block}.word-paragraph,.word-heading,.word-subheading,.word-title,.word-edge{white-space:pre-wrap;overflow-wrap:anywhere;margin:12px 0}.word-title{font-size:22px;font-weight:bold}.word-heading{font-size:19px;font-weight:bold}.word-subheading{font-size:17px;font-weight:bold}.word-edge{font-size:13px;color:#526580}.sheet-scroll{overflow:auto}.source-table td{min-width:50px}.golden{margin:12px 0}@media(max-width:1100px){.routes{grid-template-columns:1fr}}</style><header><h1>文档解析质量对照报告</h1><p>生成时间：2026-10-21T12:18:01；本次已运行 1 份资料。未运行的样例不计入结果。</p><p>三栏对照：原始资料与标准答案 → LangChain 原生解析 → 项目增强解析。<br>原生：直接调用 LangChain 加载器。增强：项目校验 → 解析 → 按需 OCR → 清洗，未做分块。<br>通过仅代表本次样例的已定义检查通过，不能代替真实业务抽样。未执行 OCR 不能视为准确率合格。</p><p><small>字段检查只忽略空白，不转换符号。中文冒号“：”变成英文冒号“:”也会判为不通过；数字、字母和符号的实际差异请对照原件及全文查看。</small></p><p><b>原生解析</b>：通过 0；不通过 1；未执行 0；不适用 0</p><p><b>项目增强</b>：通过 0；不通过 0；未执行 1；不适用 0</p></header><article id="scan_clear"><h2>scan_clear · 清晰扫描件.pdf</h2><p>01_文字准确性：清晰图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。</p><p><a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_clear/%E6%B8%85%E6%99%B0%E6%89%AB%E6%8F%8F%E4%BB%B6.pdf">原始文件</a> · <a href="file:///E:/yzh/workspace/RAGProject/rag_qa_system/tests/%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F/01_%E6%96%87%E5%AD%97%E5%87%86%E7%A1%AE%E6%80%A7/scan_clear/golden.json">标准答案</a></p><div class="routes"><section class="route original"><h3>原始资料与标准答案</h3><p>直接查看原件和预先设定的答案，作为人工核对依据。</p><p><a href="scan_clear/source.pdf" target="_blank">打开原始文件</a> · <a href="scan_clear/golden.json" target="_blank">标准答案 JSON</a></p><details class="golden"><summary>查看标准答案与检查要求</summary><table><tr><th>检查项</th><th>标准</th></tr><tr><td>扫描页识别</td><td>1</td></tr><tr><td>订单编号</td><td>订单编号：PO-2026-000108</td></tr><tr><td>核销金额</td><td>核销金额：-1000.05</td></tr><tr><td>日期</td><td>日期：2026-10-21</td></tr><tr><td>姓名</td><td>姓名：欧阳明</td></tr><tr><td>字母标记</td><td>字母标记：OOO</td></tr><tr><td>处理结论</td><td>处理结论：不予报销</td></tr></table></details><div class="source-preview"><figure><figcaption>原件第 1 页</figcaption><a href="scan_clear/original-page-001.png" target="_blank"><img loading="lazy" src="scan_clear/original-page-001.png" alt="原件第 1 页"></a></figure></div></section><section class="route"><h3>LangChain 原生</h3><p class="fail">质量：不通过；耗时 0.114 秒</p><p>解析过程：正常返回</p><p>原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。</p><details open><summary>实际提取全文</summary><pre>（空内容）</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="not_applicable">不适用</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+&quot;原生加载器无扫描页检测步骤&quot;</pre></details></td></tr><tr><td>订单编号</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>日期</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>姓名</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="fail">不通过</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;&quot;</pre></details></td></tr></table></section><section class="route"><h3>项目增强</h3><p class="not_executed">质量：未执行；耗时 0.025 秒</p><p>解析过程：正常返回</p><p>未执行真实 OCR；图片中文字的质量尚未验证。</p><p>实际完成 OCR 的页码：[]</p><details open><summary>实际提取全文</summary><pre>（空内容）</pre></details><details><summary>本次设置</summary><pre>{
+  &quot;DOCUMENT_CLEANING_ENABLED&quot;: true,
+  &quot;REMOVE_REPEATED_PAGE_EDGES&quot;: false,
+  &quot;OCR_ENABLED&quot;: false,
+  &quot;OCR_PROVIDER&quot;: &quot;tencent&quot;,
+  &quot;OCR_MIN_TEXT_CHARS&quot;: 20,
+  &quot;MAX_PDF_PAGES&quot;: 500,
+  &quot;MAX_ARCHIVE_ENTRIES&quot;: 2000
+}</pre></details><table><tr><th>检查项</th><th>结果</th><th>对照</th></tr><tr><td>扫描页识别</td><td class="pass">通过</td><td><details><summary>标准 / 实际</summary><pre>[1]
+
+[1]</pre></details></td></tr><tr><td>订单编号</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;订单编号：PO-2026-000108&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>核销金额</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;核销金额：-1000.05&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>日期</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;日期：2026-10-21&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>姓名</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;姓名：欧阳明&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>字母标记</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;字母标记：OOO&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr><tr><td>处理结论</td><td class="not_executed">未执行</td><td><details><summary>标准 / 实际</summary><pre>&quot;处理结论：不予报销&quot;
+
+&quot;未开启真实 OCR&quot;</pre></details></td></tr></table></section></div></article></html>

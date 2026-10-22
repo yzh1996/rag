@@ -1,9 +1,9 @@
 import streamlit as st
-import requests
+from frontend.api_client import client as requests, API_BASE, render_auth
 
-API_BASE = "http://localhost:8000/api/v1"
 
 st.set_page_config(page_title="系统设置", page_icon="⚙️")
+render_auth()
 
 st.title("⚙️ 系统设置")
 

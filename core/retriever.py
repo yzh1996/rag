@@ -1,161 +1,261 @@
-"""
-检索模块 —— 支持相似度检索 + 可选的重排序
-主要功能：
-    1. 基于向量相似度进行文档检索
-    2. 可选的文档重排序（使用Reranker）
-        使用重排序的原因是为了提高检索结果的相关性和准确性。
-        这属于对RAG技术的优化，主要就是为了提高检索结果的质量。
-        但是会增加一些额外的开销。
-"""
+"""混合检索、权限过滤和可选重排。"""
 import logging
-from config.settings import settings
+import re
+import time
+from typing import Any
+
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain_core.documents.compressor import BaseDocumentCompressor
+from langchain_core.retrievers import BaseRetriever
+from pydantic import ConfigDict, Field
+
+from config.settings import settings
+from core.auth import ANONYMOUS_USER, AuthUser, can_access_document
+from core.knowledge_scope import accessible_knowledge_filter, parse_permission_scope
 from core.vector_store import get_vector_store_manager
+from core.metrics import increment, observe
+from core.telemetry import traced
 
 logger = logging.getLogger(__name__)
 
+
 class CrossEncoderReranker(BaseDocumentCompressor):
-    """基于交叉编码器的重排序器"""
+    """基于交叉编码器的重排序器。"""
+
     model_name: str
     top_k: int
-    model: object = None  # 延迟加载模型
-    # def __init__(self, model_name: str, top_k: int = 5):
-    #     """初始化重排序器"""
-    #     super().__init__()
-    #     self.model_name = model_name or settings.RERANKER_MODEL_NAME
-    #     self.top_k = top_k
-    #     # 延迟初始化模型，避免启动时加载耗时！！！！！！
-        
+    model: object = None
+
     def _initialize_model(self):
-        """初始化交叉编码器模型，使用时才第一次加载"""
         if self.model is None:
             try:
                 from sentence_transformers import CrossEncoder
+
                 self.model = CrossEncoder(self.model_name)
-                logger.info(f"交叉编码器模型已初始化: {self.model_name}")
-            except Exception as e:
-                logger.error(f"初始化交叉编码器模型失败: {str(e)}")
+                logger.info("交叉编码器模型已初始化: %s", self.model_name)
+            except Exception as exc:
+                logger.error("初始化交叉编码器模型失败: %s", exc)
                 self.model = None
 
+    @traced("rag.rerank")
     def compress_documents(self, documents, query, **kwargs):
-        """重排序核心方法：对文档列表按与查询query的相关性排序"""
         if not documents:
             return []
-        # 初始化模型
         self._initialize_model()
         if self.model is None:
-            # 模型加载失败，直接返回原文档，不做排序
-            return documents[:self.top_k]
+            return documents[: self.top_k]
         try:
-            # 构建 查询-文档对 理解为qa对
-            pairs = [[query, doc.page_content] for doc in documents]
-            # 使用交叉编码器模型 进行打分
+            pairs = [[query, doc.page_content] for doc in documents]  ##交叉重排序
             scores = self.model.predict(pairs)
-            # 按分数降序排序
-            sorted_docs = sorted(
-                zip(documents, scores),
-                key=lambda x: x[1],
-                reverse=True
-            )
-            # 返回前top_k个文档
-            return [doc for doc, _ in sorted_docs[:self.top_k]]
-        except Exception as e:
-            logger.error(f"重排序失败: {str(e)}")
-            return documents[:self.top_k]
-        
-    
+            sorted_docs = sorted(zip(documents, scores), key=lambda item: item[1], reverse=True)
+            if settings.RERANK_MIN_SCORE is not None:
+                sorted_docs = [(doc, score) for doc, score in sorted_docs if score >= settings.RERANK_MIN_SCORE]
+            return [doc for doc, _ in sorted_docs[: self.top_k]]
+        except Exception as exc:
+            logger.error("重排序失败: %s", exc)
+            return documents[: self.top_k]
+
+
+def _tokens(text: str) -> set[str]:
+    return set(re.findall(r"[\u4e00-\u9fff]|[a-zA-Z0-9_]+", (text or "").lower()))
+
+
+def _metadata_key(document) -> str:
+    return f"{document.metadata.get('source', '')}:{document.metadata.get('page', '')}:{document.page_content}"
+
+
+def _permission_scope(metadata: dict[str, Any]) -> dict[str, Any]:
+    return parse_permission_scope(metadata.get("permission_scope"))
+
+
+def expand_parent_context(documents):
+    """子块完成排序后补回同版本的父段落，保留排序并去重。"""
+    from langchain_core.documents import Document
+    result, seen = [], set()
+    for doc in documents:
+        parent = doc.metadata.get("parent_content")
+        key = (doc.metadata.get("document_id"), doc.metadata.get("version_id"),
+            doc.metadata.get("source"), doc.metadata.get("page"), doc.metadata.get("parent_id")) if parent else _metadata_key(doc)
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(Document(page_content=parent, metadata={**doc.metadata, "parent_expanded": True}) if parent else doc)
+    return result
+
+
+class HybridRetriever(BaseRetriever):
+    """把向量候选和关键词候选合并后交给重排器。
+
+    这是 LangChain 需要的适配层：底层 RAGRetriever 负责具体检索，
+    这个类把它包装成 LangChain 的 retriever 接口。
+    """
+
+    owner: Any = Field(exclude=True)
+    search_kwargs: dict[str, Any] = Field(default_factory=dict)
+    user: AuthUser | None = Field(default=None, exclude=True)
+    version_manifest: dict | None = Field(default=None, exclude=True)
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    def _get_relevant_documents(self, query: str, *, run_manager=None):
+        return self.owner.retrieve(
+            query,
+            top_k=self.search_kwargs.get("k", settings.SEARCH_TOP_K),
+            filter_dict=self.search_kwargs.get("filter"),
+            user=self.user,
+            version_manifest=self.version_manifest,
+            apply_rerank=True,
+        )
+
 
 class RAGRetriever:
-    """RAG检索器，封装向量检索和（可选的）重排序功能"""
-    def __init__(self):
-        self.vector_store = get_vector_store_manager()
+    """向量+关键词混合召回，支持用户权限过滤和重排。
+
+    向量检索擅长理解相近含义，关键词检索擅长匹配专有名词；两者合并后通常比只用一种方式稳定。
+    """
+
+    def __init__(self, vector_store=None):
+        self.vector_store = vector_store or get_vector_store_manager()
         self.reranker = self._initialize_reranker()
 
     def _initialize_reranker(self):
-        """初始化Reranker"""
         if not settings.USE_RERANKER:
-            logging.info("未启用Reranker")
+            logger.info("未启用Reranker")
             return None
         try:
-            # 尝试本地加载，本地没有的话再huggingface下载
             model_name = settings.RERANKER_MODEL_NAME
             local_model_path = settings.MODELS_DIR / model_name.replace("/", "_")
-            if local_model_path.exists():
-                model_path = str(local_model_path)
-                logger.info(f"从本地加载Reranker模型: {local_model_path}")
-            else:
-                model_path = model_name
-                logger.info(f"从HuggingFace下载Reranker模型: {model_name}")
-            # 创建重排序实例
-            reranker = CrossEncoderReranker(
-                model_name=model_path,
-                top_k=settings.SEARCH_TOP_K
-            )
-            logger.info(f"Reranker已初始化: {settings.RERANKER_MODEL_NAME}")
-            return reranker
-        except Exception as e:
-            logging.error(f"初始化Reranker失败: {str(e)}")
+            model_path = str(local_model_path) if local_model_path.exists() else model_name
+            return CrossEncoderReranker(model_name=model_path, top_k=settings.SEARCH_TOP_K)
+        except Exception as exc:
+            logger.error("初始化Reranker失败: %s", exc)
             return None
-        
-    def retrieve(self, query: str, top_k: int = None, filter_dict: dict = None, return_score: bool = False) -> list:
-        """
-        检索文档
-        :param query: 查询文本
-        :param top_k: 返回的文档数量
-        :param filter_dict: 过滤条件
-        :param return_score: 是否返回相关性分数
-        :return: 检索到的文档列表
-        """
-        top_k = top_k or settings.SEARCH_TOP_K
-        # 1. 执行向量检索
-        docs_with_score = self.vector_store.similarity_search_with_score(
-            query,
-            k=top_k,
-            filter_dict=filter_dict
+
+    def _can_access(self, document, user: AuthUser | None) -> bool:
+        try:
+            if document.metadata.get("document_id"):
+                from core.database import session_scope
+                from core.db_models import Document
+                with session_scope() as db:
+                    stored = db.get(Document, document.metadata["document_id"])
+                    if stored:
+                        return can_access_document(stored.permission_scope, user or ANONYMOUS_USER)
+            return can_access_document(_permission_scope(document.metadata), user or ANONYMOUS_USER)
+        except (ValueError, TypeError):
+            return False
+
+    def _keyword_candidates(self, query: str, user: AuthUser | None, limit: int, filter_dict: dict | None = None) -> list[tuple[Any, float]]:
+        if settings.VECTOR_STORE_TYPE == "opensearch":
+            return self.vector_store._store.keyword_search(query, limit, filter_dict)
+        try:
+            payload = self.vector_store.get_documents(filter_dict=filter_dict)
+        except Exception as exc:
+            logger.warning("关键词候选读取失败，将只使用向量检索: %s", exc)
+            return []
+        query_tokens = _tokens(query)
+        if not query_tokens:
+            return []
+        candidates = []
+        for content, metadata in zip(payload.get("documents", []), payload.get("metadatas", [])):
+            metadata = metadata or {}
+            document_tokens = _tokens(content)
+            overlap = len(query_tokens & document_tokens)
+            if overlap <= 0:
+                continue
+            from langchain_core.documents import Document
+
+            document = Document(page_content=content or "", metadata=metadata)
+            if self._can_access(document, user):
+                candidates.append((document, overlap / max(1, len(query_tokens))))
+        candidates.sort(key=lambda item: item[1], reverse=True)
+        return candidates[:limit]
+
+    @traced("rag.retrieve")
+    def retrieve(
+        self,
+        query: str,
+        top_k: int | None = None,
+        filter_dict: dict | None = None,
+        return_score: bool = False,
+        user: AuthUser | None = None,
+        apply_rerank: bool = True,
+        version_manifest: dict | None = None,
+    ) -> list:
+        # 先召回一批候选，再按权限过滤和综合分数排序，最后可选地用重排模型精排。
+        # 这样既能兼顾检索速度，也给精排模型保留足够的候选范围。
+        final_k = top_k or settings.SEARCH_TOP_K
+        started_at = time.perf_counter()
+        candidate_k = max(final_k * 4, 20)
+        include_tool_catalog = bool(filter_dict and filter_dict.get("category") == "assistant_tools")
+        user = user or ANONYMOUS_USER
+        permission_filter = accessible_knowledge_filter(user) if version_manifest is None else accessible_knowledge_filter(user, version_manifest, include_candidates=True)
+        if permission_filter is None:
+            return []
+        filter_dict = (
+            {"$and": [permission_filter, filter_dict]} if filter_dict else permission_filter
         )
-        # 2. 如果启用了Reranker，则进行重排序
-        if self.reranker:
-            raw_docs = [doc for doc, _ in docs_with_score]
-            ranked_docs = self.reranker.compress_documents(raw_docs, query)
-            # 重新匹配原分数
-            ranked_docs_with_score = [
-                (doc, next(score for doc_, score in docs_with_score if doc_ == doc))
-                for doc in ranked_docs
-            ]
-        else:
-            ranked_docs_with_score = docs_with_score
-    
-        # 3. 返回结果
-        if return_score:
-            return ranked_docs_with_score
-        else:
-            return [doc for doc, _ in ranked_docs_with_score]
-        
-    def get_compresstion_retriever(self, search_kwargs: dict):
-        """
-        获取适配Langchain链的检索器
-        """
-        search_kwargs = search_kwargs or {"k": settings.SEARCH_TOP_K}
-        # 获取基础向量检索器
-        base_retriever = self.vector_store._store.as_retriever(
-            search_kwargs=search_kwargs
-        )
-        # 如果启用了Reranker，则创建压缩检索器
-        if self.reranker:
-            return ContextualCompressionRetriever(
-                base_compressor=self.reranker,
-                base_retriever=base_retriever
+        #langchain封装的隐藏掉了很多参数，实际生产的一般使用向量数据库自己原生的api接口
+        try:
+            vector_results = self.vector_store.similarity_search_with_score(
+                query, k=candidate_k, filter_dict=filter_dict
             )
-        else:
-            return base_retriever
+        except Exception:
+            increment("retrieval_errors_total")
+            raise
+        if settings.VECTOR_STORE_TYPE == "opensearch":
+            vector_results = [(doc, distance) for doc, distance in vector_results if 1.0 - distance >= settings.SEARCH_MIN_VECTOR_SIMILARITY]
+        ranked: dict[str, dict[str, Any]] = {}
+        for rank, (document, distance) in enumerate(vector_results):
+            if (not include_tool_catalog and document.metadata.get("category") == "assistant_tools"):
+                continue
+            if self._can_access(document, user):
+                ranked[_metadata_key(document)] = {
+                    "document": document,
+                    "vector_score": 1.0 / (60 + rank + 1) if settings.VECTOR_STORE_TYPE == "opensearch" else 1.0 / (rank + 1),
+                    "keyword_score": 0.0,
+                }
+        for keyword_rank, (document, keyword_score) in enumerate(self._keyword_candidates(query, user, candidate_k, filter_dict)):
+            if not include_tool_catalog and document.metadata.get("category") == "assistant_tools":
+                continue
+            if not self._can_access(document, user):
+                continue
+            if settings.VECTOR_STORE_TYPE == "opensearch":
+                keyword_score = 1.0 / (60 + keyword_rank + 1)
+            key = _metadata_key(document)
+            item = ranked.setdefault(
+                key,
+                {"document": document, "vector_score": 0.0, "keyword_score": 0.0},
+            )
+            item["keyword_score"] = max(item["keyword_score"], keyword_score)
+        items = sorted(
+            ranked.values(),
+            key=lambda item: 0.65 * item["vector_score"] + 0.35 * item["keyword_score"],
+            reverse=True,
+        )
+        candidates = [item["document"] for item in items[:candidate_k]]
+        if apply_rerank and self.reranker:
+            candidates = self.reranker.compress_documents(candidates, query)
+        elif apply_rerank:
+            candidates = candidates[:final_k]
+        observe("retrieval", (time.perf_counter() - started_at) * 1000)
+        if not candidates:
+            increment("retrieval_empty_total")
+        if return_score:
+            scores = {id(item["document"]): 0.65 * item["vector_score"] + 0.35 * item["keyword_score"] for item in items}
+            return [(expand_parent_context([document])[0], scores.get(id(document), 0.0)) for document in candidates[:final_k]]
+        if apply_rerank:
+            candidates = expand_parent_context(candidates)
+        return candidates if not apply_rerank else candidates[:final_k]
+
+    def get_compresstion_retriever(self, search_kwargs: dict, user: AuthUser | None = None, version_manifest=None):
+        search_kwargs = search_kwargs or {"k": settings.SEARCH_TOP_K}
+        base_retriever = HybridRetriever(owner=self, search_kwargs=search_kwargs, user=user, version_manifest=version_manifest)
+        return base_retriever
 
 
-# 单例实例（全局唯一，避免重复加载）
 _rag_retriever_instance = None
 
+
 def get_rag_retriever() -> RAGRetriever:
-    """获取全局唯一的RAG检索器实例"""
     global _rag_retriever_instance
     if _rag_retriever_instance is None:
         _rag_retriever_instance = RAGRetriever()

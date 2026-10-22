@@ -1,0 +1,37 @@
+{
+  "id": "repeated_edges",
+  "category": "06_清洗与异常",
+  "file": "重复页眉页脚.pdf",
+  "description": "三页相同的页眉页脚；报告会记录当前是否启用了重复边缘清洗。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "正文第一部分",
+      "value": "正文第一部分",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "正文第二部分",
+      "value": "正文第二部分",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "正文第三部分",
+      "value": "正文第三部分",
+      "requires_ocr": false
+    },
+    {
+      "kind": "absent",
+      "name": "删除重复页眉",
+      "value": "测试企业机密页眉"
+    },
+    {
+      "kind": "absent",
+      "name": "删除重复页脚",
+      "value": "测试企业机密页脚"
+    }
+  ]
+}

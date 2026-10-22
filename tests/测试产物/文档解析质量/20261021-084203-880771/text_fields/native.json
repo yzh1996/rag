@@ -1,0 +1,105 @@
+{
+  "route": "native",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "订单编号：PO-2026-000108\n核销金额：-1000.05\n日期：2026-10-21\n姓名：欧阳明\n字母标记：OOO\n处理结论：不予报销\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\text_fields\\数字与易混字符.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\text_fields\\数字与易混字符.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "数字与易混字符",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "订单编号：PO-2026-000108\n核销金额：-1000.05\n日期：2026-10-21\n姓名：欧阳明\n字母标记：OOO\n处理结论：不予报销\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\text_fields\\数字与易混字符.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\text_fields\\数字与易混字符.pdf",
+        "page": 0,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "数字与易混字符",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": ""
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.108,
+  "text": "订单编号：PO-2026-000108\n核销金额：-1000.05\n日期：2026-10-21\n姓名：欧阳明\n字母标记：OOO\n处理结论：不予报销\n",
+  "checks": [
+    {
+      "name": "订单编号",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "订单编号：PO-2026-000108",
+      "actual": "已找到"
+    },
+    {
+      "name": "核销金额",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "核销金额：-1000.05",
+      "actual": "已找到"
+    },
+    {
+      "name": "日期",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "日期：2026-10-21",
+      "actual": "已找到"
+    },
+    {
+      "name": "姓名",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "姓名：欧阳明",
+      "actual": "已找到"
+    },
+    {
+      "name": "字母标记",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "字母标记：OOO",
+      "actual": "已找到"
+    },
+    {
+      "name": "处理结论",
+      "kind": "contains",
+      "status": "pass",
+      "expected": "处理结论：不予报销",
+      "actual": "已找到"
+    },
+    {
+      "name": "关键字段字符错误率",
+      "kind": "cer",
+      "status": "pass",
+      "expected": "字符错误率 <= 0.0%（仅忽略空白）",
+      "actual": 0.0
+    }
+  ],
+  "quality": "pass"
+}

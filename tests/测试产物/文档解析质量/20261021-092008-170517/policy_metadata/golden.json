@@ -1,0 +1,71 @@
+{
+  "id": "policy_metadata",
+  "category": "05_结构来源",
+  "file": "制度版本与来源.pdf",
+  "description": "版本和生效日期取自正文；部门、密级由上传人提供，不能当成解析器自动识别。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "采购管理办法",
+      "value": "采购管理办法",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "版本",
+      "value": "版本：V2.1",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "生效日期",
+      "value": "生效日期：2026-10-01",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "责任部门",
+      "value": "责任部门：采购部",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "第一章 适用范围",
+      "value": "第一章 适用范围",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "本办法适用于正式采购申请。",
+      "value": "本办法适用于正式采购申请。",
+      "requires_ocr": false
+    },
+    {
+      "kind": "pages",
+      "name": "来源页",
+      "values": [
+        1
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "来源文件",
+      "filename": "制度版本与来源.pdf"
+    },
+    {
+      "kind": "metadata_values",
+      "name": "用户提供的部门",
+      "key": "department",
+      "values": [
+        "采购部"
+      ],
+      "provided_by_user": true
+    }
+  ],
+  "input_metadata": {
+    "department": "采购部",
+    "security_level": "内部",
+    "knowledge_base": "采购制度"
+  }
+}

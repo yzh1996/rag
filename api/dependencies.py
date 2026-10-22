@@ -4,6 +4,12 @@ FastAPI依赖注入模块
 from core.vector_store import get_vector_store_manager
 from core.rag_chain import get_rag_chain
 from core.document_loader import DocumentLoader
+from core.database import get_db
+
+
+def get_db_dep():
+    """文档和任务接口使用的数据库依赖。"""
+    yield from get_db()
 
 
 def get_vector_store_dep():

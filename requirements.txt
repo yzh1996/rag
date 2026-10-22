@@ -9,6 +9,7 @@ langchain==0.3.7
 langchain-community==0.3.5
 langchain-huggingface==0.1.0
 langchain-openai==0.2.4
+langchain-experimental==0.3.4
 
 # 向量数据库
 chromadb==0.5.17
@@ -16,6 +17,7 @@ faiss-cpu==1.9.0
 
 # 文档处理
 pymupdf==1.24.13
+pdfplumber==0.11.4
 docx2txt==0.8
 unstructured==0.16.1
 pandas==2.2.3
@@ -29,5 +31,20 @@ sentence-transformers==3.1.1
 pydantic-settings==2.5.2
 python-dotenv==1.0.1
 
+# RAG闭环第一阶段
+SQLAlchemy==2.0.35
+PyMySQL==1.1.2
+sqlglot>=27.0.0,<28
+psycopg[binary]==3.2.3
+langfuse==2.54.1
+ragas==0.2.8
+pytest==8.3.3
+
 # 工具
-tqdm==4.66.5
+httpx==0.28.1
+
+# Enterprise retrieval, telemetry and backup
+opensearch-py>=2.8.0,<4
+prometheus-client>=0.21.0,<1
+opentelemetry-exporter-otlp-proto-http==1.45.1
+boto3>=1.35.0,<2

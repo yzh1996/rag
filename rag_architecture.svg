@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1200" viewBox="0 0 1900 1200">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .group-title { font: 700 20px Arial, "Microsoft YaHei", sans-serif; fill: #1e293b; }
+      .node-text { font: 500 16px Arial, "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .small-text { font: 500 14px Arial, "Microsoft YaHei", sans-serif; fill: #334155; }
+      .edge { stroke: #64748b; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .edge-blue { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrowBlue); }
+      .edge-dashed { stroke: #64748b; stroke-width: 2; stroke-dasharray: 8 6; fill: none; marker-end: url(#arrow); }
+      .offline-node { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; }
+      .online-node { fill: #f0fdf4; stroke: #22c55e; stroke-width: 2; }
+      .feedback-node { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
+      .obs-node { fill: #f5f3ff; stroke: #8b5cf6; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1900" height="1200" fill="#f8fafc"/>
+  <text x="950" y="45" text-anchor="middle" class="title">企业级 RAG 知识生产与在线问答闭环</text>
+
+  <rect x="30" y="75" width="1840" height="270" rx="18" fill="#f0f7ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="55" y="108" class="group-title">离线：知识生产与发布闭环</text>
+
+  <g class="edge">
+    <line x1="195" y1="205" x2="215" y2="205"/><line x1="365" y1="205" x2="385" y2="205"/>
+    <line x1="535" y1="205" x2="555" y2="205"/><line x1="705" y1="205" x2="725" y2="205"/>
+    <line x1="875" y1="205" x2="895" y2="205"/><line x1="1045" y1="205" x2="1065" y2="205"/>
+    <line x1="1215" y1="205" x2="1235" y2="205"/><line x1="1385" y1="205" x2="1405" y2="205"/>
+  </g>
+
+  <g transform="translate(45,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="36" text-anchor="middle" class="node-text">业务数据源</text></g>
+  <g transform="translate(215,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="36" text-anchor="middle" class="node-text">采集 / 上传</text></g>
+  <g transform="translate(385,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="28" text-anchor="middle" class="node-text">安全校验</text><text x="75" y="49" text-anchor="middle" class="small-text">去重、权限校验</text></g>
+  <g transform="translate(555,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="28" text-anchor="middle" class="node-text">解析、OCR</text><text x="75" y="49" text-anchor="middle" class="small-text">清洗与标准化</text></g>
+  <g transform="translate(725,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="28" text-anchor="middle" class="node-text">分块、元数据</text><text x="75" y="49" text-anchor="middle" class="small-text">版本管理</text></g>
+  <g transform="translate(895,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="36" text-anchor="middle" class="node-text">Embedding 向量化</text></g>
+  <g transform="translate(1065,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="28" text-anchor="middle" class="node-text">建索引</text><text x="75" y="49" text-anchor="middle" class="small-text">维度与版本校验</text></g>
+  <g transform="translate(1235,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="28" text-anchor="middle" class="node-text">审核、发布</text><text x="75" y="49" text-anchor="middle" class="small-text">灰度、回滚</text></g>
+  <g transform="translate(1405,175)"><rect width="150" height="60" rx="12" class="offline-node"/><text x="75" y="36" text-anchor="middle" class="node-text">线上可用知识库</text></g>
+
+  <rect x="30" y="385" width="1840" height="285" rx="18" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <text x="55" y="418" class="group-title">在线：问答服务闭环</text>
+
+  <g class="edge">
+    <line x1="195" y1="525" x2="215" y2="525"/><line x1="365" y1="525" x2="385" y2="525"/>
+    <line x1="535" y1="525" x2="555" y2="525"/><line x1="705" y1="525" x2="725" y2="525"/>
+    <line x1="875" y1="525" x2="895" y2="525"/><line x1="1045" y1="525" x2="1065" y2="525"/>
+    <line x1="1215" y1="525" x2="1235" y2="525"/><line x1="1385" y1="525" x2="1405" y2="525"/>
+    <line x1="1555" y1="525" x2="1575" y2="525"/>
+  </g>
+
+  <g transform="translate(45,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="36" text-anchor="middle" class="node-text">用户问题</text></g>
+  <g transform="translate(215,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">认证、租户</text><text x="75" y="49" text-anchor="middle" class="small-text">权限过滤</text></g>
+  <g transform="translate(385,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">问题改写</text><text x="75" y="49" text-anchor="middle" class="small-text">意图识别</text></g>
+  <g transform="translate(555,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="36" text-anchor="middle" class="node-text">混合检索</text></g>
+  <g transform="translate(725,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">重排、去重</text><text x="75" y="49" text-anchor="middle" class="small-text">阈值判断</text></g>
+  <g transform="translate(895,495)"><path d="M75 0 L150 30 L75 60 L0 30 Z" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/><text x="75" y="27" text-anchor="middle" class="node-text">证据是否</text><text x="75" y="47" text-anchor="middle" class="node-text">足够？</text></g>
+  <g transform="translate(1065,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">澄清、拒答</text><text x="75" y="49" text-anchor="middle" class="small-text">或转人工</text></g>
+  <g transform="translate(1235,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">受约束生成</text><text x="75" y="49" text-anchor="middle" class="small-text">基于证据回答</text></g>
+  <g transform="translate(1405,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">引用、事实</text><text x="75" y="49" text-anchor="middle" class="small-text">安全校验</text></g>
+  <g transform="translate(1575,495)"><rect width="150" height="60" rx="12" class="online-node"/><text x="75" y="28" text-anchor="middle" class="node-text">答案、来源</text><text x="75" y="49" text-anchor="middle" class="small-text">置信度</text></g>
+
+  <path d="M970 555 V610 H1140 V495" class="edge"/><text x="985" y="602" class="small-text">否</text>
+  <path d="M970 495 V455 H1310 V495" class="edge"/><text x="985" y="448" class="small-text">是</text>
+  <path d="M1480 235 V350 H630 V495" class="edge-blue"/><text x="1050" y="337" text-anchor="middle" class="small-text">知识库供在线检索</text>
+
+  <path d="M1650 555 V760 H1470" class="edge"/><path d="M1140 555 V760 H1470" class="edge"/>
+  <g transform="translate(1320,730)"><rect width="300" height="65" rx="12" class="feedback-node"/><text x="150" y="28" text-anchor="middle" class="node-text">用户反馈、纠错、追问</text><text x="150" y="50" text-anchor="middle" class="small-text">人工采纳</text></g>
+  <line x1="1320" y1="762" x2="1150" y2="762" class="edge"/>
+  <g transform="translate(970,730)"><rect width="180" height="65" rx="12" class="feedback-node"/><text x="90" y="28" text-anchor="middle" class="node-text">标注数据</text><text x="90" y="50" text-anchor="middle" class="small-text">评测集</text></g>
+  <line x1="970" y1="762" x2="750" y2="762" class="edge"/>
+  <g transform="translate(530,730)"><rect width="220" height="65" rx="12" class="feedback-node"/><text x="110" y="28" text-anchor="middle" class="node-text">离线评测、在线指标</text><text x="110" y="50" text-anchor="middle" class="small-text">回归测试</text></g>
+  <line x1="530" y1="762" x2="300" y2="762" class="edge"/>
+  <g transform="translate(70,730)"><rect width="230" height="65" rx="12" class="feedback-node"/><text x="115" y="28" text-anchor="middle" class="node-text">调整分块、Embedding</text><text x="115" y="50" text-anchor="middle" class="small-text">检索、重排、Prompt</text></g>
+  <path d="M185 730 V690 H185 V235 H1405" class="edge-blue"/><text x="205" y="705" class="small-text">重建索引、灰度发布、回滚</text>
+
+  <path d="M1650 555 V880 H1540" class="edge-dashed"/>
+  <g transform="translate(1320,850)"><rect width="220" height="65" rx="12" class="obs-node"/><text x="110" y="28" text-anchor="middle" class="node-text">可观测性平台</text><text x="110" y="50" text-anchor="middle" class="small-text">日志、延迟、Token、成本</text></g>
+  <path d="M1320 882 H1150 V795" class="edge-dashed"/><text x="1170" y="872" class="small-text">质量指标与告警</text>
+
+  <text x="950" y="1080" text-anchor="middle" class="small-text">离线知识生产负责“构建与发布”，在线服务负责“检索与回答”，反馈数据驱动持续优化</text>
+</svg>

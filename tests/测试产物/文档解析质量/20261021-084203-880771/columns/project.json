@@ -1,0 +1,92 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "documents": [
+    {
+      "text": "双栏阅读测试：先左后右\nLEFT-A 左栏第一段\nRIGHT-A 右栏第一段\nLEFT-B 左栏第二段\nRIGHT-B 右栏第二段",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\columns\\双栏交错存储.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\columns\\双栏交错存储.pdf",
+        "page": 1,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "双栏交错存储",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "双栏交错存储.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "双栏阅读测试：先左后右\nLEFT-A 左栏第一段\nRIGHT-A 右栏第一段\nLEFT-B 左栏第二段\nRIGHT-B 右栏第二段\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\columns\\双栏交错存储.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\columns\\双栏交错存储.pdf",
+        "page": 1,
+        "total_pages": 1,
+        "format": "PDF 1.3",
+        "title": "双栏交错存储",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "双栏交错存储.pdf",
+        "file_type": "pdf"
+      }
+    }
+  ],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.004,
+  "text": "双栏阅读测试：先左后右\nLEFT-A 左栏第一段\nRIGHT-A 右栏第一段\nLEFT-B 左栏第二段\nRIGHT-B 右栏第二段",
+  "checks": [
+    {
+      "name": "先左栏再右栏",
+      "kind": "order",
+      "status": "fail",
+      "expected": [
+        "LEFT-A",
+        "LEFT-B",
+        "RIGHT-A",
+        "RIGHT-B"
+      ],
+      "actual": {
+        "LEFT-A": 12,
+        "LEFT-B": 39,
+        "RIGHT-A": 25,
+        "RIGHT-B": 52
+      }
+    }
+  ],
+  "quality": "fail"
+}

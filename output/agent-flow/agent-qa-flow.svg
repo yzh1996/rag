@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="2200" viewBox="0 0 1500 2200" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 模式用户问答流程图</title>
+  <desc id="desc">展示用户提问后，Agent 加载历史任务状态、由模型按需选择业务查询、知识检索或计算工具，工具结果返回模型循环，最后检查证据、保存问答并流式返回页面的流程。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,6 L1,11 Z" fill="#6b7d96"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,6 L1,11 Z" fill="#3976d2"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L10,6 L1,11 Z" fill="#168675"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #21324a; }
+      .title { font-size: 42px; font-weight: 700; }
+      .subtitle { font-size: 20px; fill: #61728a; }
+      .section { font-size: 18px; font-weight: 700; fill: #61728a; }
+      .node-title { font-size: 23px; font-weight: 700; }
+      .node-body { font-size: 17px; fill: #5d6e85; }
+      .card-title { font-size: 21px; font-weight: 700; }
+      .card-body { font-size: 16px; fill: #5d6e85; }
+      .small { font-size: 15px; fill: #718198; }
+      .num { font-size: 17px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1500" height="2200" fill="#f4f7fb"/>
+  <rect x="76" y="52" width="8" height="62" rx="4" fill="#3976d2"/>
+  <text class="title" x="108" y="91">Agent 模式用户问答流程</text>
+  <text class="subtitle" x="108" y="129">按当前代码整理：模型理解问题，按需调用工具，多轮取证后回答并保存</text>
+  <rect x="1174" y="62" width="244" height="42" rx="21" fill="#e5f3ef"/>
+  <text x="1296" y="89" text-anchor="middle" font-size="16" font-weight="700" fill="#168675">当前默认开启</text>
+
+  <text class="section" x="110" y="174">一、进入 Agent：带上本会话上下文</text>
+
+  <g>
+    <rect x="400" y="195" width="700" height="94" rx="15" fill="#ffffff" stroke="#ccd8e8" stroke-width="2"/>
+    <circle cx="438" cy="242" r="22" fill="#3976d2"/><text class="num" x="438" y="248" text-anchor="middle">1</text>
+    <text class="node-title" x="478" y="235">用户在问答页输入问题</text>
+    <text class="node-body" x="478" y="266">例如：查数据、问规定，或接着上一轮追问</text>
+  </g>
+  <path d="M750 289 V322" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="400" y="330" width="700" height="105" rx="15" fill="#ffffff" stroke="#ccd8e8" stroke-width="2"/>
+    <circle cx="438" cy="382" r="22" fill="#3976d2"/><text class="num" x="438" y="388" text-anchor="middle">2</text>
+    <text class="node-title" x="478" y="375">前端调用问答 API</text>
+    <text class="node-body" x="478" y="407">API 确认用户身份；流式接口可以逐步显示进度</text>
+  </g>
+  <path d="M750 435 V468" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="400" y="476" width="700" height="105" rx="15" fill="#ffffff" stroke="#ccd8e8" stroke-width="2"/>
+    <circle cx="438" cy="528" r="22" fill="#3976d2"/><text class="num" x="438" y="534" text-anchor="middle">3</text>
+    <text class="node-title" x="478" y="521">RAGChain 准备本轮对话</text>
+    <text class="node-body" x="478" y="553">加载最近的问答历史，以及同一会话上次保存的任务信息</text>
+  </g>
+  <path d="M750 581 V614" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="400" y="622" width="700" height="105" rx="15" fill="#ffffff" stroke="#ccd8e8" stroke-width="2"/>
+    <circle cx="438" cy="674" r="22" fill="#3976d2"/><text class="num" x="438" y="680" text-anchor="middle">4</text>
+    <text class="node-title" x="478" y="667">恢复状态并检查权限</text>
+    <text class="node-body" x="478" y="699">确认旧数据仍属于当前用户、字段字典仍有效；不合格的旧依据不复用</text>
+  </g>
+  <path d="M750 727 V760" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="400" y="768" width="700" height="105" rx="15" fill="#eaf1ff" stroke="#9db9eb" stroke-width="2"/>
+    <circle cx="438" cy="820" r="22" fill="#3976d2"/><text class="num" x="438" y="826" text-anchor="middle">5</text>
+    <text class="node-title" x="478" y="813">模型结合问题和历史，决定下一步</text>
+    <text class="node-body" x="478" y="845">不先把问题硬分到固定业务类别；需要什么能力就按需选择</text>
+  </g>
+  <path d="M750 873 V894" fill="none" stroke="#3976d2" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <text class="section" x="110" y="925">二、Agent 核心循环：决定 → 调工具 → 看结果 → 再决定</text>
+  <path d="M750 905 L980 1015 L750 1125 L520 1015 Z" fill="#ffffff" stroke="#3976d2" stroke-width="3"/>
+  <text x="750" y="1007" text-anchor="middle" font-size="23" font-weight="700">模型决定下一步</text>
+  <text x="750" y="1039" text-anchor="middle" font-size="16" fill="#61728a">直接回答、追问，或调用工具</text>
+
+  <path d="M750 1125 V1150 H190 V1180" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M750 1150 H470 V1180" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M750 1150 V1180" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M750 1150 H1030 V1180" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M750 1150 H1310 V1180" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="60" y="1190" width="260" height="210" rx="14" fill="#ffffff" stroke="#cbd7e7" stroke-width="2"/>
+    <rect x="60" y="1190" width="260" height="8" rx="4" fill="#74839a"/>
+    <text class="card-title" x="82" y="1237">直接回答 / 追问</text>
+    <text class="card-body" x="82" y="1275"><tspan x="82">常识问题可直接回答。</tspan><tspan x="82" dy="25">对象不明确时，先问清楚</tspan><tspan x="82" dy="25">再继续处理。</tspan></text>
+  </g>
+  <g>
+    <rect x="340" y="1190" width="260" height="210" rx="14" fill="#ffffff" stroke="#b7ccef" stroke-width="2"/>
+    <rect x="340" y="1190" width="260" height="8" rx="4" fill="#3976d2"/>
+    <text class="card-title" x="362" y="1237">发现可用能力</text>
+    <text class="card-body" x="362" y="1275"><tspan x="362">discover_capabilities</tspan><tspan x="362" dy="25">按需拿到业务查询、知识</tspan><tspan x="362" dy="25">检索或计算工具说明。</tspan></text>
+  </g>
+  <g>
+    <rect x="620" y="1190" width="260" height="210" rx="14" fill="#ffffff" stroke="#c9ddc4" stroke-width="2"/>
+    <rect x="620" y="1190" width="260" height="8" rx="4" fill="#548f50"/>
+    <text class="card-title" x="642" y="1237">查询业务数据</text>
+    <text class="card-body" x="642" y="1275"><tspan x="642">先读表和字段说明，再检查</tspan><tspan x="642" dy="25">权限与 SQL，最后执行只读</tspan><tspan x="642" dy="25">查询并保存结果依据。</tspan></text>
+  </g>
+  <g>
+    <rect x="900" y="1190" width="260" height="210" rx="14" fill="#ffffff" stroke="#e7d2aa" stroke-width="2"/>
+    <rect x="900" y="1190" width="260" height="8" rx="4" fill="#bf8a36"/>
+    <text class="card-title" x="922" y="1237">检索内部知识</text>
+    <text class="card-body" x="922" y="1275"><tspan x="922">按当前用户权限检索已发布</tspan><tspan x="922" dy="25">资料，带回相关片段和出处。</tspan><tspan x="922" dy="25">适合制度、口径和方法问题。</tspan></text>
+  </g>
+  <g>
+    <rect x="1180" y="1190" width="260" height="210" rx="14" fill="#ffffff" stroke="#b6ddd6" stroke-width="2"/>
+    <rect x="1180" y="1190" width="260" height="8" rx="4" fill="#168675"/>
+    <text class="card-title" x="1202" y="1237">基于结果做计算</text>
+    <text class="card-body" x="1202" y="1275"><tspan x="1202">引用已查到的行和列计算</tspan><tspan x="1202" dy="25">差值、比例或变化率，不凭</tspan><tspan x="1202" dy="25">空想数字或心算。</tspan></text>
+  </g>
+
+  <path d="M470 1400 V1445 H750" fill="none" stroke="#3976d2" stroke-width="2.5"/>
+  <path d="M750 1400 V1480" fill="none" stroke="#3976d2" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <path d="M1030 1400 V1445 H750" fill="none" stroke="#3976d2" stroke-width="2.5"/>
+  <path d="M1310 1400 V1445 H750" fill="none" stroke="#3976d2" stroke-width="2.5"/>
+  <g>
+    <rect x="480" y="1488" width="540" height="92" rx="14" fill="#e8f4f2" stroke="#8dc8be" stroke-width="2"/>
+    <text x="750" y="1525" text-anchor="middle" font-size="22" font-weight="700" fill="#146f64">工具结果和依据回到模型</text>
+    <text x="750" y="1554" text-anchor="middle" font-size="16" fill="#52776f">模型继续判断：还要查、要算，还是已经可以回答？</text>
+  </g>
+  <path d="M480 1534 H28 V1015 H520" fill="none" stroke="#168675" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrow-teal)"/>
+  <text x="40" y="1510" font-size="15" font-weight="700" fill="#168675">回到模型继续判断</text>
+
+  <path d="M190 1400 V1660 H445" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M980 1015 H1470 V1660 H1055" fill="none" stroke="#6b7d96" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1160" y="1635" font-size="15" font-weight="700" fill="#61728a">完成回答 / finish_answer</text>
+
+  <text class="section" x="110" y="1620">三、结束本轮：检查、保存，再把结果送回页面</text>
+  <g>
+    <rect x="445" y="1645" width="610" height="100" rx="15" fill="#ffffff" stroke="#ccd8e8" stroke-width="2"/>
+    <circle cx="487" cy="1695" r="22" fill="#168675"/><text class="num" x="487" y="1701" text-anchor="middle">6</text>
+    <text class="node-title" x="528" y="1688">整理最终答案或追问</text>
+    <text class="node-body" x="528" y="1719">把目标、已确认事实和仍需补充的问题整理好</text>
+  </g>
+  <path d="M750 1745 V1772" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="445" y="1780" width="610" height="100" rx="15" fill="#ffffff" stroke="#e7d2aa" stroke-width="2"/>
+    <text class="node-title" x="485" y="1821">检查证据和引用</text>
+    <text class="node-body" x="485" y="1852">知识回答检查资料依据；额外质量审核由配置决定</text>
+  </g>
+  <path d="M750 1880 V1907" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="445" y="1915" width="610" height="100" rx="15" fill="#ffffff" stroke="#b6ddd6" stroke-width="2"/>
+    <text class="node-title" x="485" y="1956">保存问答和任务状态</text>
+    <text class="node-body" x="485" y="1987">下次同一会话追问时，可以恢复并复核已确认的信息</text>
+  </g>
+  <path d="M750 2015 V2042" fill="none" stroke="#6b7d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="445" y="2050" width="610" height="94" rx="15" fill="#eaf1ff" stroke="#9db9eb" stroke-width="2"/>
+    <text class="node-title" x="485" y="2088">流式返回并显示在页面</text>
+    <text class="node-body" x="485" y="2118">答案、引用来源、Agent 执行步骤和状态</text>
+  </g>
+
+  <text x="110" y="2177" font-size="15" fill="#718198">执行有轮次、调用次数和超时限制；连续失败时会停止并返回失败或未完成提示。</text>
+</svg>

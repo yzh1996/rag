@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>PDF表格_特殊单元格和多页清洗对比</title>
+<style>body{font-family:system-ui,sans-serif;margin:24px}.panes{display:grid;grid-template-columns:1fr 1fr;gap:20px}section{border:1px solid #ccd3da;border-radius:8px;padding:16px}pre{white-space:pre-wrap;overflow:auto;max-height:720px;line-height:1.6}</style>
+<h1>PDF表格_特殊单元格和多页：table_cells.pdf</h1><div class="panes"><section><h2>清洗前</h2><pre>Before tables
+
+| ID | Value | Note |
+| --- | --- | --- |
+| A-1 | pipe \| slash \\ | line 1&lt;br&gt;line 2 |
+| B-2 |  | valid |
+
+Side note
+Between tables
+
+| Key | Action |
+| --- | --- |
+| C-3 | keep |
+
+After tables
+
+No table page
+</pre></section><section><h2>清洗后</h2><pre>Before tables
+
+| ID | Value | Note |
+| --- | --- | --- |
+| A-1 | pipe \| slash \\ | line 1&lt;br&gt;line 2 |
+| B-2 | | valid |
+
+Side note
+Between tables
+
+| Key | Action |
+| --- | --- |
+| C-3 | keep |
+
+After tables
+
+No table page</pre></section></div></html>

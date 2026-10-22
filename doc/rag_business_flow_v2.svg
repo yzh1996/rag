@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="3650" viewBox="0 0 4500 3650" role="img" aria-labelledby="title desc">
+<title id="title">RAG 业务流程与质量闭环 · 详细版 v2 · 2026-10-22</title>
+<desc id="desc">详细记录当前工作区实现：企业知识双重确认与文档入库、候选索引发布、最近五轮原始历史与独立任务状态、统一 Agent 模型工具往返、工具目录与规则注入、知识权限过滤的向量和关键词检索、SQL 校验及只读执行、基于查询证据计算、答案校验保存与流式展示、人工反馈回归和索引完整质量门禁。</desc>
+<metadata>Sources: core/rag_chain.py; core/conversation_agent.py; core/agent_tools.py; core/retriever.py; core/business_query.py; core/business_reader.py; core/upload_service.py; core/ingestion_service.py; core/release_service.py; core/evaluation_contract.py; core/evaluation_runner.py; core/feedback_service.py; core/task_queue.py; core/langfuse_tracker.py; api/routes/qa.py; frontend/qa_stream.py; frontend/upload_flow.py; config/settings.py. Workspace snapshot: 2026-10-22. No credentials included. Restored original doc/rag_business_flow.png and doc/rag_business_flow.svg are not modified.</metadata>
+<rect width="4500" height="3650" fill="#F6F9FC"/>
+<rect x="52" y="39" width="350" height="38" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="70" y="65" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">当前项目流程 · 详细版 v2</text>
+<text x="60" y="139" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="55" font-weight="700" text-anchor="start">企业级 RAG 业务流程与质量闭环</text>
+<text x="62" y="180" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="24" font-weight="400" text-anchor="start">资料处理、模型工具协作、查询安全、结果追溯与上线门禁，按当前代码中的真实调用顺序展开</text>
+<rect x="2665" y="49" width="1745" height="117" rx="15" fill="#FFFFFF" stroke="#D5E1EB" stroke-width="1.6"/>
+<text x="2700" y="88" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="27" font-weight="700" text-anchor="start">当前配置快照：千问 qwen3.8-flash · OpenAI 兼容接口 · Chroma</text>
+<text x="2700" y="125" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">代码默认启用统一 Agent；具体开关以运行进程的配置为准。该图不代表生产环境已部署。</text>
+<rect x="48" y="205" width="4404" height="600" rx="22" fill="#EDF5FE" stroke="#3178C660" stroke-width="1.6"/>
+<rect x="82" y="230" width="8" height="40" rx="4" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="107" y="263" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" text-anchor="start">01  知识入库、双重确认、候选索引构建与发布</text>
+<text x="100" y="300" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" text-anchor="start">先检查归属和文件，再让用户检查清洗正文；分块有完整预览并二次确认。候选索引还要审核和完整评测，才允许切换线上版本。</text>
+<rect x="88" y="344" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="88" y="340" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="105" y="357" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="124" y="382" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">1</text>
+<text x="156" y="380" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">上传资料与归属</text>
+<text x="110" y="413" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">选择文件、知识库、部门和负责人</text>
+<text x="110" y="442" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">设置继承／本人可见等访问范围</text>
+<text x="110" y="471" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">保存租户、权限和文件摘要元数据</text>
+<rect x="960" y="344" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="960" y="340" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="977" y="357" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="996" y="382" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">2</text>
+<text x="1028" y="380" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">准入与重复检查</text>
+<text x="982" y="413" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">核对登录身份、租户及上传权限</text>
+<text x="982" y="442" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">校验文件类型、大小、压缩包与危险内容</text>
+<text x="982" y="471" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">按文件摘要查重复；不重复保存源文件</text>
+<rect x="1832" y="344" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1832" y="340" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="1849" y="357" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="1868" y="382" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">3</text>
+<text x="1900" y="380" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">后台预处理与检查</text>
+<text x="1854" y="413" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">持久化任务逐阶段报告状态和失败原因</text>
+<text x="1854" y="442" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">解析 PDF／Word／Excel 等文本</text>
+<text x="1854" y="471" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">扫描页按需 OCR；清洗控制字符并保留对照</text>
+<rect x="2704" y="344" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2704" y="340" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="2721" y="357" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="2740" y="382" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">4</text>
+<text x="2772" y="380" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">确认正文并生成分块</text>
+<text x="2726" y="413" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">用户检查原始正文和清洗后的全文</text>
+<text x="2726" y="442" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">确认后选择递归／语义／父子块策略和参数</text>
+<text x="2726" y="471" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">预处理失败可调整源文件后按阶段重试</text>
+<rect x="3576" y="344" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3576" y="340" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="3593" y="357" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="3612" y="382" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">5</text>
+<text x="3644" y="380" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">完整分块预览与确认</text>
+<text x="3598" y="413" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">展示所有分块，父子块按父块分组</text>
+<text x="3598" y="442" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">没有有效分块或源文件变化则拒绝入库</text>
+<text x="3598" y="471" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">用户二次确认后提交确认过的分块入库</text>
+<path d="M 924,427 L 960,427" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="960.00,427.00 946.00,433.50 946.00,420.50" fill="#60788B"/>
+<path d="M 1796,427 L 1832,427" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1832.00,427.00 1818.00,433.50 1818.00,420.50" fill="#60788B"/>
+<path d="M 2668,427 L 2704,427" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="2704.00,427.00 2690.00,433.50 2690.00,420.50" fill="#60788B"/>
+<path d="M 3540,427 L 3576,427" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3576.00,427.00 3562.00,433.50 3562.00,420.50" fill="#60788B"/>
+<path d="M 3994,514 L 3994,548 L 506,548 L 506,573" fill="none" stroke="#3178C6" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="506.00,573.00 499.50,559.00 512.50,559.00" fill="#3178C6"/>
+<rect x="1430" y="530" width="680" height="38" rx="0" fill="#EDF5FE" stroke="none" stroke-width="1.6"/>
+<text x="1770" y="556" fill="#3178C6" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="middle">用户明确确认后，才生成处理用分块</text>
+<rect x="88" y="578" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="88" y="574" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="105" y="591" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="124" y="616" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">6</text>
+<text x="156" y="614" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">向量入库并记录版本</text>
+<text x="110" y="647" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">验证源文件摘要与已确认分块</text>
+<text x="110" y="676" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">计算 Embedding 并写入 Chroma 向量库</text>
+<text x="110" y="705" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">一并保存来源、版本和权限等元数据</text>
+<rect x="960" y="578" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="960" y="574" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="977" y="591" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="996" y="616" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">7</text>
+<text x="1028" y="614" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">固定候选清单与配置</text>
+<text x="982" y="647" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">收集当前租户已发布／候选文档版本</text>
+<text x="982" y="676" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">固定每个文档版本、Embedding 和运行参数</text>
+<text x="982" y="705" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">另建候选索引，不直接覆盖线上索引</text>
+<rect x="1832" y="578" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1832" y="574" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="1849" y="591" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="1868" y="616" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">8</text>
+<text x="1900" y="614" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">审核候选索引</text>
+<text x="1854" y="647" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">检查构建完整、文档片段齐全及索引摘要</text>
+<text x="1854" y="676" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">管理员审核与候选索引摘要绑定</text>
+<text x="1854" y="705" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">评测期间候选索引或运行配置变化即作废</text>
+<rect x="2704" y="578" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2704" y="574" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="2721" y="591" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="2740" y="616" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">9</text>
+<text x="2772" y="614" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">完整评测与质量门禁</text>
+<text x="2726" y="647" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">使用冻结题集和本候选索引完整跑完</text>
+<text x="2726" y="676" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">执行行为、引用、来源、拒答规则检查</text>
+<text x="2726" y="705" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">Ragas 指标与所有用例通过后才能发布</text>
+<rect x="3576" y="578" width="836" height="174" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3576" y="574" width="836" height="174" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<rect x="3593" y="591" width="38" height="34" rx="9" fill="#3178C6" stroke="none" stroke-width="1.6"/>
+<text x="3612" y="616" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">10</text>
+<text x="3644" y="614" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">灰度发布或回滚</text>
+<text x="3598" y="647" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">完整复核租户、索引摘要和运行配置</text>
+<text x="3598" y="676" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">有正式版本时可按 1–50% 稳定灰度</text>
+<text x="3598" y="705" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">校验旧索引摘要和配置后回滚正式版本</text>
+<path d="M 924,661 L 960,661" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="960.00,661.00 946.00,667.50 946.00,654.50" fill="#60788B"/>
+<path d="M 1796,661 L 1832,661" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1832.00,661.00 1818.00,667.50 1818.00,654.50" fill="#60788B"/>
+<path d="M 2668,661 L 2704,661" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="2704.00,661.00 2690.00,667.50 2690.00,654.50" fill="#60788B"/>
+<path d="M 3540,661 L 3576,661" fill="none" stroke="#60788B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3576.00,661.00 3562.00,667.50 3562.00,654.50" fill="#60788B"/>
+<path d="M 3994,748 L 3994,775 L 2260,775 L 2260,750" fill="none" stroke="#3178C6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="2260.00,750.00 2266.50,764.00 2253.50,764.00" fill="#3178C6"/>
+<text x="100" y="783" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">阶段性任务持久化并可恢复／重试；候选索引保留独立版本。发布失败或质量不达标，不切走原线上版本。</text>
+<rect x="48" y="835" width="4404" height="1518" rx="22" fill="#EEF7F3" stroke="#237A6260" stroke-width="1.6"/>
+<rect x="82" y="860" width="8" height="40" rx="4" fill="#237A62" stroke="none" stroke-width="1.6"/>
+<text x="107" y="893" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" text-anchor="start">02  在线问答：统一 Agent、模型选工具、工具结果回流再判断</text>
+<text x="100" y="930" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" text-anchor="start">默认工作路径没有先把问题硬分成“知识问答／销量查询”：模型先看问题和历史，再按需查知识、查数据、计算或直接回答。</text>
+<rect x="85" y="991" width="440" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="85" y="987" width="440" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="108" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">1. 接收问题</text>
+<text x="107" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">浏览器发起流式问答请求</text>
+<text x="107" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">生成本轮 interaction_id 和 trace_id</text>
+<text x="107" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">同一会话同时只处理一条 Agent 请求</text>
+<rect x="575" y="991" width="540" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="575" y="987" width="540" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="598" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">2. 确认身份与访问边界</text>
+<text x="597" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">解析当前用户、租户和角色</text>
+<text x="597" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">读取该用户当前会话的已完成记录</text>
+<text x="597" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">后续知识检索逐条校验可见范围</text>
+<rect x="1165" y="991" width="750" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1165" y="987" width="750" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="1188" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">3. 组装五轮原文 + 最新任务状态</text>
+<text x="1187" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">按租户／用户／会话取最近 5 轮问答</text>
+<text x="1187" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">上一轮 AI 答案以原文进入本轮模型上下文</text>
+<text x="1187" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">单独读最新 interaction 保存的任务状态</text>
+<text x="1187" y="1147" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">识别当前对象、已确认结果及需要补充的问题</text>
+<rect x="1965" y="991" width="875" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1965" y="987" width="875" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="1988" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">4. 构造千问请求上下文</text>
+<text x="1987" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">系统提示 + 今天的日期 + 能力摘要</text>
+<text x="1987" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">已确认的任务状态和证据摘要</text>
+<text x="1987" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">五轮用户消息／AI 原答 + 当前问题</text>
+<text x="1987" y="1147" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">历史结果可继续用于追问；问“最新”则重查</text>
+<rect x="2890" y="991" width="615" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2890" y="987" width="615" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="2913" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">5. 千问选择下一步</text>
+<text x="2912" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">普通常识：可以直接作答</text>
+<text x="2912" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">缺少关键条件：可发出澄清问题</text>
+<text x="2912" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">需要内部资料：选择知识能力</text>
+<text x="2912" y="1147" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">需要数字或对比：选择业务查询／计算</text>
+<polygon points="3670,992.5 3820.0,1068 3670,1143.5 3520.0,1068" fill="#FFFDF7" stroke="#C69A4D" stroke-width="2.2"/>
+<text x="3670" y="1060" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="middle">要调用工具？</text>
+<text x="3670" y="1093" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="middle">是：进入工具执行</text>
+<rect x="3870" y="991" width="500" height="173" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3870" y="987" width="500" height="173" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="3893" y="1027" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">直接回答路径</text>
+<text x="3892" y="1060" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">无需内部依据时</text>
+<text x="3892" y="1089" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">模型原文作为普通回答</text>
+<text x="3892" y="1118" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">直接进入保存与结果返回</text>
+<path d="M 525,1073 L 575,1073" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="575.00,1073.00 561.00,1079.50 561.00,1066.50" fill="#237A62"/>
+<path d="M 1115,1073 L 1165,1073" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1165.00,1073.00 1151.00,1079.50 1151.00,1066.50" fill="#237A62"/>
+<path d="M 1915,1073 L 1965,1073" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1965.00,1073.00 1951.00,1079.50 1951.00,1066.50" fill="#237A62"/>
+<path d="M 2840,1073 L 2890,1073" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="2890.00,1073.00 2876.00,1079.50 2876.00,1066.50" fill="#237A62"/>
+<path d="M 3505,1073 L 3520,1073" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3520.00,1073.00 3506.00,1079.50 3506.00,1066.50" fill="#237A62"/>
+<path d="M 3820,1068 L 3846,1068" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3846.00,1068.00 3832.00,1074.50 3832.00,1061.50" fill="#237A62"/>
+<path d="M 845,1160 L 845,1227 L 1535,1227 L 1535,1160" fill="none" stroke="#237A62" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="1535.00,1160.00 1541.50,1174.00 1528.50,1174.00" fill="#237A62"/>
+<text x="1190" y="1217" fill="#237A62" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="middle">历史窗口与独立保存的最新任务状态都来自持久化会话记录</text>
+<path d="M 3670,1144 L 3670,1242 L 4340,1242 L 4340,1328 L 405,1328" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<rect x="1115" y="1260" width="2285" height="40" rx="0" fill="#EEF7F3" stroke="none" stroke-width="1.6"/>
+<text x="2257" y="1289" fill="#237A62" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">按本轮模型请求分发：只调用所需工具；新增能力时先发现能力，再把说明与业务规则返回模型</text>
+<path d="M 405,1328 L 405,1362" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="405.00,1362.00 398.50,1348.00 411.50,1348.00" fill="#237A62"/>
+<path d="M 1205,1328 L 1205,1362" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="1205.00,1362.00 1198.50,1348.00 1211.50,1348.00" fill="#237A62"/>
+<path d="M 2115,1328 L 2115,1362" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="2115.00,1362.00 2108.50,1348.00 2121.50,1348.00" fill="#237A62"/>
+<path d="M 2955,1328 L 2955,1362" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="2955.00,1362.00 2948.50,1348.00 2961.50,1348.00" fill="#237A62"/>
+<path d="M 3855,1328 L 3855,1362" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="3855.00,1362.00 3848.50,1348.00 3861.50,1348.00" fill="#237A62"/>
+<rect x="85" y="1366" width="640" height="420" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="85" y="1362" width="640" height="420" rx="14" fill="#FFFFFF" stroke="#7958B380" stroke-width="1.6"/>
+<text x="108" y="1402" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">6. 发现能力</text>
+<text x="107" y="1435" fill="#7958B3" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">discover_capabilities</text>
+<text x="107" y="1466" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">初始只开放“发现能力”和“最终回答”</text>
+<text x="107" y="1495" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">模型按需申请 business／knowledge／calculation</text>
+<text x="107" y="1524" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">补齐所选能力对应的工具说明</text>
+<text x="107" y="1553" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">请求 business 时同时返回：</text>
+<text x="107" y="1582" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">授权表清单 + BUSINESS_RULES 统计口径</text>
+<text x="107" y="1611" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">再将 read_business_schema 等工具开放给模型</text>
+<rect x="790" y="1366" width="830" height="420" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="790" y="1362" width="830" height="420" rx="14" fill="#FFFFFF" stroke="#3178C680" stroke-width="1.6"/>
+<text x="813" y="1402" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">7. 内部知识检索</text>
+<text x="812" y="1435" fill="#3178C6" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">search_knowledge</text>
+<text x="812" y="1466" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">模型提交本轮检索问题</text>
+<text x="812" y="1495" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">选择会话实际命中的发布／灰度索引</text>
+<text x="812" y="1524" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">权限过滤同时覆盖索引元数据和文档归属</text>
+<text x="812" y="1553" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">Chroma：向量候选 + 关键词候选合并排序</text>
+<text x="812" y="1582" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">按融合分、可用的重排模型精排并补父块</text>
+<text x="812" y="1611" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">返回资料片段、出处、页码和引用编号</text>
+<rect x="1680" y="1366" width="870" height="420" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1680" y="1362" width="870" height="420" rx="14" fill="#FFFFFF" stroke="#7958B380" stroke-width="1.6"/>
+<text x="1703" y="1402" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">8. MySQL 只读查询</text>
+<text x="1702" y="1435" fill="#7958B3" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">read_business_schema → query_database</text>
+<text x="1702" y="1466" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">先读已核实的表名、字段说明与统计规则</text>
+<text x="1702" y="1495" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">模型根据业务问题生成单条 SELECT</text>
+<text x="1702" y="1524" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">解析 SQL：只允许已知表／字段与安全函数</text>
+<text x="1702" y="1553" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">禁止写入、跨库、系统表和不受控复杂查询</text>
+<text x="1702" y="1582" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">设只读事务、执行超时、最大 100 行及返回大小限额</text>
+<text x="1702" y="1611" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">确认实际表字段类型与字典一致后执行</text>
+<rect x="2610" y="1366" width="690" height="420" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2610" y="1362" width="690" height="420" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<text x="2633" y="1402" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">9. 引用依据计算</text>
+<text x="2632" y="1435" fill="#BD7A28" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">calculate</text>
+<text x="2632" y="1466" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">从已有业务查询中</text>
+<text x="2632" y="1495" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">指定依据编号、结果行和列名</text>
+<text x="2632" y="1524" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">工具验证引用数值并使用 Decimal 计算</text>
+<text x="2632" y="1553" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">支持总和、差值、比值、变化率</text>
+<text x="2632" y="1582" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">基准为零时明确不算比值／变化率</text>
+<rect x="3330" y="1366" width="1050" height="420" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3330" y="1362" width="1050" height="420" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="3353" y="1402" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">10. 最终回答或澄清</text>
+<text x="3352" y="1435" fill="#237A62" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">finish_answer</text>
+<text x="3352" y="1466" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">finish_answer 提交：回答／追问／拒答</text>
+<text x="3352" y="1495" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">事实必须引用真实查询结果的编号、行和列</text>
+<text x="3352" y="1524" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">对象切换、查询结果改变时按标记重置任务</text>
+<text x="3352" y="1553" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">没有新任务时沿用已确认对象与统计依据</text>
+<text x="3352" y="1582" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">最新历史依据不按 15 分钟失效，但“现在／最新”会重查</text>
+<text x="3352" y="1611" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">Agent 结束模型／工具轮次，交还最终结果</text>
+<path d="M 400,1782 L 400,1850" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<path d="M 1205,1782 L 1205,1850" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<path d="M 2115,1782 L 2115,1850" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<path d="M 2955,1782 L 2955,1850" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<path d="M 400,1850 L 2960,1850" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<path d="M 2960,1850 L 2960,1868 L 1935,1868 L 1935,1180 L 1965,1180" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="1965.00,1180.00 1951.00,1186.50 1951.00,1173.50" fill="#237A62"/>
+<rect x="1020" y="1830" width="1350" height="38" rx="0" fill="#EEF7F3" stroke="none" stroke-width="1.6"/>
+<text x="1695" y="1859" fill="#237A62" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle">普通查询结果 → 以工具结果追加消息 → 返回模型再次选择</text>
+<rect x="85" y="1891" width="4285" height="71" rx="10" fill="#DDEFE7" stroke="none" stroke-width="1.6"/>
+<text x="108" y="1920" fill="#28664F" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">延续历史：最近 5 轮 AI 原答发给模型；任务依据单独保存，不按 15 分钟过期。字段目录／业务访问未变时可沿用；询问最新数据时必须重新查询。</text>
+<text x="108" y="1948" fill="#B94646" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="start">异常处理：工具失败或无检索结果时回给模型修正或澄清；连续 3 次失败、16 轮、24 次工具调用或 600 秒超限后停止并说明未完成。</text>
+<text x="92" y="2015" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">业务数据说明：本地经营 MySQL 是模拟数据；回答应说明模拟标记、数据截止日、统计对象、查询表和比较基准；不能编造订单／退款／成本／利润或因果结论。</text>
+<rect x="85" y="2059" width="1010" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="85" y="2055" width="1010" height="184" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="108" y="2095" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">11. 证据检查与可选答案审核</text>
+<text x="107" y="2128" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">无知识来源时遵守所需证据／拒答规则</text>
+<text x="107" y="2157" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">质量审核器由配置启用，本地默认关闭</text>
+<text x="107" y="2186" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">拒答与澄清作为独立 response_type 返回</text>
+<text x="107" y="2215" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">工具错误／轮次预算／超时都有可读终止结果</text>
+<rect x="1150" y="2059" width="1010" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1150" y="2055" width="1010" height="184" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="1173" y="2095" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">12. 保存答案与任务状态</text>
+<text x="1172" y="2128" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">写入问答记录：问题、答案、来源与 query_details</text>
+<text x="1172" y="2157" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">关联 interaction_id、trace_id、模型、耗时和 token</text>
+<text x="1172" y="2186" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">保存执行步骤、已查数据、当前任务状态</text>
+<text x="1172" y="2215" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">分开保存最新任务指针，不依赖五轮窗口</text>
+<rect x="2215" y="2059" width="1010" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2215" y="2055" width="1010" height="184" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="2238" y="2095" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">13. 流式回传页面</text>
+<text x="2237" y="2128" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">SSE 实时发送模型轮次与工具执行阶段</text>
+<text x="2237" y="2157" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">Agent 完成模型调用后返回答案正文，再发送 done</text>
+<text x="2237" y="2186" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">Agent 答案在本轮处理完成后返回，不是逐 token 输出</text>
+<text x="2237" y="2215" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">客户端关闭时取消上游请求并释放连接</text>
+<rect x="3280" y="2059" width="1090" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3280" y="2055" width="1090" height="184" rx="14" fill="#FFFFFF" stroke="#237A6280" stroke-width="1.6"/>
+<text x="3303" y="2095" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">14. 用户看到结果并继续</text>
+<text x="3302" y="2128" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">展示回答、引用来源、统计表格和工具执行明细</text>
+<text x="3302" y="2157" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">可基于上一轮回答、对象和已查依据继续追问</text>
+<text x="3302" y="2186" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">用户反馈与最终记录通过 interaction_id 关联</text>
+<text x="3302" y="2215" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">问答结果与聊天历史按当前用户及会话归属</text>
+<path d="M 1095,2145 L 1150,2145" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1150.00,2145.00 1136.00,2151.50 1136.00,2138.50" fill="#237A62"/>
+<path d="M 2160,2145 L 2215,2145" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="2215.00,2145.00 2201.00,2151.50 2201.00,2138.50" fill="#237A62"/>
+<path d="M 3225,2145 L 3280,2145" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3280.00,2145.00 3266.00,2151.50 3266.00,2138.50" fill="#237A62"/>
+<path d="M 4090,1160 L 4410,1160 L 4410,2030 L 585,2030 L 585,2055" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="585.00,2055.00 578.50,2041.00 591.50,2041.00" fill="#237A62"/>
+<path d="M 3855,1782 L 3855,2032 L 585,2032 L 585,2055" fill="none" stroke="#237A62" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="585.00,2055.00 578.50,2041.00 591.50,2041.00" fill="#237A62"/>
+<text x="3450" y="2003" fill="#237A62" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="middle">直答或 finish_answer 完成后</text>
+<rect x="85" y="2255" width="4285" height="63" rx="10" fill="#E5EFE9" stroke="none" stroke-width="1.6"/>
+<text x="108" y="2296" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="400" text-anchor="start">兼容旧流程：只有显式关闭 Agent 才会使用意图路由，分别走旧 RAG、销量 Text-to-SQL、经营分析或澄清。模型报错不会自动切回旧路由。</text>
+<rect x="48" y="2390" width="4404" height="625" rx="22" fill="#FFF7EB" stroke="#BD7A2860" stroke-width="1.6"/>
+<rect x="82" y="2415" width="8" height="40" rx="4" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="107" y="2448" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" text-anchor="start">03  反馈、回归评测、候选索引与线上发布闭环</text>
+<text x="100" y="2485" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" text-anchor="start">反馈关联真实问答记录，必须由人工确认参考答案；评测结果绑定具体候选索引、配置和冻结题集。用户反馈不会自动训练模型或自动更新线上知识。</text>
+<rect x="84" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="84" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="101" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="120" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">1</text>
+<text x="152" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">记录用户反馈</text>
+<text x="106" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">点赞／点踩／纠错</text>
+<text x="106" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">申请人工处理</text>
+<text x="106" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">关联原问答与 trace</text>
+<rect x="709" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="709" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="726" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="745" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">2</text>
+<text x="777" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">人工复核问题</text>
+<text x="731" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">管理员检查答案</text>
+<text x="731" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">核对问题、来源、SQL</text>
+<text x="731" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">填写处理结论和参考答复</text>
+<rect x="1334" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1334" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="1351" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="1370" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">3</text>
+<text x="1402" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">沉淀人工回归题</text>
+<text x="1356" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">晋升时必须提交参考答案</text>
+<text x="1356" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">保留原会话历史与出处</text>
+<text x="1356" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">标记 human-reviewed</text>
+<rect x="1959" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1959" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="1976" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="1995" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">4</text>
+<text x="2027" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">冻结测试和配置</text>
+<text x="1981" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">锁定本次整套测试问题</text>
+<text x="1981" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">固定模型／Embedding／检索配置</text>
+<text x="1981" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">测试集版本生成摘要</text>
+<rect x="2584" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2584" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="2601" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="2620" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">5</text>
+<text x="2652" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">在候选索引上评测</text>
+<text x="2606" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">明确绑定候选索引与摘要</text>
+<text x="2606" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">规则检查来源／引用／拒答等行为</text>
+<text x="2606" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">完整运行 Ragas 相关指标</text>
+<rect x="3209" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3209" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="3226" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="3245" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">6</text>
+<text x="3277" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">复核质量发布门禁</text>
+<text x="3231" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">租户、索引内容摘要、运行配置吻合</text>
+<text x="3231" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">必须覆盖全量题目且全部通过</text>
+<text x="3231" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">审核记录需与索引内容摘要相符</text>
+<rect x="3834" y="2522" width="570" height="184" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="3834" y="2518" width="570" height="184" rx="14" fill="#FFFFFF" stroke="#BD7A2880" stroke-width="1.6"/>
+<rect x="3851" y="2535" width="38" height="34" rx="9" fill="#BD7A28" stroke="none" stroke-width="1.6"/>
+<text x="3870" y="2560" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" text-anchor="middle">7</text>
+<text x="3902" y="2558" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="21" font-weight="700" text-anchor="start">发布／灰度／恢复</text>
+<text x="3856" y="2591" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">通过后切换正式版或稳定灰度</text>
+<text x="3856" y="2620" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">失败不得影响当前正式版</text>
+<text x="3856" y="2649" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">回滚前核对旧索引完整性与配置</text>
+<path d="M 654,2610 L 709,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="709.00,2610.00 695.00,2616.50 695.00,2603.50" fill="#BD7A28"/>
+<path d="M 1279,2610 L 1334,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1334.00,2610.00 1320.00,2616.50 1320.00,2603.50" fill="#BD7A28"/>
+<path d="M 1904,2610 L 1959,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="1959.00,2610.00 1945.00,2616.50 1945.00,2603.50" fill="#BD7A28"/>
+<path d="M 2529,2610 L 2584,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="2584.00,2610.00 2570.00,2616.50 2570.00,2603.50" fill="#BD7A28"/>
+<path d="M 3154,2610 L 3209,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3209.00,2610.00 3195.00,2616.50 3195.00,2603.50" fill="#BD7A28"/>
+<path d="M 3779,2610 L 3834,2610" fill="none" stroke="#BD7A28" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="3834.00,2610.00 3820.00,2616.50 3820.00,2603.50" fill="#BD7A28"/>
+<path d="M 2869,2702 L 2869,2771 L 2244,2771 L 2244,2702" fill="none" stroke="#B94646" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="2244.00,2702.00 2250.50,2716.00 2237.50,2716.00" fill="#B94646"/>
+<rect x="2310" y="2749" width="520" height="37" rx="0" fill="#FFF7EB" stroke="none" stroke-width="1.6"/>
+<text x="2570" y="2777" fill="#BD7A28" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" text-anchor="middle">评测失败／配置变化 → 人工修正后重跑</text>
+<rect x="1050" y="2802" width="1780" height="38" rx="0" fill="#FFF7EB" stroke="none" stroke-width="1.6"/>
+<text x="1940" y="2831" fill="#BD7A28" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="middle">修正文档后重新入库、构建新候选索引；审核 + 完整评测后才发布</text>
+<text x="90" y="2895" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">修正文档需另走第 01 阶段的上传、确认与候选索引流程；反馈本身不会自动改动知识库。  Ragas：忠实度、答案相关性、上下文精确率／召回率；存在参考答案时加入正确性评分。程序行为契约另核查引用、来源、拒答和执行状态。</text>
+<rect x="48" y="3040" width="4404" height="390" rx="22" fill="#F6F2FC" stroke="#7958B360" stroke-width="1.6"/>
+<rect x="82" y="3065" width="8" height="40" rx="4" fill="#7958B3" stroke="none" stroke-width="1.6"/>
+<text x="107" y="3098" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" text-anchor="start">04  持续运行与可观察性：覆盖用户问题、后台任务、模型调用和数据读取</text>
+<text x="100" y="3135" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" text-anchor="start">运行边界受配置影响；下列数值是源码当前默认值，部署环境可以覆盖。文档处理、候选索引构建和评测都通过可恢复的持久化后台任务。</text>
+<rect x="85" y="3188" width="1360" height="180" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="85" y="3184" width="1360" height="180" rx="14" fill="#FFFFFF" stroke="#7958B380" stroke-width="1.6"/>
+<text x="108" y="3224" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">Agent 请求边界</text>
+<text x="107" y="3257" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">默认上限：16 次模型轮次、24 次工具调用、600 秒</text>
+<text x="107" y="3286" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">重复相同工具调用有限制，连续失败停止</text>
+<text x="107" y="3315" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">提供 JSON 工具协议兼容分支；取消请求会关闭上游</text>
+<rect x="1520" y="3188" width="1360" height="180" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="1520" y="3184" width="1360" height="180" rx="14" fill="#FFFFFF" stroke="#7958B380" stroke-width="1.6"/>
+<text x="1543" y="3224" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">后台任务可靠性</text>
+<text x="1542" y="3257" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">数据库持久化任务队列和领取租约</text>
+<text x="1542" y="3286" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">超时租约可由其他 Worker 接管</text>
+<text x="1542" y="3315" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">默认最大重试 3 次，记录每阶段状态与失败原因</text>
+<rect x="2955" y="3188" width="1415" height="180" rx="14" fill="#DCE5ED" stroke="none" stroke-width="1.6"/>
+<rect x="2955" y="3184" width="1415" height="180" rx="14" fill="#FFFFFF" stroke="#7958B380" stroke-width="1.6"/>
+<text x="2978" y="3224" fill="#18314A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">问答与链路记录</text>
+<text x="2977" y="3257" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">本地保存答案、历史、来源、SQL、Token 与耗时</text>
+<text x="2977" y="3286" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">每次问答可关联 interaction_id／trace_id</text>
+<text x="2977" y="3315" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">当前本地配置开启 Langfuse；需要凭据和服务可用</text>
+<text x="2977" y="3344" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">输入／输出是否保存全文取决于内容捕获设置</text>
+<path d="M 82,3590 L 145,3590" fill="none" stroke="#60788B" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="145.00,3590.00 131.00,3596.50 131.00,3583.50" fill="#60788B"/>
+<text x="162" y="3598" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">实际处理／数据流</text>
+<path d="M 425,3590 L 488,3590" fill="none" stroke="#237A62" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="488.00,3590.00 474.00,3596.50 474.00,3583.50" fill="#237A62"/>
+<text x="505" y="3598" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">历史回传／迭代／修正重试</text>
+<path d="M 925,3590 L 988,3590" fill="none" stroke="#B94646" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="11 8"/>
+<polygon points="988.00,3590.00 974.00,3596.50 974.00,3583.50" fill="#B94646"/>
+<text x="1005" y="3598" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">错误／失败回退处理</text>
+<text x="4400" y="3598" fill="#5E7287" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="end">依据：工作区当前源码与配置 · 2026-10-22 · 总流程详细版 v2</text>
+</svg>

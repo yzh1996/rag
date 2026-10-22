@@ -1,0 +1,31 @@
+{
+  "route": "project",
+  "execution": "error",
+  "error": "ValueError: 加密PDF请先解密再上传",
+  "error_type": "ValueError",
+  "documents": [],
+  "raw_documents": [],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": false,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.015,
+  "text": "",
+  "checks": [
+    {
+      "name": "拒绝异常文件",
+      "status": "pass",
+      "expected": "加密PDF",
+      "actual": "ValueError: 加密PDF请先解密再上传"
+    }
+  ],
+  "quality": "pass"
+}

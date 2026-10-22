@@ -1,0 +1,45 @@
+{
+  "id": "excel_basic",
+  "category": "04_表格关系",
+  "file": "基础表格.xlsx",
+  "description": "保留编号前导零；复杂版另含两张工作表、合并单元格和空白行。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "000108",
+      "value": "000108",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "000109",
+      "value": "000109",
+      "requires_ocr": false
+    },
+    {
+      "kind": "table",
+      "name": "Excel 行列对应",
+      "rows": [
+        [
+          "编号",
+          "商品",
+          "数量",
+          "金额"
+        ],
+        [
+          "000108",
+          "商品甲",
+          "10",
+          "1000.05"
+        ],
+        [
+          "000109",
+          "商品乙",
+          "2",
+          "-20.5"
+        ]
+      ]
+    }
+  ]
+}

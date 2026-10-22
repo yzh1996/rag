@@ -5,10 +5,13 @@ import logging
 from langchain_community.chat_models import ChatOllama
 from langchain_openai import ChatOpenAI
 from config.settings import settings
+from core.llm_http_timing import timing_client_options
 
 logger = logging.getLogger(__name__)
 
 class LLMClient:
+    """统一创建大模型客户端，业务代码不需要关心具体供应商。"""
+
     def __init__(self):
         self._llm = None
         self._initialize_client()
@@ -16,6 +19,9 @@ class LLMClient:
     def _initialize_client(self):
         """初始化大模型客户端"""
         try:
+            # 不同供应商的 SDK 类可能不同，但都被包装成 LangChain 的同一种调用接口。
+            # 这样 RAGChain 只需要调用 invoke()/stream()，不用到处写供应商分支。
+            timing_options = timing_client_options() if settings.OTEL_ENABLED and settings.LLM_PROVIDER != "ollama" else {}
             if settings.LLM_PROVIDER == "ollama":
                 self._llm = ChatOllama(
                     model=settings.OLLAMA_MODEL_NAME,
@@ -30,7 +36,10 @@ class LLMClient:
                     api_key=settings.OPENAI_API_KEY,
                     base_url=settings.OPENAI_BASE_URL,
                     temperature=0.1,
-                    verbose=True
+                    # 流式结束时请求服务端用量，沿用现有 Token 和费用统计。
+                    stream_usage=True,
+                    verbose=True,
+                    **timing_options
                 )
                 logger.info(f"OpenAI 客户端已初始化: {settings.OPENAI_MODEL_NAME}")
             else:
@@ -39,7 +48,9 @@ class LLMClient:
                     api_key=settings.SILICONFLOW_API_KEY,
                     base_url=settings.SILICONFLOW_BASE_URL,
                     temperature=0.1,
-                    verbose=True
+                    stream_usage=True,
+                    verbose=True,
+                    **timing_options
                 )
                 logger.info(f"SiliconFlow 客户端已初始化: {settings.SILICONFLOW_MODEL_NAME}")
         except Exception as e:
@@ -67,6 +78,7 @@ _llm_client = None
 def get_llm():
     """获取大模型实例"""
     global _llm_client
+    # 大模型初始化通常很慢且占用较多内存，因此整个进程只创建一次。
     if _llm_client is None:
         _llm_client = LLMClient()
     return _llm_client.get_llm()

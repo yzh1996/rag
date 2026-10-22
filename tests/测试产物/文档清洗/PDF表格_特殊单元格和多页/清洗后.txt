@@ -1,0 +1,17 @@
+Before tables
+
+| ID | Value | Note |
+| --- | --- | --- |
+| A-1 | pipe \| slash \\ | line 1<br>line 2 |
+| B-2 | | valid |
+
+Side note
+Between tables
+
+| Key | Action |
+| --- | --- |
+| C-3 | keep |
+
+After tables
+
+No table page

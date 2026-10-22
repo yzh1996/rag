@@ -1,0 +1,322 @@
+{
+  "created": "2026-10-21T13:41:54",
+  "cases_executed": 1,
+  "records": [
+    {
+      "case": {
+        "id": "scan_clear",
+        "category": "01_文字准确性",
+        "file": "清晰扫描件.pdf",
+        "description": "清晰图片页，无隐藏文字层；需真实 OCR 后才能评价字段准确率。",
+        "loader": "pymupdf",
+        "checks": [
+          {
+            "kind": "ocr_detection",
+            "name": "扫描页识别",
+            "pages": [
+              1
+            ]
+          },
+          {
+            "kind": "contains",
+            "name": "订单编号",
+            "value": "订单编号：PO-2026-000108",
+            "requires_ocr": true
+          },
+          {
+            "kind": "contains",
+            "name": "核销金额",
+            "value": "核销金额：-1000.05",
+            "requires_ocr": true
+          },
+          {
+            "kind": "contains",
+            "name": "日期",
+            "value": "日期：2026-10-21",
+            "requires_ocr": true
+          },
+          {
+            "kind": "contains",
+            "name": "姓名",
+            "value": "姓名：欧阳明",
+            "requires_ocr": true
+          },
+          {
+            "kind": "contains",
+            "name": "字母标记",
+            "value": "字母标记：OOO",
+            "requires_ocr": true
+          },
+          {
+            "kind": "contains",
+            "name": "处理结论",
+            "value": "处理结论：不予报销",
+            "requires_ocr": true
+          }
+        ],
+        "ocr_pages": [
+          1
+        ],
+        "path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+        "golden_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\golden.json"
+      },
+      "routes": {
+        "native": {
+          "route": "native",
+          "execution": "success",
+          "error": null,
+          "error_type": null,
+          "documents": [
+            {
+              "text": "",
+              "metadata": {
+                "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "page": 0,
+                "total_pages": 1,
+                "format": "PDF 1.3",
+                "title": "清晰扫描件",
+                "author": "anonymous",
+                "subject": "unspecified",
+                "keywords": "",
+                "creator": "anonymous",
+                "producer": "ReportLab PDF Library - (opensource)",
+                "creationDate": "D:20000101000000+00'00'",
+                "modDate": "D:20000101000000+00'00'",
+                "trapped": ""
+              }
+            }
+          ],
+          "raw_documents": [
+            {
+              "text": "",
+              "metadata": {
+                "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "page": 0,
+                "total_pages": 1,
+                "format": "PDF 1.3",
+                "title": "清晰扫描件",
+                "author": "anonymous",
+                "subject": "unspecified",
+                "keywords": "",
+                "creator": "anonymous",
+                "producer": "ReportLab PDF Library - (opensource)",
+                "creationDate": "D:20000101000000+00'00'",
+                "modDate": "D:20000101000000+00'00'",
+                "trapped": ""
+              }
+            }
+          ],
+          "ocr_opt_in": false,
+          "ocr_required_pages": [],
+          "ocr_used_pages": [],
+          "loader": "PyMuPDFLoader",
+          "elapsed_seconds": 0.112,
+          "text": "",
+          "ocr_note": "原生加载器不执行 OCR；扫描文字缺失属于基线能力限制。",
+          "checks": [
+            {
+              "name": "扫描页识别",
+              "kind": "ocr_detection",
+              "status": "not_applicable",
+              "expected": [
+                1
+              ],
+              "actual": "原生加载器无扫描页检测步骤"
+            },
+            {
+              "name": "订单编号",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "订单编号：PO-2026-000108",
+              "actual": ""
+            },
+            {
+              "name": "核销金额",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "核销金额：-1000.05",
+              "actual": ""
+            },
+            {
+              "name": "日期",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "日期：2026-10-21",
+              "actual": ""
+            },
+            {
+              "name": "姓名",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "姓名：欧阳明",
+              "actual": ""
+            },
+            {
+              "name": "字母标记",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "字母标记：OOO",
+              "actual": ""
+            },
+            {
+              "name": "处理结论",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "处理结论：不予报销",
+              "actual": ""
+            }
+          ],
+          "quality": "fail"
+        },
+        "project": {
+          "route": "project",
+          "execution": "success",
+          "error": null,
+          "error_type": null,
+          "documents": [
+            {
+              "text": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销",
+              "metadata": {
+                "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "page": 1,
+                "total_pages": 1,
+                "format": "PDF 1.3",
+                "title": "清晰扫描件",
+                "author": "anonymous",
+                "subject": "unspecified",
+                "keywords": "",
+                "creator": "anonymous",
+                "producer": "ReportLab PDF Library - (opensource)",
+                "creationDate": "D:20000101000000+00'00'",
+                "modDate": "D:20000101000000+00'00'",
+                "trapped": "",
+                "ocr_required": true,
+                "ocr_used": true,
+                "loader": "PyMuPDFLoader",
+                "file_name": "清晰扫描件.pdf",
+                "file_type": "pdf",
+                "cleaned": true
+              }
+            }
+          ],
+          "raw_documents": [
+            {
+              "text": "",
+              "metadata": {
+                "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\01_文字准确性\\scan_clear\\清晰扫描件.pdf",
+                "page": 1,
+                "total_pages": 1,
+                "format": "PDF 1.3",
+                "title": "清晰扫描件",
+                "author": "anonymous",
+                "subject": "unspecified",
+                "keywords": "",
+                "creator": "anonymous",
+                "producer": "ReportLab PDF Library - (opensource)",
+                "creationDate": "D:20000101000000+00'00'",
+                "modDate": "D:20000101000000+00'00'",
+                "trapped": "",
+                "ocr_required": true,
+                "ocr_used": false,
+                "loader": "PyMuPDFLoader",
+                "file_name": "清晰扫描件.pdf",
+                "file_type": "pdf"
+              }
+            }
+          ],
+          "ocr_opt_in": true,
+          "ocr_required_pages": [
+            1
+          ],
+          "ocr_used_pages": [
+            1
+          ],
+          "effective_settings": {
+            "DOCUMENT_CLEANING_ENABLED": true,
+            "REMOVE_REPEATED_PAGE_EDGES": false,
+            "OCR_ENABLED": true,
+            "OCR_PROVIDER": "tencent",
+            "OCR_MIN_TEXT_CHARS": 20,
+            "MAX_PDF_PAGES": 500,
+            "MAX_ARCHIVE_ENTRIES": 2000
+          },
+          "elapsed_seconds": 1.189,
+          "text": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销",
+          "ocr_note": "已明确开启真实 OCR。",
+          "checks": [
+            {
+              "name": "扫描页识别",
+              "kind": "ocr_detection",
+              "status": "pass",
+              "expected": [
+                1
+              ],
+              "actual": [
+                1
+              ]
+            },
+            {
+              "name": "订单编号",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "订单编号：PO-2026-000108",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            },
+            {
+              "name": "核销金额",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "核销金额：-1000.05",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            },
+            {
+              "name": "日期",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "日期：2026-10-21",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            },
+            {
+              "name": "姓名",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "姓名：欧阳明",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            },
+            {
+              "name": "字母标记",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "字母标记：OOO",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            },
+            {
+              "name": "处理结论",
+              "kind": "contains",
+              "status": "fail",
+              "expected": "处理结论：不予报销",
+              "actual": "扫描件关键字段测试\n订单编号:PO-2026-000108\n核销金额:-1000.05\n日期:2026-10-21\n姓名:欧阳明\n字母标记:000\n处理结论:不予报销"
+            }
+          ],
+          "quality": "fail"
+        }
+      },
+      "original": {
+        "status": "ready",
+        "html": "<figure><figcaption>原件第 1 页</figcaption><a href=\"scan_clear/original-page-001.png\" target=\"_blank\"><img loading=\"lazy\" src=\"scan_clear/original-page-001.png\" alt=\"原件第 1 页\"></a></figure>",
+        "pages": [
+          {
+            "page": 1,
+            "image": "scan_clear/original-page-001.png"
+          }
+        ],
+        "source_href": "scan_clear/source.pdf",
+        "golden_href": "scan_clear/golden.json"
+      }
+    }
+  ]
+}

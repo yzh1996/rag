@@ -1,0 +1,50 @@
+groups:
+  - name: rag
+    rules:
+      - alert: RAGUnavailable
+        expr: up{job="rag-api"} == 0 or probe_success{job="rag-health"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations: {summary: 'RAG API or dependency health check failed'}
+      - alert: RAGHighErrorRate
+        expr: rate(rag_qa_errors_total[5m]) / clamp_min(rate(rag_qa_requests_total[5m]), 0.001) > 0.05
+        for: 5m
+        labels: {severity: critical}
+        annotations: {summary: 'RAG answer error rate exceeds 5 percent'}
+      - alert: RAGSlowAnswers
+        expr: histogram_quantile(0.95, sum(rate(rag_qa_seconds_bucket[5m])) by (le)) > 30
+        for: 5m
+        labels: {severity: warning}
+        annotations: {summary: 'RAG P95 answer latency exceeds 30 seconds'}
+      - alert: RAGNegativeFeedback
+        expr: increase(rag_feedback_negative_total[1h]) / clamp_min(increase(rag_feedback_total[1h]), 1) > 0.3 and increase(rag_feedback_total[1h]) >= 10
+        for: 5m
+        labels: {severity: warning}
+        annotations: {summary: 'Negative feedback exceeds 30 percent'}
+      - alert: RAGIngestionFailure
+        expr: increase(rag_ingestion_failed_total[15m]) > 0
+        labels: {severity: warning}
+        annotations: {summary: 'Document ingestion failed'}
+      - alert: RAGCostBudget
+        expr: increase(rag_llm_cost_usd_total[1h]) > 10
+        labels: {severity: warning}
+        annotations: {summary: 'Hourly configured LLM cost exceeds 10 USD'}
+      - alert: RAGEvidenceRejections
+        expr: increase(rag_qa_refusals_total[1h]) / clamp_min(increase(rag_qa_requests_total[1h]), 1) > 0.5 and increase(rag_qa_requests_total[1h]) >= 10
+        labels: {severity: warning}
+        annotations: {summary: 'More than half of answers lack verified evidence'}
+      - alert: RAGBackupStale
+        expr: time() - rag_backup_last_success_timestamp > 86400
+        for: 30m
+        labels: {severity: critical}
+        annotations: {summary: 'No successful backup in the past 24 hours'}
+      - alert: RAGBackupFailed
+        expr: rag_backup_last_attempt_failed == 1
+        for: 5m
+        labels: {severity: critical}
+        annotations: {summary: 'Last backup attempt failed'}
+      - alert: RAGTokenPricesMissing
+        expr: rag_cost_tracking_configured == 0
+        for: 30m
+        labels: {severity: warning}
+        annotations: {summary: 'LLM token prices are missing; cost metrics are incomplete'}

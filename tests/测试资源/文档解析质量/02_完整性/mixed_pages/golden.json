@@ -1,0 +1,67 @@
+{
+  "id": "mixed_pages",
+  "category": "02_完整性",
+  "file": "文字页与扫描页混合.pdf",
+  "description": "第一、三页有文字，第二页只有图片；数字页也要保留。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "数字页开始",
+      "value": "数字页开始：保留采购政策的适用范围和责任部门。",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "数字页结束",
+      "value": "数字页结束：提交财务审核。",
+      "requires_ocr": false
+    },
+    {
+      "kind": "ocr_detection",
+      "name": "仅第二页需要 OCR",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "kind": "contains",
+      "name": "订单编号",
+      "value": "订单编号：PO-2026-000108",
+      "requires_ocr": true
+    },
+    {
+      "kind": "contains",
+      "name": "核销金额",
+      "value": "核销金额：-1000.05",
+      "requires_ocr": true
+    },
+    {
+      "kind": "contains",
+      "name": "日期",
+      "value": "日期：2026-10-21",
+      "requires_ocr": true
+    },
+    {
+      "kind": "contains",
+      "name": "姓名",
+      "value": "姓名：欧阳明",
+      "requires_ocr": true
+    },
+    {
+      "kind": "contains",
+      "name": "字母标记",
+      "value": "字母标记：OOO",
+      "requires_ocr": true
+    },
+    {
+      "kind": "contains",
+      "name": "处理结论",
+      "value": "处理结论：不予报销",
+      "requires_ocr": true
+    }
+  ],
+  "ocr_pages": [
+    2
+  ]
+}

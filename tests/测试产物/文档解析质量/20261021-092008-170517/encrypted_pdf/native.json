@@ -1,0 +1,23 @@
+{
+  "route": "native",
+  "execution": "error",
+  "error": "ValueError: document closed or encrypted",
+  "error_type": "ValueError",
+  "documents": [],
+  "raw_documents": [],
+  "ocr_opt_in": false,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "loader": "PyMuPDFLoader",
+  "elapsed_seconds": 0.018,
+  "text": "",
+  "checks": [
+    {
+      "name": "拒绝异常文件",
+      "status": "pass",
+      "expected": "加密PDF",
+      "actual": "ValueError: document closed or encrypted"
+    }
+  ],
+  "quality": "pass"
+}

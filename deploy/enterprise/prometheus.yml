@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 15s
+rule_files: [/etc/prometheus/alerts.yml]
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: [alertmanager:9093]
+scrape_configs:
+  - job_name: rag-api
+  #指标接口地址
+    metrics_path: /api/v1/system/metrics
+    #监控目标的地址
+    static_configs:
+      - targets: [backend:8000]
+  - job_name: rag-health
+    metrics_path: /probe
+    params:
+      module: [rag_health]
+    static_configs:
+      - targets: [http://backend:8000/api/v1/system/health]
+    relabel_configs:
+      - {source_labels: [__address__], target_label: __param_target}
+      - {source_labels: [__param_target], target_label: instance}
+      - {target_label: __address__, replacement: 'blackbox:9115'}

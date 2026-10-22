@@ -1,0 +1,306 @@
+[
+  {
+    "question": "这份请假、调休及年假管理制度适用于哪些人员？",
+    "expected_answer": "本制度适用于企业全体在职员工，包括试用期员工和正式员工，但不包括劳务派遣人员。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "总则",
+    "tags": ["适用范围", "直接事实"]
+  },
+  {
+    "question": "试用期员工可以享受年假吗？",
+    "expected_answer": "试用期员工按本制度执行请假和调休规定，但年假需要转正后才能享受，并从转正之日起计算年假天数。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["试用期", "年假条件"]
+  },
+  {
+    "question": "所有请假、调休和年假申请有什么共同要求？",
+    "expected_answer": "所有请假、调休和年假申请都必须按制度流程提交，并在审批通过后执行，不能未经审批擅自离岗或休假。员工还应提前规划并做好工作交接。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "总则",
+    "tags": ["基本原则", "审批"]
+  },
+  {
+    "question": "普通员工单次事假最多可以申请几天？",
+    "expected_answer": "普通员工单次事假不得超过5天，全年累计不得超过15天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "事假",
+    "tags": ["期限", "数字事实"]
+  },
+  {
+    "question": "试用期员工请事假的单次和全年上限分别是多少？",
+    "expected_answer": "试用期员工单次事假不得超过3天，全年累计不得超过7天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "事假",
+    "tags": ["试用期", "期限", "数字事实"]
+  },
+  {
+    "question": "事假期间工资和全勤奖、绩效工资如何处理？",
+    "expected_answer": "事假期间不发放工资；事假累计超过5天，扣除当月全勤奖；累计超过10天，当月绩效工资按50%发放；累计超过15天，按企业相关规定扣除对应薪酬及福利。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "事假",
+    "tags": ["工资", "全勤奖", "绩效"]
+  },
+  {
+    "question": "员工请病假需要提供哪些证明材料？",
+    "expected_answer": "病假需要提供县级及以上医院出具的病历、诊断证明、缴费凭证等相关证明材料。紧急情况下可以先离岗，但应在3个工作日内补齐证明材料。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "病假",
+    "tags": ["证明材料", "紧急情况"]
+  },
+  {
+    "question": "病假累计不超过30天时，病假工资按什么标准发放？",
+    "expected_answer": "全年病假累计不超过30天的，按本人基本工资的80%发放病假工资。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "病假",
+    "tags": ["工资", "数字事实"]
+  },
+  {
+    "question": "符合晚婚条件的员工可以休多少天婚假？",
+    "expected_answer": "婚假基本期限为3天；符合晚婚条件，即男年满25周岁、女年满23周岁的，增加7天，合计10天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "婚假",
+    "tags": ["晚婚", "期限", "数字事实"]
+  },
+  {
+    "question": "婚假需要在什么时候申请，并且可以分段休吗？",
+    "expected_answer": "婚假需要在结婚登记之日起6个月内申请完毕，并且要一次性休完，不得分段休，也不得抵扣其他假期。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "婚假",
+    "tags": ["申请期限", "分段休假"]
+  },
+  {
+    "question": "产假的标准期限是多少？难产或多胞胎时如何增加？",
+    "expected_answer": "产假标准期限为98天，其中产前可以休15天；难产增加15天；多胞胎生育的，每多生育1个婴儿增加15天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "产假",
+    "tags": ["期限", "难产", "多胞胎"]
+  },
+  {
+    "question": "产假结束后可以申请多久的哺乳假，工资如何发放？",
+    "expected_answer": "产假结束后可以申请6个月哺乳假，哺乳假期间按本人基本工资的70%发放工资，且不影响全勤奖及绩效工资。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "产假",
+    "tags": ["哺乳假", "工资"]
+  },
+  {
+    "question": "直系亲属去世可以休几天丧假？祖父母去世可以休几天？",
+    "expected_answer": "父母、配偶、子女去世，可以申请3天丧假；祖父母、外祖父母、岳父母、公婆去世，可以申请1天丧假。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "丧假",
+    "tags": ["亲属范围", "期限"]
+  },
+  {
+    "question": "工伤员工康复后，恢复正常工作需要什么手续？",
+    "expected_answer": "工伤员工康复后，需要提供医疗机构出具的康复证明，经人力资源部审核后，方可恢复正常工作。无法胜任原岗位的，企业可以调整岗位。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "工伤假",
+    "tags": ["复工", "证明材料"]
+  },
+  {
+    "question": "普通员工请假1天，需要谁审批？",
+    "expected_answer": "普通员工请假1天（含）以内，由部门负责人审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假审批",
+    "tags": ["普通员工", "审批权限", "边界值"]
+  },
+  {
+    "question": "普通员工请假3天，需要经过哪些审批？",
+    "expected_answer": "普通员工请假1至3天（含），由部门负责人审核，再由人力资源部审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假审批",
+    "tags": ["普通员工", "审批权限", "边界值"]
+  },
+  {
+    "question": "普通员工请假4天，需要经过哪些审批？",
+    "expected_answer": "普通员工请假3天以上，需要部门负责人审核、人力资源部复核、总经理审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假审批",
+    "tags": ["普通员工", "多级审批"]
+  },
+  {
+    "question": "部门负责人请假1天和超过1天时，审批权限有什么不同？",
+    "expected_answer": "部门负责人请假1天（含）以内，由分管领导审批；请假1天以上，由分管领导审核、总经理审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假审批",
+    "tags": ["部门负责人", "边界值"]
+  },
+  {
+    "question": "高管请假是否受请假天数影响？由谁审批？",
+    "expected_answer": "高管请假无论天数多少，均由总经理审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假审批",
+    "tags": ["高管", "审批权限"]
+  },
+  {
+    "question": "请假申请表需要填写哪些内容？",
+    "expected_answer": "请假申请表需要注明请假类型、请假起止时间、请假事由、工作交接人及交接内容，并提交相关证明材料。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假流程",
+    "tags": ["申请材料", "工作交接"]
+  },
+  {
+    "question": "紧急情况下可以先离岗后补办请假吗？多久内必须补齐材料？",
+    "expected_answer": "紧急情况下可以先电话报备部门负责人及人力资源部后离岗，但必须在离岗后24小时内补齐请假申请表及相关证明材料；逾期未补齐的，按旷工处理。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假流程",
+    "tags": ["紧急情况", "补办", "时限"]
+  },
+  {
+    "question": "请假审批通过后，还需要办理什么手续才能离岗？",
+    "expected_answer": "审批流程完成后，请假申请表需要交人力资源部备案，员工方可离岗。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "请假流程",
+    "tags": ["备案", "离岗"]
+  },
+  {
+    "question": "员工请假前为什么必须填写工作交接单？",
+    "expected_answer": "员工请假前必须与工作交接人明确交接内容、交接期限及注意事项，并由交接双方和部门负责人签字确认，以确保请假期间工作能够正常开展。因未做好交接造成工作延误或损失的，由请假员工承担相应责任。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "工作交接",
+    "tags": ["交接", "责任"]
+  },
+  {
+    "question": "哪些情况可以申请调休？",
+    "expected_answer": "员工因工作需要在法定节假日或休息日加班的，可以申请调休；因紧急家事、临时就医等特殊情况无法正常上班且不符合请假条件的，也可以申请调休，但需要提前与部门负责人沟通并确认调休时间及工作安排。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "调休",
+    "tags": ["适用场景", "加班"]
+  },
+  {
+    "question": "普通员工调休由谁审批？部门负责人和高管调休由谁审批？",
+    "expected_answer": "普通员工调休由部门负责人审批；部门负责人及高管调休由分管领导及总经理审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "调休",
+    "tags": ["审批权限"]
+  },
+  {
+    "question": "法定节假日加班可以用调休代替加班工资吗？",
+    "expected_answer": "不可以。法定节假日加班不得调休，应按国家规定支付加班工资；工作日或休息日加班时，调休天数与加班天数对等。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "调休",
+    "tags": ["法定节假日", "加班工资", "边界条件"]
+  },
+  {
+    "question": "调休可以跨年度累计使用吗？如果当年没用完怎么办？",
+    "expected_answer": "调休不得跨年度累计使用，当年12月31日前未使用完毕的自动失效。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "调休",
+    "tags": ["有效期", "年度"]
+  },
+  {
+    "question": "连续工作满1年但不满10年的员工有几天年假？连续工作满10年但不满20年呢？",
+    "expected_answer": "连续工作满1年不满10年的，年假5天；连续工作满10年不满20年的，年假10天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["年假天数", "工作年限", "对比"]
+  },
+  {
+    "question": "连续工作满20年及以上的员工有几天年假？",
+    "expected_answer": "连续工作满20年及以上的员工，年假15天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["年假天数", "边界值"]
+  },
+  {
+    "question": "国家法定节假日和休息日是否计入年假？",
+    "expected_answer": "国家法定节假日和休息日不计入年假假期。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["计算规则"]
+  },
+  {
+    "question": "员工当年事假和病假累计超过20天，会影响年假吗？",
+    "expected_answer": "会。当年事假和病假累计超过20天的，不享受当年年假；如果当年年假已经休完，次年年假减少5天。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["年假条件", "事假", "病假", "边界条件"]
+  },
+  {
+    "question": "普通员工申请年假需要提前多久？由谁审批？",
+    "expected_answer": "普通员工申请年假需要提前15天提交年假申请表，由部门负责人审核、人力资源部审批。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["申请期限", "审批权限"]
+  },
+  {
+    "question": "年假可以分段休吗？最多可以分几次？",
+    "expected_answer": "年假可以一次性休完，也可以分段休，但分段休不得超过2次，并且需要在当年12月31日前休完。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "年假",
+    "tags": ["分段休假", "次数限制"]
+  },
+  {
+    "question": "未经审批擅自离岗或休假，会受到什么处理？",
+    "expected_answer": "未经审批擅自离岗、擅自调休或擅自休年假的，按旷工处理，并可能取消相关假期资格。旷工1天扣除当日工资的200%；旷工2天扣除当日工资的300%并取消当月全勤奖；旷工3天及以上按员工奖惩管理制度处理，情节严重的可以解除劳动合同。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "违规处理",
+    "tags": ["旷工", "处罚", "多条规则"]
+  },
+  {
+    "question": "提交虚假病假或婚假证明会有什么后果？",
+    "expected_answer": "一经查实，将取消假期资格，扣除已休期间的工资并通报批评；情节严重的，给予纪律处分。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "违规处理",
+    "tags": ["虚假材料", "处罚"]
+  },
+  {
+    "question": "如果员工没有按制度要求做好工作交接，导致企业损失，会怎么处理？",
+    "expected_answer": "员工需要承担相应责任，并扣除当月绩效工资的30%至50%；情节严重的，给予纪律处分并赔偿企业损失。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "违规处理",
+    "tags": ["工作交接", "绩效", "责任"]
+  },
+  {
+    "question": "这份制度是否规定了请假必须通过哪个具体系统提交？",
+    "expected_answer": "制度只规定需要提交《请假申请表》，没有明确规定必须使用哪一个具体的电子系统或平台。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "未明确事项",
+    "tags": ["拒答", "信息缺失", "系统流程"]
+  },
+  {
+    "question": "这份制度规定了员工能否把自己的年假转让给同事吗？",
+    "expected_answer": "这份制度没有规定年假是否可以转让给同事，因此不能仅根据现有制度得出可以转让的结论，建议向人力资源部确认。",
+    "expected_sources": ["d9de57c7_test.docx"],
+    "history": [],
+    "category": "未明确事项",
+    "tags": ["拒答", "信息缺失", "年假"]
+  }
+]

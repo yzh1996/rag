@@ -1,0 +1,153 @@
+{
+  "route": "project",
+  "execution": "success",
+  "error": null,
+  "error_type": null,
+  "documents": [
+    {
+      "text": "START 本条款在下一页继续。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "page": 1,
+        "total_pages": 2,
+        "format": "PDF 1.3",
+        "title": "跨页段落",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "跨页段落.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    },
+    {
+      "text": "CONTINUE 审批完成后归档。\nEND 条款结束。",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "page": 2,
+        "total_pages": 2,
+        "format": "PDF 1.3",
+        "title": "跨页段落",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "跨页段落.pdf",
+        "file_type": "pdf",
+        "cleaned": true
+      }
+    }
+  ],
+  "raw_documents": [
+    {
+      "text": "START 本条款在下一页继续。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "page": 1,
+        "total_pages": 2,
+        "format": "PDF 1.3",
+        "title": "跨页段落",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "跨页段落.pdf",
+        "file_type": "pdf"
+      }
+    },
+    {
+      "text": "CONTINUE 审批完成后归档。\nEND 条款结束。\n",
+      "metadata": {
+        "source": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "file_path": "E:\\yzh\\workspace\\RAGProject\\rag_qa_system\\tests\\测试资源\\文档解析质量\\03_阅读顺序\\cross_page_text\\跨页段落.pdf",
+        "page": 2,
+        "total_pages": 2,
+        "format": "PDF 1.3",
+        "title": "跨页段落",
+        "author": "anonymous",
+        "subject": "unspecified",
+        "keywords": "",
+        "creator": "anonymous",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "creationDate": "D:20000101000000+00'00'",
+        "modDate": "D:20000101000000+00'00'",
+        "trapped": "",
+        "ocr_required": false,
+        "ocr_used": false,
+        "loader": "PyMuPDFLoader",
+        "file_name": "跨页段落.pdf",
+        "file_type": "pdf"
+      }
+    }
+  ],
+  "ocr_opt_in": true,
+  "ocr_required_pages": [],
+  "ocr_used_pages": [],
+  "effective_settings": {
+    "DOCUMENT_CLEANING_ENABLED": true,
+    "REMOVE_REPEATED_PAGE_EDGES": false,
+    "OCR_ENABLED": true,
+    "OCR_PROVIDER": "tencent",
+    "OCR_MIN_TEXT_CHARS": 20,
+    "MAX_PDF_PAGES": 500,
+    "MAX_ARCHIVE_ENTRIES": 2000
+  },
+  "elapsed_seconds": 0.003,
+  "text": "START 本条款在下一页继续。\n\nCONTINUE 审批完成后归档。\nEND 条款结束。",
+  "checks": [
+    {
+      "name": "跨页连续",
+      "kind": "order",
+      "status": "pass",
+      "expected": [
+        "START",
+        "CONTINUE",
+        "END"
+      ],
+      "actual": {
+        "START": 0,
+        "CONTINUE": 18,
+        "END": 36
+      }
+    },
+    {
+      "name": "来源页码",
+      "kind": "pages",
+      "status": "pass",
+      "expected": [
+        1,
+        2
+      ],
+      "actual": [
+        1,
+        2
+      ]
+    }
+  ],
+  "quality": "pass"
+}

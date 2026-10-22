@@ -1,0 +1,33 @@
+{
+  "id": "blank_page",
+  "category": "06_清洗与异常",
+  "file": "中间空白页.pdf",
+  "description": "允许丢弃空白内容，但第三页不能被误标成第二页。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "contains",
+      "name": "第一页有正文。",
+      "value": "第一页有正文。",
+      "requires_ocr": false
+    },
+    {
+      "kind": "contains",
+      "name": "第三页有正文。",
+      "value": "第三页有正文。",
+      "requires_ocr": false
+    },
+    {
+      "kind": "nonempty",
+      "name": "清洗后没有空内容单元"
+    },
+    {
+      "kind": "pages",
+      "name": "空白页后仍保留真实页码",
+      "values": [
+        1,
+        3
+      ]
+    }
+  ]
+}

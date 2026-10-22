@@ -1,0 +1,19 @@
+{
+  "id": "columns",
+  "category": "03_阅读顺序",
+  "file": "双栏交错存储.pdf",
+  "description": "人眼应先读完左栏再读右栏；PDF 内部故意按横向交错写入。",
+  "loader": "pymupdf",
+  "checks": [
+    {
+      "kind": "order",
+      "name": "先左栏再右栏",
+      "values": [
+        "LEFT-A",
+        "LEFT-B",
+        "RIGHT-A",
+        "RIGHT-B"
+      ]
+    }
+  ]
+}

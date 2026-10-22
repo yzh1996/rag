@@ -1,0 +1,16 @@
+{
+  "id": "page_limit",
+  "category": "06_清洗与异常",
+  "file": "四页超限样例.pdf",
+  "description": "测试时暂把页数限制设为 3，用 4 个小页面验证拒绝，不创建大文件。",
+  "loader": "pymupdf",
+  "checks": [],
+  "expected_rejection": true,
+  "error_contains": "页上限",
+  "rejection_types": [
+    "ValueError"
+  ],
+  "settings": {
+    "MAX_PDF_PAGES": 3
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "corrupt_pdf",
+  "category": "06_清洗与异常",
+  "file": "损坏文件.pdf",
+  "description": "伪装成 PDF 的损坏文件，应该拒绝且不能产出可用内容。",
+  "loader": "pymupdf",
+  "checks": [],
+  "expected_rejection": true,
+  "rejection_types": [
+    "FileDataError",
+    "FzErrorFormat",
+    "PDFSyntaxError",
+    "ValueError"
+  ]
+}
